@@ -39,7 +39,7 @@
                   <v-icon large class="pt-2 pageCardArrow">mdi-arrow-right</v-icon>
                 </v-col>
               </v-row>
-              <p class="pageCardDescription">{{pageCard.description}}</p>
+              <p class="pageCardDescription" style="height:50px;">{{pageCard.description}}</p>
             </v-card>
           </v-col>
         </v-row>
@@ -51,7 +51,7 @@
           <v-col cols="4"></v-col>
           <v-col cols="4">
             <p class="shortInfoTitle">Some short info</p>
-            <p class="shortInfoDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident voluptas asperiores dolores aspernatur, inventore blanditiis mollitia harum quo adipisci quisquam, quod odit ad explicabo consequuntur eos saepe animi quasi maiores.</p>
+            <p class="shortInfoDescription">Inprofuture project will mprove SMEs innovative and digital transition capacity by creating structure, methodology and tools for improving employees lack of necessary skills to contribute.</p>
           </v-col>
         </v-row>
       </v-col>
@@ -181,9 +181,9 @@ import RssTest from "@/components/rss/rssTest.vue"
         isContactFormValid: true,
         // In Page Pages Cards
         pageCards:[
-          { name: "E-Learning", color: "", link: "trainingmodules", description: "Lorem ipsum dolores sit amet. Nihil repellat architecto asperiores sequi facere" },
-          { name: "Available resources", color: "", link: "/resources",  description: "Lorem ipsum dolores sit amet. Nihil repellat architecto asperiores sequi facere" },
-          { name: "About the project", color: "", link: "/about",  description: "Lorem ipsum dolores sit amet. Nihil repellat architecto asperiores sequi facere" }
+          { name: "Available resources", color: "", link: "/resources",  description: "Here you will find different resources made in project" },
+          { name: "About the project", color: "", link: "/about",  description: "Read about the project, aims and the results it will produce" },
+          { name: "Partners", color: "", link: "/partners", description: "Find the partners and learn more about them" },
         ],
         // Dummy data below - Replace when db are implemented
         fakeNewsCards:[
