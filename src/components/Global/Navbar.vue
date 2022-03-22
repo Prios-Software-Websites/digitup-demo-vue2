@@ -10,7 +10,8 @@ O<template>
     </div> -->
     <!-- <v-img src="img/DIGI_logo.png" height="40" width="260px" contain/> -->
     <v-spacer></v-spacer>
-    <v-img class="mt-15 ml-10" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img>
+    <!-- <v-img class="mt-15 ml-10" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img> -->
+    <p class="pt-15" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
     <v-spacer></v-spacer>
     <!-- Links -->
     <!-- 

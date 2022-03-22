@@ -16,7 +16,8 @@
       </v-col>
       <!-- Image -->
       <v-col cols="2">
-        <v-img class="mt-5" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img>
+        <!-- <v-img class="mt-5" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img> -->
+        <p class="pt-5" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
       </v-col>
     </v-row>
   </v-footer>
