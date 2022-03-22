@@ -27,7 +27,7 @@
 
       <!-- 3 Cards in center of cards -->
       <v-col cols="2" class="pt-0"></v-col>
-      <v-col cols="8" class="pt-0">
+      <v-col cols="8" class="pt-0 pt-15">
         <v-row>
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(pageCard, pageCardIndex) in pageCards" :key="pageCardIndex">
             <v-card class="pageCardPositioning" :to="pageCard.link" style="position:relative;">
@@ -51,8 +51,8 @@
       <!-- Info Text -->
       <v-col cols="12">
         <v-row>
-          <v-col cols="4"></v-col>
-          <v-col cols="4">
+          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12"></v-col>
+          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12">
             <p class="shortInfoTitle">Some short info</p>
             <p class="shortInfoDescription">Inprofuture project will mprove SMEs innovative and digital transition capacity by creating structure, methodology and tools for improving employees lack of necessary skills to contribute.</p>
           </v-col>
@@ -60,8 +60,8 @@
       </v-col>
 
       <!-- News -->
-      <v-col cols="2" class="pt-0"></v-col>
-      <v-col cols="8">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" class="pt-0"></v-col>
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
         <v-row>
           <!-- Chapter Title -->
           <v-col cols="12" class="pt-15 mt-15">
@@ -106,7 +106,7 @@
       </v-col>
 
       <!-- RSS -->
-      <v-col cols="2" class="pt-0"></v-col>
+      <v-col cols="2" xl="2" lg="2" md="2" sm="12" xs="12" class="pt-0"></v-col>
       <v-col cols="8">
         <v-row>
           <v-col cols="12" class="pt-15 mt-15">
@@ -291,7 +291,7 @@ import RssTest from "@/components/rss/rssTest.vue"
 }
 .introTitle {
   font-size:48px;
-  color: #000000;
+  color: #d1caca;
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%; 
@@ -299,18 +299,18 @@ import RssTest from "@/components/rss/rssTest.vue"
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
-  text-shadow: 1px 1px grey, -1px -1px grey, -1px 1px grey, 1px -1px grey;
+  text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
 }
 .introDescription {
   font-size:28px;
-  color: #000000; 
+  color: #d1caca; 
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%;
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
-  text-shadow: 1px 1px grey, -1px -1px grey, -1px 1px grey, 1px -1px grey;
+  text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
 }
 /* Styling the 3 cards close to the intro top */
 .pageCardPositioning {
