@@ -60,7 +60,7 @@ export default {
       projectPartners: [
         { 
           title: "Progress Consult", 
-          // image: "img/logo.png", 
+          image: "img/PC_logo_angol-01.png", 
           link: "http://progress.hu/",
           description: `Progress Consult Ltd. 
 Hungary (Danish-Hungarian Development Company) The mission of Progress Consult is to be an active, reliable, and innovative provider of lifelong learning solutions and basic skills development for both the private and public sector. 

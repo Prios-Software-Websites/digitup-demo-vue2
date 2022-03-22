@@ -16,11 +16,14 @@
       <v-col cols="12" class="mt-5"></v-col>
       <!-- Intro Image -->
       <v-col cols="12" class="pb-0">
-        <v-card class="pt-15 pb-3 introImage">
-          <p class="introTitle">Welcome to InproFuture</p>
-          <p class="introDescription">Some short information about the project</p>
+        <v-card class="mt-15 pb-3 introImage">
+          <v-img src="../assets/images/Homepagesmab.jpg">
+            <p class="introTitle">Welcome to InproFuture</p>
+            <p class="introDescription">Some short information about the project</p>
+          </v-img>
         </v-card>
       </v-col>
+      
 
       <!-- 3 Cards in center of cards -->
       <v-col cols="2" class="pt-0"></v-col>
@@ -282,12 +285,13 @@ import RssTest from "@/components/rss/rssTest.vue"
 
 /* Intro Classes for box and text at the top */
 .introImage {
-  height:650px;
+  height:auto;
+  max-height: 800px;
   background-color:rgb(213, 211, 211);
 }
 .introTitle {
   font-size:48px;
-  color: #434343;
+  color: #000000;
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%; 
@@ -295,16 +299,18 @@ import RssTest from "@/components/rss/rssTest.vue"
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
+  text-shadow: 1px 1px darkslategrey, -1px -1px darkslategrey, -1px 1px darkslategrey, 1px -1px darkslategrey;
 }
 .introDescription {
   font-size:28px;
-  color: #434343; 
+  color: #000000; 
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%;
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
+  text-shadow: 1px 1px darkslategrey, -1px -1px darkslategrey, -1px 1px darkslategrey, 1px -1px darkslategrey;
 }
 /* Styling the 3 cards close to the intro top */
 .pageCardPositioning {
