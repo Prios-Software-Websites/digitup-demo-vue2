@@ -35,8 +35,8 @@
               <!-- Aims -->
               <v-col cols="12" class="mb-15">
                 <p class="goalTitle">Aims</p>
-                <p class="goalDescription">The project aims to:  </p>
-                <p class="goalDescription">broaden project partners expertise in consultancy service regarding competence development, to develop educational methods for providing different digital competence development to improve SMEs innovation and digital transition capacity. <br>
+                <p class="goalDescription"><strong>The project aims to: </strong><br>
+                  broaden project partners expertise in consultancy service regarding competence development, to develop educational methods for providing different digital competence development to improve SMEs innovation and digital transition capacity. <br>
                   Develop a mapping tool for SMEs to analyse and assess their level of digitalisation and give the digital transition process a clearer direction. <br>
                   Support SMEs and Educators to understand how the gaps could be filled with digital competence development, and training programs to improve employees digital skills and competencies. <br>
                   Motivate SMEs to strengthen their efforts to provide competence development training to their employees. <br>
