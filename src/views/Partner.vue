@@ -58,11 +58,44 @@ export default {
     return {
       selectedIndex: null,
       projectPartners: [
-        { title: "Partner 1", image: "img/logo.png", description: "", link: "https://developer.mozilla.org/en-US/" },
-        { title: "Partner 2", image: "img/logo.png", description: "Description of Partner here", link: "https://developer.mozilla.org/en-US/" },
-        { title: "Partner 3", image: "", description: "Description of Partner here", link: "" },
-        { title: "Partner 4", image: "", description: "", link: "" },
-        { title: "Partner 5", image: "", description: "", link: "" },
+        { 
+          title: "Progress Consult", 
+          // image: "img/logo.png", 
+          link: "http://progress.hu/",
+          description: `Progress Consult Ltd. 
+Hungary (Danish-Hungarian Development Company) The mission of Progress Consult is to be an active, reliable, and innovative provider of lifelong learning solutions and basic skills development for both the private and public sector. 
+The strategic focus of Progress is to contribute with learning and capacity building solutions to build capacities in a labour market in constant need of new competencies and skills and enforce people to get successful access (digital or analogue) to relevant skills and qualifications. 
+Progress Consult Ltd. has been involved in lifelong learning and basic skills activities since 2009. 
+Prior to this, the organisation had a broader focus on improving welfare services, social development, and institutional reforms for disadvantaged groups and long-term unemployed. 
+The company started its operation in Hungary in 1998. 
+In recent years Progress Consult has widened its operations to other countries in the region and participates in several innovative programmes in the field of adult education with partners from all over Europe.`, 
+        },
+        { 
+          title: "Prios Kompetanse", 
+          image: "img/prioslogo_PNG_big_dark.png", 
+          link: "https://www.prios.no/",
+          description: `Prios Kompetanse AS (Prios) from Steinkjer, Norway is a research-based corporation which aims to implement the idea of lifelong learning, support and conduct development projects. 
+          The center is open to all who wish to develop their talents, refresh their knowledge, improve their business, needs new or better digital tools or have ideas in need for support to be fulfilled. 
+The main sectors and activities is:
+-	  Educational activities focused on adult learners and labor market service within basic skills training, VET, entrepreneurship training and tailored training for businesses. 
+-	  Software support for their educational activities as well as developing new digital solutions based upon requests and needs in different projects, we participate in. For instance, Prios have developed and own the Follow-Up® concept.  
+Consulting activities mostly supports business clients within internal innovation processes, HR processes, economical advises and management improvements.`, 
+        },
+        { 
+          title: "Slovenska inovacna a energeticka agentura", 
+          image: "img/siea-logo.png", 
+          link: "https://www.siea.sk/",
+          description: `SIEA was established in 1952 as a Professional agency focused on energy aspects. 
+Since 1999 is directed by the Ministry of Economy.
+It is the centre of competence for energy efficiency, energy innovations and renewable energies.
+SIEA also acts as an implementation agency for Structural Funds. 
+17 years ago, SIEA has extended the scope of its activities by innovation-related topics. 
+SIEA acts as the national innovation and energy agency and knows deeply the Slovak market and its players, the decision-makers, companies, professionals, associations and all those who are involved in developing innovation ecosystem, energy and energy efficiency ecosystem. 
+Since 2017 is involved in developing and providing training courses related to innovation development,  mainly on the part of idea generation. 
+Since 2020 SIEA started its involvement in the building I4.0 ecosystem in Slovakia by supporting the establishment of cluster I4.0, participating in the national selection process for ECDI - with a focus on I4.0 and participating in international collaboration with Austrian and Swedish I4.0 platform. 
+SIEA is involved in other strategic task related to digital transformation - via participation in the works of the European network of innovation agencies - Taftie (www.taftie.org). 
+SIEA is in 2021 chairing this network under the headline Innovations for Sustainable Future.`, 
+        },
       ]
     }
   },
