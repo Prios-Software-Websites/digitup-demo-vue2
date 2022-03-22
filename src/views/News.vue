@@ -12,7 +12,7 @@
           </v-col>
           <!-- Description -->
           <v-col cols="12" class="mb-15">
-            <p class="newsChapterDescription">Keep up to date about the EVOLVE project</p>
+            <p class="newsChapterDescription">Keep up to date about the InproFuture project</p>
           </v-col>
           <!-- News Cards -->
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(fakeNews, fakeNewsIndex) in fakeNewsCards" :key="fakeNewsIndex">

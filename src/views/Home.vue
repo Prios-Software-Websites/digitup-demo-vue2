@@ -17,7 +17,7 @@
       <!-- Intro Image -->
       <v-col cols="12" class="pb-0">
         <v-card class="pt-15 pb-3 introImage">
-          <p class="introTitle">Welcome to EVOLVE 5.0 headline</p>
+          <p class="introTitle">Welcome to InproFuture</p>
           <p class="introDescription">Some short information about the project</p>
         </v-card>
       </v-col>
@@ -168,7 +168,7 @@ import RssTest from "@/components/rss/rssTest.vue"
           email: "",
           message: "",
           subject: "",
-          sentFrom: "Project Template"
+          sentFrom: "InproFuture"
         },
         // Rules for the contact Form
         rules:{

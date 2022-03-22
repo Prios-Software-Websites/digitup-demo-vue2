@@ -5,7 +5,7 @@
       <v-col cols="12" class="">
         <!-- Header -->
         <v-img src="../../assets/images/homePageGradient.png" height="250">
-        <p class="text-center latoFont smabMainHeadline primaryThemeColor">SMART BUSINESS 4 ALL</p>
+        <p class="text-center latoFont smabMainHeadline primaryThemeColor">InproFuture</p>
         </v-img>
       </v-col>
       <v-col cols="2">

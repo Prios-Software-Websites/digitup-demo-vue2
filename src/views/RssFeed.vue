@@ -10,7 +10,7 @@
           <v-col cols="12">
             <!-- <RssTest></RssTest> -->
             <p class="rssChapterTitle">RSS feed</p>
-            <p class="rssChapterDescription">Keep up to date about the Evolve project</p>
+            <p class="rssChapterDescription">Keep up to date about the InproFuture project</p>
           </v-col>
           <!-- RSS feed Cards -->
           <v-col cols="12" xl="12" lg="12" md="12" sm="12" xs="12" class="mb-3" v-for="(rssFeed, rssFeedIndex) in fakeRSSfeed" :key="rssFeedIndex">

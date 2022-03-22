@@ -1,4 +1,4 @@
-# Project Template
+# InproFuture
 
 ## Project setup
 ```
