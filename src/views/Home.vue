@@ -299,7 +299,7 @@ import RssTest from "@/components/rss/rssTest.vue"
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
-  text-shadow: 1px 1px darkslategrey, -1px -1px darkslategrey, -1px 1px darkslategrey, 1px -1px darkslategrey;
+  text-shadow: 1px 1px grey, -1px -1px grey, -1px 1px grey, 1px -1px grey;
 }
 .introDescription {
   font-size:28px;
@@ -310,7 +310,7 @@ import RssTest from "@/components/rss/rssTest.vue"
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
-  text-shadow: 1px 1px darkslategrey, -1px -1px darkslategrey, -1px 1px darkslategrey, 1px -1px darkslategrey;
+  text-shadow: 1px 1px grey, -1px -1px grey, -1px 1px grey, 1px -1px grey;
 }
 /* Styling the 3 cards close to the intro top */
 .pageCardPositioning {
