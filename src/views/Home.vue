@@ -291,7 +291,7 @@ import RssTest from "@/components/rss/rssTest.vue"
 }
 .introTitle {
   font-size:48px;
-  color: #d1caca;
+  color: #FF7E26;
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%; 
@@ -303,14 +303,14 @@ import RssTest from "@/components/rss/rssTest.vue"
 }
 .introDescription {
   font-size:28px;
-  color: #d1caca; 
+  color: #FF7E26; 
   opacity: 1;
   letter-spacing: 0px;
   margin-left: 15%;
   font-weight: bold;
   font-family: 'Barlow', sans-serif;
   font-style:normal;
-  text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
+  text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
 }
 /* Styling the 3 cards close to the intro top */
 .pageCardPositioning {
