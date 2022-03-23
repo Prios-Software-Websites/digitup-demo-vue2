@@ -93,8 +93,8 @@ A good mapping should provide results according to SWOT model in order to give t
         },
         {
           title: "Output 2 - Digital handbook to strengthen planning and implementation of digital competences",
-          description: `The project will produce a handbook to be used on the site of SMEs by in principle all stakeholders and with a special focus on how managers and adult educators/company instructors can prepare plans to facilitate digital skills training and competence development. 
-(best practice collection and assessment) - Handbook (at least 25-30 pages) available on 4 language 
+          description: `The project will produce a handbook to be used on the site of SMEs by in principle all stakeholders and with a special focus on how managers and adult educators/company instructors can prepare plans to facilitate digital skills training and competence development. (best practice collection and assessment) 
+-   Handbook (at least 25-30 pages) available on 4 language 
 -   The handbook will provide recommendations for on how to set up the digital competence construction process and will give recommendations on how to ensure workplace organized training which can be customised to the individual SME.`
         },
         {
