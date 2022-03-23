@@ -100,7 +100,7 @@ All developed knowledge and guidelines will be put together in a tool kit.
 Created tutorial videos will be open available in projects video channel and digital resources on project web site.`
         },
         {
-          title: "Output 3 - Teachers as digital learning designer",
+          title: "Output 3 - SME Improvement of digital competencies - The Resource Platform",
           description: `Project will first develop an unique digital resource center, which meets the partners and stakeholder need for both creation and distribution of digital learning content. 
 The resource center will also have results from output 1 and 2. 
 Project would like the resource centre to be a place to create and share content among schools.
