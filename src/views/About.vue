@@ -84,27 +84,23 @@ export default {
       ],
       results: [
         {
-          title: "Output 1 - Digital Pedagogical Strategy",
-          description: `This output will highlight the most important factors in a strategy in order to enable each school to create their own Digital Pedagogical Strategy. 
-Those will consist of methods, tools, guidelines and checklists.
-In addition, the project will develop a web-based mapping tool supporting the developed criteria's to score the Digital Pedagogical Strategy Preparedness and provide results in a SWOT model enabling schools to deal with the right issues to improve them self.`
+          title: "Output 1 - SME digitalization competence mapping tool",
+          description: `The first step in solving a problem or reaching a potential, is to recognize that it does exist. 
+A digital transmission strategy for every SME needs to be evidence-based, then it's possible to create and facilitate digital skills development which gives wanted effect.  
+To provide trustworthy evidence, its necessary to understand, identify and develop measurable parameters to score and judge the degree of digitalisation in the SME. 
+The mapping of their status and opportunities needs to be tailored to their field of business and give concrete results. 
+A good mapping should provide results according to SWOT model in order to give the digital transmission process a clear direction.`
         },
         {
-          title: "Output 2 - Teachers Digitale Knowledge",
-          description: `Project will create a pedagogical model about how teachers can provide a positive digital environment and develop guidelines for practical use of open educational resources and equip teachers with digital skills to implement their ideas by:
--   Focus on teacher practice as the main contributor to improve student's learning outcomes
--   Improvement, focused to assist teachers with their digital teaching
--   Evolving and will be expanded through showcasing best digital practices.  
-
-All developed knowledge and guidelines will be put together in a tool kit. 
-Created tutorial videos will be open available in projects video channel and digital resources on project web site.`
+          title: "Output 2 - Digital handbook to strengthen planning and implementation of digital competences",
+          description: `The project will produce a handbook to be used on the site of SMEs by in principle all stakeholders and with a special focus on how managers and adult educators/company instructors can prepare plans to facilitate digital skills training and competence development. 
+(best practice collection and assessment) - Handbook (at least 25-30 pages) available on 4 language 
+-   The handbook will provide recommendations for on how to set up the digital competence construction process and will give recommendations on how to ensure workplace organized training which can be customised to the individual SME.`
         },
         {
           title: "Output 3 - SME Improvement of digital competencies - The Resource Platform",
-          description: `Project will first develop an unique digital resource center, which meets the partners and stakeholder need for both creation and distribution of digital learning content. 
-The resource center will also have results from output 1 and 2. 
-Project would like the resource centre to be a place to create and share content among schools.
-Project will create digital learning content based on developed pedagogical principle, with use of suggested educational software knowledge and development guidelines for practical use of educational resources.`
+          description: `The project Recourse Center (RC) will be a virtual online platform with highly interactive features that will not only include all the project outcomes and outputs but also allow both adult educators, consultants, advisors, policymakers and SME management to interact online. 
+The RC will be built with sole aim to be user friendly and easily navigated taking into consideration the target group features.`
         },
       ]
     }
