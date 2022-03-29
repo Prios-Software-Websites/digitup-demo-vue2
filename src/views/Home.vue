@@ -16,8 +16,8 @@
       <v-col cols="12" class="mt-5"></v-col>
       <!-- Intro Image -->
       <v-col cols="12" class="pb-0">
-        <v-card class="mt-15 pb-3 introImage">
-          <v-img src="../assets/images/Homepagesmab.jpg">
+        <v-card class="mt-15 introImage" flat>
+          <v-img src="../assets/images/Homepagesmab.jpg" height="600">
             <p class="introTitle">Welcome to InproFuture</p>
             <p class="introDescription">Some short information about the project</p>
           </v-img>
@@ -27,7 +27,7 @@
 
       <!-- 3 Cards in center of cards -->
       <v-col cols="2" class="pt-0"></v-col>
-      <v-col cols="8" class="pt-0 pt-15">
+      <v-col cols="8" class="pt-0 pt-5">
         <v-row>
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(pageCard, pageCardIndex) in pageCards" :key="pageCardIndex">
             <v-card class="pageCardPositioning" :to="pageCard.link" style="position:relative;">
@@ -287,7 +287,7 @@ import RssTest from "@/components/rss/rssTest.vue"
 .introImage {
   height:auto;
   max-height: 800px;
-  background-color:rgb(213, 211, 211);
+  /* background-color:rgb(213, 211, 211); */
 }
 .introTitle {
   font-size:48px;
