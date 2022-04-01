@@ -7,10 +7,10 @@
         <p class="text-center title">Resources</p>
         <!-- <p>{{resourceTemplate}}</p> -->
       </v-col>
-      <v-col cols="2"></v-col>
-      <v-col cols="8">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
         <v-row>
-          <v-col v-for="(item, index) in resourceFolders" :Key="index" cols="4">
+          <v-col v-for="(item, index) in resourceFolders" :Key="index" cols="12" xl="4" lg="4" md="4" sm="12" xs="12">
             <v-card @click="displayResource(item.template)">
               <p v-if="item.title == 'Video' || item.title == 'Video'" class="text-center title pt-10 pb-10">{{ $t('resources.video') }}</p>
               <p v-else-if="item.title == 'Files' || item.title == 'Filer'" class="text-center title pt-10 pb-10">{{ $t('resources.files') }}</p>
@@ -42,26 +42,26 @@
 
             <!-- No content added yet -->
             <template v-else-if="resourceContent == ''">
-              <v-col cols="7">
+              <v-col cols="12" xl="7" lg="7" md="7" sm="12" xs="12">
                 <p class="text-end title">Sorry no content added yet</p>
               </v-col>
-               <v-col cols="3" class="d-flex align-end flex-column">
+               <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
                 <v-btn class="mr-5" @click="closeTheResourceBox()">X</v-btn>
               </v-col>
             </template>
 
             <!-- Display Content -->
             <template v-else-if="resourceContent">
-              <v-col cols="2"></v-col>
-              <v-col cols="5" class="pb-0">
+              <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
+              <v-col cols="12" xl="5" lg="5" md="5" sm="12" xs="12" class="pb-0">
                 <p class=" title">Resource Content</p>
               </v-col>
-               <v-col cols="3" class="d-flex align-end flex-column">
+               <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
                 <v-btn class="mr-5" @click="closeTheResourceBox()">X</v-btn>
               </v-col>
               <v-col cols="12" class="pt-0"></v-col>
-              <v-col cols="2"></v-col>
-              <v-col cols="4" v-for="(resources, resourceIndex) in resourceContent" :key="resourceIndex">
+              <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
+              <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(resources, resourceIndex) in resourceContent" :key="resourceIndex">
                 <!-- <pre>{{resource}}</pre> -->
                 <v-card height="100%" flat>
                 
