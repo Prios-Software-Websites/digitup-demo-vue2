@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-dialog v-model="rssDialog" width="50vw">
+    <v-dialog v-model="rssDialog" fullscreen>
       <v-card>
         <v-card-title>
           <v-spacer></v-spacer>
