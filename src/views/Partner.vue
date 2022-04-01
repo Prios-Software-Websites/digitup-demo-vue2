@@ -1,8 +1,8 @@
 <template>
   <div class="homePageWidth">
     <v-row>
-      <v-col cols="2"></v-col>
-      <v-col cols="10" class="ma-0 pa-0 pt-16 mt-16">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
+      <v-col cols="12" xl="10" lg="10" md="10" sm="12" xs="12" class="ma-0 pa-0 pt-16 mt-16">
         <v-card class="ma-0 pa-0 box" flat>
           <p class="ma-0 pa-0 partnerChapterTitle">Partners</p>
         </v-card>
