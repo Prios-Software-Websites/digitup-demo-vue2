@@ -6,16 +6,23 @@
 
       </v-col>
       <!-- Erasmus Logo -->
-      <v-col cols="2">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
+        <v-img src="img/erasmusLogoFooter.jpg" contain max-width="300"></v-img>
+      </v-col>
+      <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <v-img src="img/erasmusLogoFooter.jpg" contain></v-img>
       </v-col>
       <!-- Text -->
-      <v-col cols="8" class="pl-15 pt-3">
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pl-0 pt-3" v-if="$vuetify.breakpoint.mdAndDown">
+        <p class="footerText">Footer design will change depending on content</p>
+        <p class="footerText">Contact info</p>
+      </v-col>
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pl-15 pt-3" v-else>
         <p class="footerText">Footer design will change depending on content</p>
         <p class="footerText">Contact info</p>
       </v-col>
       <!-- Image -->
-      <v-col cols="2">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <!-- <v-img class="mt-5" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img> -->
         <p class="pt-5" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
       </v-col>
