@@ -3,8 +3,8 @@
     <RssDialog ref="openingRssDialog"></RssDialog>
     <v-row>
       <v-col cols="12" class="mt-15"></v-col>
-      <v-col cols="2"></v-col>
-      <v-col cols="8">
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="mb-15">
         <v-row> 
           <!-- RSS feed Chapter info -->
           <v-col cols="12">
@@ -27,7 +27,7 @@
                   <p class="rssCardDescription">{{rssFeed.content}}</p>
                 </v-col>
                 <!-- Date and Arrow -->
-                <v-col cols="1">
+                <v-col cols="12" xl="1" lg="1" md="1" sm="12" xs="12" class="pb-10">
                   <p class="rssCardDate">{{rssFeed.date}}</p>
                   <v-icon class="ml-5 rssCardArrow">mdi-arrow-right</v-icon>
                 </v-col>
