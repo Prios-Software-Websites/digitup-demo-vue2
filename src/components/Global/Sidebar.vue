@@ -65,6 +65,7 @@ export default {
       pageNavigation: [
         { name: "Home", location: "/", icon: "" },
         { name: "About", location: "/about", icon: "" },
+        { name: "Partners", location: "/partners", icon: "" },
         { name: "News", location: "/news", icon: "" },
         { name: "RSS", location: "/rss", icon: "" },
         { name: "Training Modules", location: "/trainingmodules", icon: "" },
