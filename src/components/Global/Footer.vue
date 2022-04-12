@@ -6,11 +6,19 @@
 
       </v-col>
       <!-- Erasmus Logo -->
-      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
+      <!-- <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
         <v-img src="img/erasmusLogoFooter.jpg" contain max-width="300"></v-img>
       </v-col>
       <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <v-img src="img/erasmusLogoFooter.jpg" contain></v-img>
+      </v-col> -->
+
+      <!-- EU Logo -->
+      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
+        <v-img src="img/EU_POS.png" contain max-width="300"></v-img>
+      </v-col>
+      <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
+        <v-img src="img/EU_POS.png" contain height="100"></v-img>
       </v-col>
       <!-- Text -->
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pl-0 pt-3" v-if="$vuetify.breakpoint.mdAndDown">
