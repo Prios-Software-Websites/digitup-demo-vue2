@@ -81,7 +81,7 @@
                       <p class="pl-2 mb-0 newsCardTitle">{{fakeNews.title}}</p>
                       <p class="pa-2 mb-0 pb-0 newsCardDescription">{{fakeNews.article}}</p>
                     </v-col>
-                    <v-col cols="12" class="pt-0 mt-0">
+                    <v-col cols="12" class="pt-0 mt-0 pt-7">
                       <v-card-actions class="pt-0">
                         <p class="newsCardButton mr-2 pt-3">Read article</p>
                         <v-icon class="newsCardButtonArrow">mdi-arrow-right</v-icon>
@@ -111,7 +111,7 @@
                       <p class="pl-2 mb-0 newsCardTitle">{{newsData.title}}</p>
                       <p class="pa-2 mb-0 pb-0 newsCardDescription">{{newsData.description}}</p>
                     </v-col>
-                    <v-col cols="12" class="pt-0 mt-0">
+                    <v-col cols="12" class="pt-0 mt-0 pt-7">
                       <v-card-actions class="pt-0">
                         <p class="newsCardButton mr-2 pt-3">Read article</p>
                         <v-icon class="newsCardButtonArrow">mdi-arrow-right</v-icon>
