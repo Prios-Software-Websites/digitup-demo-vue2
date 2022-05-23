@@ -89,7 +89,7 @@ export default {
       tenant: 999,
       allTheNews: [],
       theNewsContent: [],
-      colorArr:[ "#205072", "#329D9C", "#D83636", "#DD9A30", "#205072", "#329D9C" ],
+      colorArr:[ "#1b1b61", "#387b9d", "#47abbb", "#DD9A30", "#47b5b0", "#387b9d" ],
       fakeNewsCards:[
         { 
           title: "News title", 
@@ -171,7 +171,7 @@ export default {
   font-family: 'Barlow', sans-serif;
   font-weight: bold;
   font-size: 46px;
-  color: #434343;
+  color: #141428;
   opacity: 1;
   letter-spacing: 0px;
   text-align: left;
@@ -180,7 +180,7 @@ export default {
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   font-size: 14px;
-  color: #6A6A6A;
+  color: #141428;
   opacity: 1;
   letter-spacing: 0px;
   text-align: left;
@@ -197,7 +197,7 @@ export default {
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   text-align: left;
-  color: #6A6A6A;
+  color: #141428;
   opacity: 1;
   letter-spacing: 0px;
   overflow: hidden;
@@ -212,13 +212,13 @@ export default {
   font-weight: normal;
   font-size: 18px;
   text-align: left;
-  color: #205072;
+  color: #2a4b7f;
   opacity: 1;
   letter-spacing: 0px;
   text-decoration: underline;
 }
 .newsCardButtonArrow {
-  color: #205072;
+  color: #2a4b7f;
   opacity: 1;
 }
 .newsCardDividerPositioning {
@@ -227,14 +227,14 @@ export default {
 }
 
 .pageCardDividerBlue {
-  background-color:#205072; 
+  background-color:#2a4b7f; 
 }
 .pageCardDividerGreen {
-  background-color:#329D9C; 
+  background-color:#47abbb; 
   padding: 2px;
 }
 .pageCardDividerRed {
-  background-color:#D83636; 
+  background-color:#47b5b0; 
   padding: 2px;
 }
 

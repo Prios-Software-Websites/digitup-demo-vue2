@@ -193,10 +193,10 @@ import RssTest from "@/components/rss/rssTest.vue"
         allTheNews: [],
         theNewsContent: [],
         colorArr:[
-          "#205072",
-          "#329D9C",
-          "#D83636",
-          "#DD9A30"
+          "#1b1b61",
+          "#387b9d",
+          "#47b5b0",
+          "#2a4b7f"
         ],
         contactToast: false,
         // Contact Form
@@ -380,15 +380,15 @@ import RssTest from "@/components/rss/rssTest.vue"
   padding: 10px;
 }
 .pageCardDividerBlue {
-  background-color:#205072; 
+  background-color:#1b1b61; 
   padding: 2px
 }
 .pageCardDividerGreen {
-  background-color:#329D9C; 
+  background-color:#387b9d; 
   padding: 2px;
 }
 .pageCardDividerRed {
-  background-color:#D83636; 
+  background-color:#47b5b0; 
   padding: 2px;
 }
 .pageCardTitle {

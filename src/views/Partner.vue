@@ -126,7 +126,7 @@ SIEA is in 2021 chairing this network under the headline Innovations for Sustain
   border-image-slice: 1;
 }
 .cardBorder{
-  border: 3px #329D9C solid;
+  border: 3px #47b5b0 solid;
 }
 
 
@@ -144,7 +144,7 @@ SIEA is in 2021 chairing this network under the headline Innovations for Sustain
   font-family: 'Barlow', sans-serif;
   font-weight: bold;
   font-size: 24px;
-  color: #434343;
+  color: #141428;
   letter-spacing: 0px;
   text-align: left;
 }
@@ -152,7 +152,7 @@ SIEA is in 2021 chairing this network under the headline Innovations for Sustain
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   text-align: left;
-  color: #6A6A6A;
+  color: #141428;
   opacity: 1;
   letter-spacing: 0px;
   overflow: hidden;
@@ -166,7 +166,7 @@ SIEA is in 2021 chairing this network under the headline Innovations for Sustain
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   text-align: left;
-  color: #6A6A6A;
+  color: #141428;
   opacity: 1;
   opacity: 1;
   letter-spacing: 0px;

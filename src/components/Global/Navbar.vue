@@ -10,8 +10,8 @@ O<template>
     </div> -->
     <!-- <v-img src="img/DIGI_logo.png" height="40" width="260px" contain/> -->
     <v-spacer></v-spacer>
-    <!-- <v-img class="mt-15 ml-10" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img> -->
-    <p class="pt-15" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
+    <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5 mb-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+    <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
     <v-spacer></v-spacer>
     <!-- Links -->
     <!-- 
@@ -83,18 +83,18 @@ export default {
   width: 90vw !important; 
   margin: auto auto !important; 
   background-color:#FFFFFF !important; 
-  border-bottom:5px solid #205072!important;
+  border-bottom:5px solid #2a4b7f!important;
 }
 a {
   padding: 14px;
-  color: #6A6A6A;
+  color: #141428;
   text-decoration: none;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
 }
 a:visited {
-  color: #6A6A6A;
+  color: #141428;
   text-decoration: none;
 }
 a:hover {
@@ -109,7 +109,7 @@ a:active {
 .contactButton {
   font-family: 'Lato', sans-serif;
   font-weight: regular;
-  color: #6A6A6A;
+  color: #141428;
   line-height: 1em;
   font-size: 16px;
 }

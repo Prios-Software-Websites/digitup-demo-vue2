@@ -3,8 +3,8 @@
     <ContactUs ref="OpenContactForm"></ContactUs>
     <!-- Navbar -->
     <v-app-bar app color="light-blue lighten-5" style="height:6em;">
-      <!-- <v-img class="mt-8 ml-10" src="img/EVOLVE.png"  max-height="80" max-width="80" contain></v-img> -->
-      <p class="pt-5 pl-10" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
+      <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-7" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+      <v-img v-else class="mt-7" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
       <v-spacer></v-spacer>
       <v-btn icon @click="toggleNavbar()">
         <v-icon>mdi-menu</v-icon>
@@ -16,8 +16,8 @@
     <!-- Navbar -->
     <v-navigation-drawer v-model="navDrawer" app >
       <a href="/">
-        <!-- <v-img  class="mt-2 mb-2" src="img/EVOLVE.png"  height="60" contain></v-img> -->
-        <p class="pt-5 pl-10" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
+        <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+        <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
       </a>
       <v-divider></v-divider>
       <v-list dense>

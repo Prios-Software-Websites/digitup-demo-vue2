@@ -15,7 +15,7 @@
 
       <!-- EU Logo -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
-        <v-img src="img/EU_POS.png" contain max-width="300"></v-img>
+        <v-img src="img/EU_POS.png" contain max-width="150"></v-img>
       </v-col>
       <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <v-img src="img/EU_POS.png" contain height="100"></v-img>
@@ -31,8 +31,8 @@
       </v-col>
       <!-- Image -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
-        <!-- <v-img class="mt-5" src="img/EVOLVE.png"  max-height="130" max-width="130" contain></v-img> -->
-        <p class="pt-5" style="font-weight: bold; font-size: 20px; color: blue;">InproFuture</p>
+        <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5 mb-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+        <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
       </v-col>
     </v-row>
   </v-footer>
@@ -68,7 +68,7 @@ a:hover {
 }
 
 .dividerStyling {
-  background-color:#329d9c;
+  background-color:#47b5b0;
   border-radius: 4px;
   opacity: 1;
   padding: 2px;
@@ -80,7 +80,7 @@ a:hover {
   font-family: 'Lato', sans-serif;
   text-align: left;
   letter-spacing: 0px;
-  color: #6A6A6A;
+  color: #141428;
   opacity: 1;
   font-size: 14px;
 }
