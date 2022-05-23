@@ -15,7 +15,7 @@
             <p class="newsChapterDescription">Keep up to date about the InproFuture project</p>
           </v-col>
           <!-- News Cards - Delete once News have gotten -->
-          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(fakeNews, fakeNewsIndex) in fakeNewsCards" :key="fakeNewsIndex">
+          <!-- <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(fakeNews, fakeNewsIndex) in fakeNewsCards" :key="fakeNewsIndex">
             <v-card height="100%" @click="$refs.openingNewsDialog.openNewsDialog(fakeNews)">
               <v-row>
                 <v-col cols="12" class="pb-0">
@@ -40,10 +40,10 @@
                 <v-col cols="12"></v-col>
               </v-row>
             </v-card>
-          </v-col>
+          </v-col> -->
 
           <!-- Implement Once having News -->
-          <!-- <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
+          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
             <v-card height="100%" @click="getNewsContent(newsData)">
               <v-row>
                 <v-col cols="12" class="pb-0">
@@ -68,7 +68,7 @@
                 <v-col cols="12"></v-col>
               </v-row>
             </v-card>
-          </v-col> -->
+          </v-col>
 
         </v-row>
       </v-col>
@@ -86,7 +86,7 @@ export default {
   data(){
     return {
       accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
-      tenant: 999,
+      tenant: 108,
       allTheNews: [],
       theNewsContent: [],
       colorArr:[ "#1b1b61", "#387b9d", "#47abbb", "#DD9A30", "#47b5b0", "#387b9d" ],
