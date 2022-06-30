@@ -121,20 +121,7 @@ export default {
       */
       resourceTemplate: 0,
       resourceContent: [],
-      dummyRecourseContent:[
-        { title: "Video 1", content: "", type: "", languages: [
-          {language: "English", link: "https://www.google.com/" },
-          {language: "Italian", link: "https://www.vg.no/" },
-          {language: "Norwegian", link: "https://www.vg.no/" },
-          {language: "Danish", link: "" }
-        ]},
-        { title: "Video 2", content: "", type: "", languages: [
-          {language: "English", link: "" },
-          {language: "Italian", link: "" },
-          {language: "Norwegian", link: "https://www.t-a.no/" },
-          {language: "Danish", link: "https://www.google.com/" }
-        ]}
-      ]
+      
 
     }
   },
@@ -149,7 +136,7 @@ export default {
     displayResource(templateID){
       this.resourceTemplate = templateID;
       if(this.resourceTemplate == 1){
-        this.resourceContent = this.dummyRecourseContent;
+        this.resourceContent = [];
       } else {
         this.resourceContent = [];
       }
