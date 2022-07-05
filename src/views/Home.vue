@@ -136,40 +136,10 @@
       </v-col>
 
       <!-- RSS -->
+      <!-- RSS -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" class="pt-0"></v-col>
-      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
-        <v-row>
-          <v-col cols="12" class="pt-15 mt-15">
-            <p class="newsChapterTitle">RSS feed</p>
-          </v-col>
-          <v-col cols="12" xl="6" lg="6" md="6" sm="12" xs="12" v-for="(rssFeed, rssFeedIndex) in fakeRSSfeed" :key="rssFeedIndex">
-            <v-card height="100%" :style="`border-right:3px solid ${colorArr[rssFeedIndex]}`" @click="$refs.openingRssDialog.openRssDialog(rssFeed)">
-              <v-row>
-                <!-- Image -->
-                <v-col cols="3" style="height: 100px;" class="ma-0 pa-0">
-                  <v-img v-if="rssFeed.image" :src="rssFeed.image" alt="News Image" max-height="50px" contain></v-img>
-                  <div v-else style="height:105px; width:100px; background-color:#D1D1D1; margin:5px 15px 15px 15px;"></div>
-                </v-col>
-                <!-- Title and Content -->
-                <v-col cols="6">
-                  <p class="rssCardTitle">{{rssFeed.title}}</p>
-                  <p class="rssCardDescription">{{rssFeed.content}}</p>
-                </v-col>
-                <!-- Date and Arrow -->
-                <v-col cols="3">
-                  <p class="rssCardDate">{{rssFeed.date}}</p>
-                  <v-icon class="ml-5 rssCardArrow">mdi-arrow-right</v-icon>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-      <!-- See all RSS button - go to page -->
-      <v-col cols="12" class="mb-15 pb-15" align="center">
-        <v-btn class="seeAllButtonBorder seeAllButtonText" rounded to="/rss">
-          View RSS feed
-        </v-btn>
+      <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pt-0">
+        <RssForHome></RssForHome>
       </v-col>
     </v-row>
   </div>
@@ -179,12 +149,14 @@
 import NewsDialog from "@/components/dialogs/newsDialog.vue"
 import RssDialog from "@/components/dialogs/rssFeedDialog.vue"
 import RssTest from "@/components/rss/rssTest.vue"
+import RssForHome from "@/components/rss/rssForHome.vue"
   export default {
     name: 'Home',
     components:{
       NewsDialog,
       RssDialog,
-      RssTest
+      RssTest,
+      RssForHome
     },
     data(){
       return {
