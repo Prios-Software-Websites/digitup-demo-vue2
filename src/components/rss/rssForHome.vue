@@ -14,13 +14,14 @@
             <v-hover v-slot:default="{ hover }">
               <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" @click="$refs.openRssDialog.openDialog(rssCard)"> -->
               <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="rssCard.link" target="_blank">
+              <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
                 <v-row>
                   <!-- Image comes, and Logo comes here when created (make a new col) -->
                   <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
                     <p class="rssCardTitle">{{rssCard.title[0]}}</p>
                   </v-col>
-                  <v-col style="height:80px;" class="mb-0 ml-2 pb-0 mt-3">
-                    <p class="rssDescriptionPre" v-html="rssCard.description[0]"></p>
+                  <v-col style="height:70px;" class="mb-0 ml-2 pb-0 mt-3">
+                    <p class="rssDescriptionPre" v-html="rssCard.description[0].replace(/<img[^>]*>/, '')"></p>
                   </v-col>
                   <v-col cols="12" class="pt-0 mt-0 pb-0">
                     <v-card-actions class="pt-0 mt-5">
@@ -90,10 +91,22 @@ export default {
     getRssContent(rssSource){
       this.$http.get(`https://app.followup.prios.no/api/resource_management/content?mode=getrssdata&url=${rssSource}&rss_count=3`,{headers:{Tempaccess:this.accessKey}}).then((response) => {
         this.rssEntryContent.push(response.data);
+        this.filterAwayImage();
       }).catch(function (error) {
         console.log("%cError", "color: red; display: block; width: 100%; font-size:36px; font-weight: bold; border:solid black 2px; padding:5px; background-color: lightblue;",error.toJSON());
       });
     },
+
+    filterAwayImage(){
+
+      // let testing = this.rssEntryContent.description[0].replaceAll("(?i)<td[^>]*>", "");
+      // console.log("halla", this.rssEntryContent.description);
+      // const regex = /(<img[^>]*>)/ig
+      // const body = this.rssEntryContent.description[0];
+      // console.log("body is", body);
+      // const result = body.replace(regex, "");
+      // console.log("asad", result);
+    }
 
   }
 }
@@ -110,7 +123,7 @@ export default {
 .rssCardTitle {
   font-family: 'Barlow', sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: #434343;
   letter-spacing: 0px;
   text-align: left;
