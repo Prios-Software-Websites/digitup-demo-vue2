@@ -14,33 +14,6 @@
           <v-col cols="12" class="mb-15">
             <p class="newsChapterDescription">Keep up to date about the InproFuture project</p>
           </v-col>
-          <!-- News Cards - Delete once News have gotten -->
-          <!-- <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(fakeNews, fakeNewsIndex) in fakeNewsCards" :key="fakeNewsIndex">
-            <v-card height="100%" @click="$refs.openingNewsDialog.openNewsDialog(fakeNews)">
-              <v-row>
-                <v-col cols="12" class="pb-0">
-                  <v-row>
-                    <v-col cols="12">
-                      <v-img v-if="fakeNews.image" :src="fakeNews.image" alt="News Image" width="auto" height="200px" cover class="ml-2 mr-2"></v-img>
-                      <div v-else style="height:200px; width:auto; background-color:#D1D1D1; margin:0px 15px 0px 15px;"></div>
-                    </v-col>
-                    <v-col cols="12" style="height:110px;" class="mb-0 ml-2 pb-0">
-                      <p class="pl-2 mb-0 newsCardTitle">{{fakeNews.title}}</p>
-                      <p class="pa-2 mb-0 pb-0 newsCardDescription">{{fakeNews.article}}</p>
-                    </v-col>
-                    <v-col cols="12" class="pt-0 mt-0 pt-7">
-                      <v-card-actions class="pt-0">
-                        <p class="newsCardButton mr-2 pt-3">Read article</p>
-                        <v-icon class="newsCardButtonArrow">mdi-arrow-right</v-icon>
-                      </v-card-actions>
-                    </v-col>
-                  </v-row>
-                  <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;" :style="`background-color:${colorArr[fakeNewsIndex]}`"></v-divider>
-                </v-col>
-                <v-col cols="12"></v-col>
-              </v-row>
-            </v-card>
-          </v-col> -->
 
           <!-- Implement Once having News -->
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
@@ -52,9 +25,11 @@
                       <v-img v-if="newsData.media_url" :src="newsData.media_url" alt="News Image" width="auto" height="200px" cover class="ml-2 mr-2"></v-img>
                       <div v-else style="height:200px; width:auto; background-color:#D1D1D1; margin:0px 15px 0px 15px;"></div>
                     </v-col>
-                    <v-col cols="12" style="height:110px;" class="mb-0 ml-2 pb-0">
-                      <p class="pl-2 mb-0 newsCardTitle">{{newsData.title}}</p>
-                      <p class="pa-2 mb-0 pb-0 newsCardDescription">{{newsData.description}}</p>
+                    <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0">
+                      <p class="resourceCardTitle">{{newsData.title}}</p>
+                    </v-col>
+                    <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                      <p class="resourceDescription">{{newsData.description}}</p>
                     </v-col>
                     <v-col cols="12" class="pt-0 mt-0 pt-7">
                       <v-card-actions class="pt-0">
@@ -236,6 +211,21 @@ export default {
 .pageCardDividerRed {
   background-color:#47b5b0; 
   padding: 2px;
+}
+
+.resourceCardTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.resourceDescription {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  line-clamp: 5; 
+  -webkit-box-orient: vertical;
 }
 
 </style>
