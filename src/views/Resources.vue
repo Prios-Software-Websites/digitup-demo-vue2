@@ -81,7 +81,7 @@
                             <v-card-actions class="ma-0 pa-0">
                               <v-spacer></v-spacer>
                               <v-img v-if="resources.language == 'Norsk'" src="/flags/norway.png" alt="Norwegian Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
-                              <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img>
+                              <v-img v-else-if="resources.language == 'English'" src="/flags/england.png" alt="English Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
                             </v-card-actions>
                           </v-col>
                           <v-col cols="12" class="pb-0">
