@@ -6,6 +6,7 @@
       <v-col cols="12">
         <p class="text-center title">Resources</p>
         <!-- <p>{{resourceTemplate}}</p> -->
+        <!-- <pre>{{resourceContent}}</pre> -->
       </v-col>
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
@@ -54,45 +55,139 @@
             <template v-else-if="resourceContent">
               <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
               <v-col cols="12" xl="5" lg="5" md="5" sm="12" xs="12" class="pb-0">
-                <p class=" title">Resource Content</p>
+                <p class=" title" v-if="resourceTemplate == 1">Video</p>
+                <p class=" title" v-else-if="resourceTemplate == 2">Files</p>
+                <p class=" title" v-else-if="resourceTemplate == 3">Courses</p>
+                <p class=" title" v-else-if="resourceTemplate == 4">Podcast</p>
+                <p class=" title" v-else-if="resourceTemplate == 5">Sound</p>
+                <p class=" title" v-else-if="resourceTemplate == 6">Other</p>
               </v-col>
                <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
                 <v-btn class="mr-5" @click="closeTheResourceBox()">X</v-btn>
               </v-col>
               <v-col cols="12" class="pt-0"></v-col>
               <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
-              <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(resources, resourceIndex) in resourceContent" :key="resourceIndex">
-                <!-- <pre>{{resource}}</pre> -->
-                <v-card height="100%" flat>
-                
-                  <!-- Media above title, sort by type -->
-                  <v-divider></v-divider>
-                  <p class="title text-center">{{resources.title}}</p>
-                  <!-- {{ $t('resource.other') }} -->
-                  <v-divider></v-divider>
-                  <!-- Languages -->
-                  <v-row>
-                    <v-col cols="12" v-for="(language, languageIndex) in resources.languages" :Key="languageIndex" class="pb-0 pt-0">
-                      <v-card  v-if="language.link" height="100%" @click="test(language.link)">
-                        <v-divider style="color:hotpink"></v-divider>
-                        <!-- <pre>{{language}}</pre> -->
+              <template v-for="(resources, resourceIndex) in resourceContent">
+
+                <!-- Video -->
+                <template v-if="resourceTemplate == 1 & resources.type == 'youtube_video'">
+                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
+                    <!-- <pre>{{resources}}</pre> -->
+
+                    <v-hover v-slot:default="{ hover }">
+                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" @click="$refs.openRssDialog.openDialog(rssCard)"> -->
+                      <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="resources.content" target="_blank" height="100%">
+                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
                         <v-row>
-                          <v-col cols="1" class="pt-7 ml-5">
-                            <v-img v-if="language.language == 'English'" src="@/assets/flags/england.png" alt="Norwegian Flag" max-height="30" max-width="30" contain></v-img>
-                            <v-img v-if="language.language == 'Italian'" src="@/assets/flags/italy.png" alt="Norwegian Flag" max-height="25" max-width="25" contain class="ml-1"></v-img>
-                            <v-img v-if="language.language == 'Norwegian'" src="@/assets/flags/norway.png" alt="Norwegian Flag" min-height="25" min-width="25" max-height="25" max-width="25" contain class="ml-1"></v-img>
-                            <v-img v-if="language.language == 'Danish'" src="@/assets/flags/denmark.png" alt="Norwegian Flag" max-height="25" max-width="25" contain class="ml-1"></v-img>
+                          <!-- Image comes, and Logo comes here when created (make a new col) -->
+                          <v-col cols="12" class="ma-0 pa-0">
+                            <v-card-actions class="ma-0 pa-0">
+                              <v-spacer></v-spacer>
+                              <v-img v-if="resources.language == 'Norsk'" src="/flags/norway.png" alt="Norwegian Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
+                              <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img>
+                            </v-card-actions>
                           </v-col>
-                          <v-col class="title pt-7">
-                            <p>{{language.language}}</p>
+                          <v-col cols="12" class="pb-0">
+                            <v-img :src="resources.thumbnail_url" height="auto" width="auto" contain></v-img>
+                          </v-col>
+                          <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0">
+                            <p class="resourceCardTitle">{{resources.title}}</p>
+                          </v-col>
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                            <p class="resourceDescription">{{resources.description}}</p>
+                          </v-col>
+                          <v-col cols="12" class="pt-0 mt-0 pb-0">
+                            <v-card-actions class="pt-0 mt-0">
+                              <p class="rssCardButton mr-2 pt-3">See video</p>
+                              <v-icon class="rssCardButtonArrow">mdi-arrow-right</v-icon>
+                            </v-card-actions>
                           </v-col>
                         </v-row>
-                          <v-divider></v-divider>
+                        <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;"></v-divider>
                       </v-card>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
+                    </v-hover>
+                  </v-col>
+                </template>
+
+                <!-- Files -->
+                <template v-else-if="resourceTemplate == 2 & resources.type == 'files'">
+                  <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" :key="resourceIndex">
+                    <pre>{{resources}}</pre>
+                  </v-col>
+                </template>
+
+                <!-- Courses -->
+                <template v-else-if="resourceTemplate == 3 & resources.type == 'courses'">
+                  <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" :key="resourceIndex">
+                    <pre>{{resources}}</pre>
+                  </v-col>
+                </template>
+
+                <!-- Podcast -->
+                <template v-else-if="resourceTemplate == 4 & resources.type == 'podcast'">
+                  <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" :key="resourceIndex">
+                    <pre>{{resources}}</pre>
+                  </v-col>
+                </template>
+
+                <!-- Sound -->
+                <template v-else-if="resourceTemplate == 5 & resources.type == 'sound'">
+                  <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" :key="resourceIndex">
+                    <pre>{{resources}}</pre>
+                  </v-col>
+                </template>
+
+                <!-- Other -->
+                <template v-else-if="resourceTemplate == 6 & resources.type == 'external_content'">
+                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
+                    <!-- <pre>{{resources}}</pre> -->
+
+                    <v-hover v-slot:default="{ hover }">
+                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" @click="$refs.openRssDialog.openDialog(rssCard)"> -->
+                      <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="resources.content" target="_blank">
+                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
+                        <v-row>
+                          <!-- Image comes, and Logo comes here when created (make a new col) -->
+                          <v-col cols="12" class="ma-0 pa-0">
+                            <v-card-actions class="ma-0 pa-0">
+                              <v-spacer></v-spacer>
+                              <v-img v-if="resources.language == 'Norsk'" src="/flags/norway.png" alt="Norwegian Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
+                              <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img>
+                            </v-card-actions>
+                          </v-col>
+                          <v-col cols="12" class="pb-0">
+                            <v-img :src="resources.thumbnail_url" height="auto" width="auto" contain></v-img>
+                          </v-col>
+                          <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0">
+                            <p class="resourceCardTitle">{{resources.title}}</p>
+                          </v-col>
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                            <p class="resourceDescription">{{resources.description}}</p>
+                          </v-col>
+                          <!-- <v-col cols="12">
+                            <p>{{resources}}</p>
+                          </v-col> -->
+                          <v-col cols="12" class="pt-0 mt-0 pb-0">
+                            <v-card-actions class="pt-0 mt-0">
+                              <p class="rssCardButton mr-2 pt-3">Les Artikkel</p>
+                              <v-icon class="rssCardButtonArrow">mdi-arrow-right</v-icon>
+                            </v-card-actions>
+                          </v-col>
+                        </v-row>
+                        <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;"></v-divider>
+                      </v-card>
+                    </v-hover>
+                  </v-col>
+                </template>
+
+            
+
+
+
+              </template>
+
+
+             
             </template>
             
           </v-row>
@@ -107,6 +202,7 @@
 export default {
   data(){
     return {
+      accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
       colorArr:[ "#205072", "#329D9C", "#D83636", "#DD9A30", "#205072", "#329D9C" ],
       resourceFolders:[
         { title: this.$t('resources.video'), colour: "", image: "", description: "", template: 1 },
@@ -125,6 +221,10 @@ export default {
 
     }
   },
+  mounted() {
+    // this.getAllResources();
+  },
+
   methods:{
     // Close the Bottom Box
     closeTheResourceBox(){
@@ -135,15 +235,29 @@ export default {
     // Display the specific Resource Content
     displayResource(templateID){
       this.resourceTemplate = templateID;
-      if(this.resourceTemplate == 1){
-        this.resourceContent = [];
-      } else {
-        this.resourceContent = [];
-      }
+      console.log("template index", templateID);
+      // if(this.resourceTemplate == []){
+      //   this.resourceContent = [];
+      // } else {
+      //   this.resourceContent = [];
+      // }
+
+      this.getAllResources();
     },
     test(link){
       window.open(link);
-    }
+    },
+
+      // .resource_management_content
+
+    getAllResources(){
+      this.$http.get(`https://app.followup.prios.no/api/resource_management/content?tenant_id=108`,{headers:{Tempaccess:this.accessKey}}).then((response) => {
+        // let allRssEntriesFromFollowup = response.data;
+        // this.getRssSources(allRssEntriesFromFollowup);
+        this.resourceContent = response.data;
+        console.log("What data", response.data);
+      })
+    },
   }
 }
 </script>
@@ -158,6 +272,41 @@ export default {
 .newsCardDividerPositioning {
   margin-left:1%; 
   margin-bottom:2%;
+}
+
+.resourceCardTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.resourceDescription {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  line-clamp: 5; 
+  -webkit-box-orient: vertical;
+}
+
+.resourcesLanguage {
+  font-size: 12px;
+}
+
+.rssCardButton {
+  font-family: 'Lato', sans-serif;
+  font-weight: regular;
+  font-size: 18px;
+  text-align: left;
+  color: #205072;
+  opacity: 1;
+  letter-spacing: 0px;
+  text-decoration: underline;
+}
+
+.rssCardButtonArrow {
+  color: #205072;
+  opacity: 1;
 }
 
 </style>

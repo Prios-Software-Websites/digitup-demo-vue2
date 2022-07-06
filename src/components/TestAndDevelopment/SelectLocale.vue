@@ -15,8 +15,8 @@
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn class="transparent" rounded outlined v-on="on" v-model="$i18n.locale">
-          <v-img v-if="$i18n.locale == 'en'" src="../../assets/flags/england.png" alt="English Flag" max-height="25" max-width="30" contain></v-img>
-          <v-img v-if="$i18n.locale == 'nb'" src="../../assets/flags/norway.png" alt="English Flag" max-height="19" max-width="30" contain></v-img>
+          <!-- <v-img v-if="$i18n.locale == 'en'" src="../../assets/flags/england.png" alt="English Flag" max-height="25" max-width="30" contain></v-img>
+          <v-img v-if="$i18n.locale == 'nb'" src="../../assets/flags/norway.png" alt="English Flag" max-height="19" max-width="30" contain></v-img> -->
           <!-- <v-icon class="pr-3">mdi-web</v-icon>  -->
            <!-- {{  $store.getters.getAppLanguage }} -->
            {{$i18n.locale}}
