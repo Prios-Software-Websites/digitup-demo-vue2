@@ -75,11 +75,8 @@
                     <!-- <pre>{{resources}}</pre> -->
 
                     <v-hover v-slot:default="{ hover }">
-                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" @click="$refs.openRssDialog.openDialog(rssCard)"> -->
                       <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="resources.content" target="_blank" height="100%">
-                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
                         <v-row>
-                          <!-- Image comes, and Logo comes here when created (make a new col) -->
                           <v-col cols="12" class="ma-0 pa-0">
                             <v-card-actions class="ma-0 pa-0">
                               <v-spacer></v-spacer>
@@ -152,7 +149,8 @@
                             <v-card-actions class="ma-0 pa-0">
                               <v-spacer></v-spacer>
                               <v-img v-if="resources.language == 'Norsk'" src="/flags/norway.png" alt="Norwegian Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
-                              <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img>
+                              <v-img v-else-if="resources.language == 'English'" src="/flags/england.png" alt="English Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
+                              <!-- <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img> -->
                             </v-card-actions>
                           </v-col>
                           <v-col cols="12" class="pb-0">
