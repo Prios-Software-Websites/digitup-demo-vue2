@@ -65,13 +65,10 @@
 </template>
 
 <script>
-import LanguageTest from "@/components/TestAndDevelopment/LanguageTest.vue"
-import SelectLocale from "@/components/TestAndDevelopment/SelectLocale.vue"
 export default {
-  name: 'About',
+  name: 'About Page',
   components:{
-    LanguageTest,
-    SelectLocale
+
   },
   data(){
     return {

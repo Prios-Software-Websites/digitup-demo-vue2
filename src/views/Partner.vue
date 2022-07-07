@@ -26,7 +26,4 @@ export default {
   margin:auto auto;
   margin-bottom: 50px;
 }
-
-
-
 </style>
