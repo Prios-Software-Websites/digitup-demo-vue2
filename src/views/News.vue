@@ -16,8 +16,8 @@
           </v-col>
 
           <!-- Implement Once having News -->
-          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
-            <v-card height="100%" @click="getNewsContent(newsData)">
+          <v-col cols="12" xl="4" lg="4" md="12" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
+            <v-card height="100%" @click="getNewsContent(newsData)" class="pa-2">
               <v-row>
                 <v-col cols="12" class="pb-0">
                   <v-row>
@@ -25,7 +25,7 @@
                       <v-img v-if="newsData.media_url" :src="newsData.media_url" alt="News Image" width="auto" height="200px" cover class="ml-2 mr-2"></v-img>
                       <div v-else style="height:200px; width:auto; background-color:#D1D1D1; margin:0px 15px 0px 15px;"></div>
                     </v-col>
-                    <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0">
+                    <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
                       <p class="resourceCardTitle">{{newsData.title}}</p>
                     </v-col>
                     <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
@@ -163,7 +163,7 @@ export default {
 .newsCardTitle {
   font-family: 'Barlow', sans-serif;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
   color: #434343;
   letter-spacing: 0px;
   text-align: left;

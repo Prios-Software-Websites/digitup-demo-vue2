@@ -71,7 +71,7 @@
 
                 <!-- Video -->
                 <template v-if="resourceTemplate == 1 & resources.type == 'youtube_video'">
-                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
+                  <v-col cols="12" xl="3" lg="3" md="12" sm="12" xs="12" :key="resourceIndex">
                     <!-- <pre>{{resources}}</pre> -->
 
                     <v-hover v-slot:default="{ hover }">
@@ -87,7 +87,7 @@
                           <v-col cols="12" class="pb-0">
                             <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img>
                           </v-col>
-                          <v-col cols="12" style="height:70px;" class="mb-0 ml-2 pb-0 mt-5">
+                          <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
                           <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
@@ -136,7 +136,7 @@
 
                 <!-- Other -->
                 <template v-else-if="resourceTemplate == 6 & resources.type == 'external_content'">
-                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
+                  <v-col cols="12" xl="3" lg="3" md="12" sm="12" xs="12" :key="resourceIndex">
                     <!-- <pre>{{resources}}</pre> -->
 
                     <v-hover v-slot:default="{ hover }">
@@ -154,9 +154,9 @@
                             </v-card-actions>
                           </v-col>
                           <v-col cols="12" class="pb-0">
-                            <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img>
+                            <!-- <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img> -->
                           </v-col>
-                          <v-col cols="12" style="height:70px;" class="mb-0 ml-2 pb-0 mt-5">
+                          <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
                           <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
