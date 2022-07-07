@@ -3,8 +3,10 @@
     <ContactUs ref="OpenContactForm"></ContactUs>
     <!-- Navbar -->
     <v-app-bar app color="light-blue lighten-5" style="height:6em;">
-      <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-7" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
-      <v-img v-else class="mt-7" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
+      <a href="/">
+        <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-7" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+        <v-img v-else class="mt-7" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
+      </a>
       <v-spacer></v-spacer>
       <v-btn icon @click="toggleNavbar()">
         <v-icon>mdi-menu</v-icon>

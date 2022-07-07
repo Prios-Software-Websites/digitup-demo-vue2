@@ -17,7 +17,7 @@
               <p v-else-if="item.title == 'Files' || item.title == 'Filer'" class="text-center title pt-10 pb-10">{{ $t('resources.files') }}</p>
               <!-- <p v-else-if="item.title == 'Courses' || item.title == 'Kurs'" class="text-center title pt-10 pb-10">{{ $t('resources.courses') }}</p>
               <p v-else-if="item.title == 'Podcast' || item.title == 'Podcast'" class="text-center title pt-10 pb-10">{{ $t('resources.podcast') }}</p> -->
-              <p v-else-if="item.title == 'Other' || item.title == 'Lyd'" class="text-center title pt-10 pb-10">Other</p>
+              <!-- <p v-else-if="item.title == 'Other' || item.title == 'Lyd'" class="text-center title pt-10 pb-10">Other</p> -->
               <p v-else-if="item.title == 'External Links' || item.title == 'Annet'" class="text-center title pt-10 pb-10">External Links</p>
               <p v-else>...</p>
               <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;" :style="`background-color:${colorArr[index]}`"></v-divider>
@@ -59,7 +59,7 @@
                 <p class=" title" v-else-if="resourceTemplate == 2">Files</p>
                 <!-- <p class=" title" v-else-if="resourceTemplate == 3">Courses</p>
                 <p class=" title" v-else-if="resourceTemplate == 4">Podcast</p> -->
-                <p class=" title" v-else-if="resourceTemplate == 5">Other</p>
+                <!-- <p class=" title" v-else-if="resourceTemplate == 5">Other</p> -->
                 <p class=" title" v-else-if="resourceTemplate == 6">External Link</p>
               </v-col>
                <!-- <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
@@ -71,7 +71,7 @@
 
                 <!-- Video -->
                 <template v-if="resourceTemplate == 1 & resources.type == 'youtube_video'">
-                  <v-col cols="12" xl="3" lg="3" md="12" sm="12" xs="12" :key="resourceIndex">
+                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
                     <!-- <pre>{{resources}}</pre> -->
 
                     <v-hover v-slot:default="{ hover }">
@@ -90,7 +90,10 @@
                           <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
+                            <p class="resourceDescription">{{resources.description}}</p>
+                          </v-col>
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
                             <p class="resourceDescription">{{resources.description}}</p>
                           </v-col>
                           <v-col cols="12" class="pt-0 mt-0 pb-0">
@@ -136,7 +139,7 @@
 
                 <!-- Other -->
                 <template v-else-if="resourceTemplate == 6 & resources.type == 'external_content'">
-                  <v-col cols="12" xl="3" lg="3" md="12" sm="12" xs="12" :key="resourceIndex">
+                  <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
                     <!-- <pre>{{resources}}</pre> -->
 
                     <v-hover v-slot:default="{ hover }">
@@ -159,7 +162,10 @@
                           <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
+                            <p class="resourceDescription">{{resources.description}}</p>
+                          </v-col>
+                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
                             <p class="resourceDescription">{{resources.description}}</p>
                           </v-col>
                           <!-- <v-col cols="12">
@@ -207,7 +213,7 @@ export default {
         { title: this.$t('resources.files'), colour: "", image: "", description: "", template: 2 },
         // { title: this.$t('resources.courses'), colour: "", image: "", description: "", template: 3 },
         // { title: this.$i18n.t('resources.podcast'), colour: "", image: "", description: "", template: 4 },
-        { title: "Other", colour: "", image: "", description: "", template: 5 },
+        // { title: "Other", colour: "", image: "", description: "", template: 5 },
         { title: "External Links", colour: "", image: "", description: "", template: 6 }
       ],
       /* Easy way to display the content

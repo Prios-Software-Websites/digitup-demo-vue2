@@ -10,8 +10,10 @@ O<template>
     </div> -->
     <!-- <v-img src="img/DIGI_logo.png" height="40" width="260px" contain/> -->
     <v-spacer></v-spacer>
-    <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5 mb-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
-    <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
+    <a href="/">
+      <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5 mb-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
+      <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
+    </a>
     <v-spacer></v-spacer>
     <!-- Links -->
     <!-- 

@@ -16,7 +16,7 @@
           </v-col>
 
           <!-- Implement Once having News -->
-          <v-col cols="12" xl="4" lg="4" md="12" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
+          <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(newsData, newsDataIndex) in allTheNews" :key="newsDataIndex">
             <v-card height="100%" @click="getNewsContent(newsData)" class="pa-2">
               <v-row>
                 <v-col cols="12" class="pb-0">
@@ -28,7 +28,10 @@
                     <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
                       <p class="resourceCardTitle">{{newsData.title}}</p>
                     </v-col>
-                    <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
+                    <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
+                      <p class="resourceDescription">{{newsData.description}}</p>
+                    </v-col>
+                    <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
                       <p class="resourceDescription">{{newsData.description}}</p>
                     </v-col>
                     <v-col cols="12" class="pt-0 mt-0 pt-7">
