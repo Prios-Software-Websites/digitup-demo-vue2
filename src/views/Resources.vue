@@ -5,8 +5,6 @@
       <v-col cols="12" class="mt-10"></v-col>
       <v-col cols="12">
         <p class="text-center title">Resources</p>
-        <!-- <p>{{resourceTemplate}}</p> -->
-        <!-- <pre>{{resourceContent}}</pre> -->
       </v-col>
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
@@ -87,14 +85,14 @@
                           <v-col cols="12" class="pb-0">
                             <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img>
                           </v-col>
-                          <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
-                            <p class="resourceCardTitle">{{resources.title}}</p>
-                          </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
-                            <p class="resourceDescription">{{resources.description}}</p>
-                          </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
-                            <p class="resourceDescription">{{resources.description}}</p>
+
+                          <v-col cols="12">
+                            <!-- Title -->
+                            <p class="resourceCardTitle" style="font-size: 16px; height:40px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title}}</p>
+                            <p class="resourceCardTitle" style="font-size: 16px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title}}</p>
+                            <p class="resourceCardTitle" style="font-size: 18px; height:80px;" v-else>{{resources.title}}</p>
+                            <!-- Description -->
+                            <p class="resourceDescription" style="font-size: 16px;">{{resources.description}}</p>
                           </v-col>
                           <v-col cols="12" class="pt-0 mt-0 pb-0">
                             <v-card-actions class="pt-0 mt-0">
@@ -162,12 +160,14 @@
 
                           <v-col cols="12" class="pb-0">
                             <!-- Title -->
-                            <p class="resourceCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title[0]}}</p>
-                            <p class="resourceCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title[0]}}</p>
-                            <p class="resourceCardTitle" style="font-size: 18px; height:90px;" v-else>{{resources.title[0]}}</p>
+                            <p class="resourceCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title}}</p>
+                            <p class="resourceCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title}}</p>
+                            <p class="resourceCardTitle" style="font-size: 18px; height:90px;" v-else>{{resources.title}}</p>
                             <!-- Description -->
-                            <p class="resourceDescription" v-html="resources.description[0].replace(/<img[^>]*>/, '')"></p>
+                            <!-- <p class="resourceDescription" v-html="resources.description[0].replace(/<img[^>]*>/, '')"></p> -->
+                            <p class="resourceDescription">{{resources.description}}</p>
                           </v-col>
+                          
 
                           <!-- <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
@@ -249,27 +249,11 @@ export default {
     // Display the specific Resource Content
     displayResource(templateID){
       this.resourceTemplate = templateID;
-      console.log("template index", templateID);
-      // if(this.resourceTemplate == []){
-      //   this.resourceContent = [];
-      // } else {
-      //   this.resourceContent = [];
-      // }
-
       this.getAllResources();
     },
-    test(link){
-      window.open(link);
-    },
-
-      // .resource_management_content
-
     getAllResources(){
       this.$http.get(`https://app.followup.prios.no/api/resource_management/content?tenant_id=108`,{headers:{Tempaccess:this.accessKey}}).then((response) => {
-        // let allRssEntriesFromFollowup = response.data;
-        // this.getRssSources(allRssEntriesFromFollowup);
         this.resourceContent = response.data;
-        console.log("What data", response.data);
       })
     },
   }
