@@ -92,7 +92,7 @@
                             <p class="resourceCardTitle" style="font-size: 16px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title}}</p>
                             <p class="resourceCardTitle" style="font-size: 18px; height:80px;" v-else>{{resources.title}}</p>
                             <!-- Description -->
-                            <p class="resourceDescription" style="font-size: 16px;">{{resources.description}}</p>
+                            <p class="resourceDescription" style="font-size: 16px; height:100px;">{{resources.description}}</p>
                           </v-col>
                           <v-col cols="12" class="pt-0 mt-0 pb-0">
                             <v-card-actions class="pt-0 mt-0">
@@ -165,7 +165,7 @@
                             <p class="resourceCardTitle" style="font-size: 18px; height:90px;" v-else>{{resources.title}}</p>
                             <!-- Description -->
                             <!-- <p class="resourceDescription" v-html="resources.description[0].replace(/<img[^>]*>/, '')"></p> -->
-                            <p class="resourceDescription">{{resources.description}}</p>
+                            <p class="resourceDescription" style="height:80px">{{resources.description}}</p>
                           </v-col>
                           
 
