@@ -4,8 +4,9 @@
     <v-row>
 
       <!-- Define the News -->
-      <v-col cols="12" class="pt-15 mt-15">
-        <p class="newsChapterTitle">News</p>
+      <v-col cols="12" class="pt-15">
+        <p class="newsChapterTitle text-center">News</p>
+        <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;"></v-divider>
       </v-col>
     
       <!-- Implement once gotten News -->
@@ -21,58 +22,18 @@
                   <div v-else style="height:200px; width:auto; background-color:#D1D1D1; margin:0px 15px 0px 15px;"></div>
                 </v-col>
 
-
-                <v-col cols="12" v-if="$vuetify.breakpoint.width <= 1025 && $vuetify.breakpoint.width >= 767" style="height:80px;">
-                  <p class="newsCardTitle" style="font-size: 18px;">{{newsData.title}}</p>
+                <!-- Title and Description -->
+                <v-col cols="12">
+                  <!-- Title -->
+                  <p class="newsCardTitle" style="font-size: 16px; height:40px;" v-if="$vuetify.breakpoint.width <= 959">{{newsData.title}}</p>
+                  <p class="newsCardTitle" style="font-size: 16px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{newsData.title}}</p>
+                  <p class="newsCardTitle" style="font-size: 18px; height:80px;" v-else>{{newsData.title}}</p>
+                  <!-- Description -->
+                  <p class="newsCardDescription" style="font-size: 16px;">{{newsData.description}}</p>
                 </v-col>
-                <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0" v-else-if="$vuetify.breakpoint.mdAndDown">
-                  <p class="newsCardTitle">{{newsData.title}}</p>
-                </v-col>
-                <v-col cols="12" v-else style="height:60px;">
-                  <p class="newsCardTitle" style="font-size: 18px;">{{newsData.title}}</p>
-                </v-col>
-
-
-                <v-col cols="12" v-if="$vuetify.breakpoint.width <= 1025 && $vuetify.breakpoint.width >= 767" style="height:60px;" class="mt-5">
-                  <p class="newsCardDescription" style="font-size: 18px;">{{newsData.description}}</p>
-                </v-col>
-                <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0" v-else-if="$vuetify.breakpoint.mdAndDown">
-                  <p class="newsCardDescription">{{newsData.description}}</p>
-                </v-col>
-                <v-col cols="12" v-else style="height:60px;">
-                  <p class="newsCardDescription" style="font-size: 18px;">{{newsData.description}}</p>
-                </v-col>
-
-                <!-- Title -->
-                <!-- <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0" v-if="$vuetify.breakpoint.smAndDown">
-                  <p class="newsCardTitle" style="font-size: 18px;">{{newsData.title}}</p>
-                </v-col>
-                <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0" v-else-if="$vuetify.breakpoint.mdAndDown">
-                  <p class="newsCardTitle">{{newsData.title}}</p>
-                </v-col>
-                <v-col cols="12" style="height:90px;" class="mb-0 ml-2 pb-0" v-else-if="$vuetify.breakpoint.lgAndDown">
-                  <p class="newsCardTitle">{{newsData.title}}</p>
-                </v-col>
-                <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0" v-else>
-                  <p class="newsCardTitle">{{newsData.title}}</p>
-                </v-col> -->
-
-                <!-- Description -->
-                <!-- <v-col cols="12" style="height:30px;" class="mb-0 ml-2 pb-0" v-if="$vuetify.breakpoint.smAndDown">
-                  <p class="newsCardDescription">{{newsData.description}}</p>
-                </v-col>
-                <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 " v-else-if="$vuetify.breakpoint.mdAndDown">
-                  <p class="newsCardDescription">{{newsData.description}}</p>
-                </v-col>
-                <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 " v-else-if="$vuetify.breakpoint.lgAndDown">
-                  <p class="newsCardDescription">{{newsData.description}}</p>
-                </v-col>
-                <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
-                  <p class="newsCardDescription">{{newsData.description}}</p>
-                </v-col> -->
 
                 <!-- Read more -->
-                <v-col cols="12" class="pt-0 mt-0 pt-7">
+                <v-col cols="12" class="pt-0 mt-0">
                   <v-card-actions class="pt-0">
                     <p class="newsCardButton mr-2 pt-3">Read article</p>
                     <v-icon class="newsCardButtonArrow">mdi-arrow-right</v-icon>
@@ -89,7 +50,7 @@
       </v-col>
 
       <!-- See all news button - go to page -->
-      <v-col cols="12" align="center">
+      <v-col cols="12" align="center" class="mt-2">
         <v-btn class="seeAllButtonBorder seeAllButtonText" rounded to="/news">
           See all news
         </v-btn>
@@ -99,7 +60,7 @@
 </template>
 
 <script>
-import NewsDialog from "@/components/dialogs/newsDialog.vue"
+import NewsDialog from "@/components/News/NewsDialog.vue"
 export default {
   components: {
     NewsDialog
