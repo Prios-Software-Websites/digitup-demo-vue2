@@ -85,9 +85,9 @@
                             </v-card-actions>
                           </v-col>
                           <v-col cols="12" class="pb-0">
-                            <v-img :src="resources.thumbnail_url" height="auto" width="auto" contain></v-img>
+                            <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img>
                           </v-col>
-                          <v-col cols="12" style="height:60px;" class="mb-0 ml-2 pb-0">
+                          <v-col cols="12" style="height:70px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
                           <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-3">
