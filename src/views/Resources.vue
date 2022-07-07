@@ -35,7 +35,7 @@
             <!-- Default -->
             <template v-if="resourceTemplate == 0">
               <v-col cols="12">
-                <!-- <p class="text-center title">HOME</p> -->
+              
               </v-col>
             </template>
 
@@ -60,9 +60,6 @@
                 <!-- <p class=" title" v-else-if="resourceTemplate == 5">Other</p> -->
                 <p class=" title" v-else-if="resourceTemplate == 6">External Link</p>
               </v-col>
-               <!-- <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
-                <v-btn class="mr-5" @click="closeTheResourceBox()">X</v-btn>
-              </v-col> -->
               <v-col cols="12" class="pt-0"></v-col>
               <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
               <template v-for="(resources, resourceIndex) in resourceContent">
@@ -70,11 +67,10 @@
                 <!-- Video -->
                 <template v-if="resourceTemplate == 1 & resources.type == 'youtube_video'">
                   <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
-                    <!-- <pre>{{resources}}</pre> -->
-
                     <v-hover v-slot:default="{ hover }">
                       <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="resources.content" target="_blank" height="100%">
                         <v-row>
+                          <!-- Flags -->
                           <v-col cols="12" class="ma-0 pa-0" style="height:40px;">
                             <v-card-actions class="ma-0 pa-0">
                               <v-spacer></v-spacer>
@@ -82,10 +78,10 @@
                               <v-img v-else-if="resources.language == 'English'" src="/flags/england.png" alt="English Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
                             </v-card-actions>
                           </v-col>
+                          <!-- Image -->
                           <v-col cols="12" class="pb-0">
                             <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img>
                           </v-col>
-
                           <v-col cols="12">
                             <!-- Title -->
                             <p class="resourceCardTitle" style="font-size: 16px; height:40px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title}}</p>
@@ -138,12 +134,8 @@
                 <!-- Other -->
                 <template v-else-if="resourceTemplate == 6 & resources.type == 'external_content'">
                   <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" :key="resourceIndex">
-                    <!-- <pre>{{resources}}</pre> -->
-
                     <v-hover v-slot:default="{ hover }">
-                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" @click="$refs.openRssDialog.openDialog(rssCard)"> -->
                       <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="resources.content" target="_blank">
-                      <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
                         <v-row>
                           <!-- Image comes, and Logo comes here when created (make a new col) -->
                           <v-col cols="12" class="ma-0 pa-0" style="height:40px;">
@@ -151,36 +143,16 @@
                               <v-spacer></v-spacer>
                               <v-img v-if="resources.language == 'Norsk'" src="/flags/norway.png" alt="Norwegian Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
                               <v-img v-else-if="resources.language == 'English'" src="/flags/england.png" alt="English Flag" max-height="38" max-width="60" contain class="mb-1"></v-img>
-                              <!-- <v-img v-else src="/flags/england.png" alt="Norwegian Flag" max-height="50" max-width="60" contain></v-img> -->
                             </v-card-actions>
                           </v-col>
-                          <v-col cols="12" class="pb-0">
-                            <!-- <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img> -->
-                          </v-col>
-
                           <v-col cols="12" class="pb-0">
                             <!-- Title -->
                             <p class="resourceCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title}}</p>
                             <p class="resourceCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title}}</p>
                             <p class="resourceCardTitle" style="font-size: 18px; height:90px;" v-else>{{resources.title}}</p>
                             <!-- Description -->
-                            <!-- <p class="resourceDescription" v-html="resources.description[0].replace(/<img[^>]*>/, '')"></p> -->
-                            <p class="resourceDescription" style="height:80px">{{resources.description}}</p>
+                            <p class="resourceDescription" style="height:90px">{{resources.description}}</p>
                           </v-col>
-                          
-
-                          <!-- <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
-                            <p class="resourceCardTitle">{{resources.title}}</p>
-                          </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
-                            <p class="resourceDescription">{{resources.description}}</p>
-                          </v-col>
-                          <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
-                            <p class="resourceDescription">{{resources.description}}</p>
-                          </v-col> -->
-                          <!-- <v-col cols="12">
-                            <p>{{resources}}</p>
-                          </v-col> -->
                           <v-col cols="12" class="pt-0 mt-0 pb-0">
                             <v-card-actions class="pt-0 mt-0">
                               <p class="rssCardButton mr-2 pt-3">Les Artikkel</p>
@@ -193,21 +165,11 @@
                     </v-hover>
                   </v-col>
                 </template>
-
-            
-
-
-
               </template>
-
-
-             
             </template>
-            
           </v-row>
         </v-card>
       </v-col>
-
     </v-row>
   </div>
 </template>
