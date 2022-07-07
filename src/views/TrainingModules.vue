@@ -7,15 +7,6 @@
         <p class="trainingChapterTitle">Training Modules</p>
         <p class="trainingChapterDescription">This page will be designed when the content is decided</p>
       </v-col>
-
-
-
-      <!-- <v-col cols="12">
-
-
-        <iframe width="400" height="400" src="https://www.youtube.com/embed/l0jWXpJWSiA" title="YouTube video player" frameborder="0" sandbox="allow-downloads allow-forms allow-scripts allow-same-origin" allow=" accelerometer; download; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-      </v-col> -->
     </v-row>
   </div>
 </template>

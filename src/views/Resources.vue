@@ -7,6 +7,7 @@
 <script>
 import ResourcePage from "@/components/Resource/ResourcePage.vue"
 export default {
+  name: 'Resource Page',
   components: {
     ResourcePage
   },
@@ -15,13 +16,6 @@ export default {
 
     }
   },
-  mounted() {
-    // this.getAllResources();
-  },
-
-  methods:{
-    
-  }
 }
 </script>
 
@@ -31,6 +25,4 @@ export default {
   width: 90vw; 
   margin:auto auto;
 }
-
-
 </style>
