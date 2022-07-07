@@ -62,9 +62,9 @@
                 <p class=" title" v-else-if="resourceTemplate == 5">Other</p>
                 <p class=" title" v-else-if="resourceTemplate == 6">External Link</p>
               </v-col>
-               <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
+               <!-- <v-col cols="12" xl="3" lg="3" md="3" sm="12" xs="12" class="d-flex align-end flex-column">
                 <v-btn class="mr-5" @click="closeTheResourceBox()">X</v-btn>
-              </v-col>
+              </v-col> -->
               <v-col cols="12" class="pt-0"></v-col>
               <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
               <template v-for="(resources, resourceIndex) in resourceContent">
