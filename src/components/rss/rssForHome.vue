@@ -21,18 +21,11 @@
                   <v-col cols="12" class="pb-0">
                     <!-- Title -->
                     <p class="rssCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{rssCard.title[0]}}</p>
-                    <p class="rssCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{rssCard.title[0]}}</p>
+                    <p class="rssCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1366 && $vuetify.breakpoint.width >= 960">{{rssCard.title[0]}}</p>
                     <p class="rssCardTitle" style="font-size: 18px; height:90px;" v-else>{{rssCard.title[0]}}</p>
                     <!-- Description -->
                     <p class="rssDescriptionPre" v-html="rssCard.description[0].replace(/<img[^>]*>/, '')"></p>
                   </v-col>
-
-                  <!-- <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
-                    <p class="rssCardTitle">{{rssCard.title[0]}}</p>
-                  </v-col>
-                  <v-col style="height:70px;" class="mb-0 ml-2 pb-0 mt-3">
-                    <p class="rssDescriptionPre" v-html="rssCard.description[0].replace(/<img[^>]*>/, '')"></p>
-                  </v-col> -->
                   <v-col cols="12" class="pt-0 mt-0 pb-0">
                     <v-card-actions class="pt-0">
                       <p class="rssCardButton mr-2 pt-3">Read article</p>
@@ -41,7 +34,6 @@
                   </v-col>
                   <v-col cols="12" class="pt-0">
                     <p style="font-size: 12px">{{item.link[0]}}</p>
-                    <!-- <pre>{{item}}</pre> -->
                   </v-col>
                 </v-row>
                 <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;" :style="`background-color:${colorArr[rssCardIndex]}`"></v-divider>
@@ -101,23 +93,10 @@ export default {
     getRssContent(rssSource){
       this.$http.get(`https://app.followup.prios.no/api/resource_management/content?mode=getrssdata&url=${rssSource}&rss_count=3`,{headers:{Tempaccess:this.accessKey}}).then((response) => {
         this.rssEntryContent.push(response.data);
-        this.filterAwayImage();
       }).catch(function (error) {
         console.log("%cError", "color: red; display: block; width: 100%; font-size:36px; font-weight: bold; border:solid black 2px; padding:5px; background-color: lightblue;",error.toJSON());
       });
     },
-
-    filterAwayImage(){
-
-      // let testing = this.rssEntryContent.description[0].replaceAll("(?i)<td[^>]*>", "");
-      // console.log("halla", this.rssEntryContent.description);
-      // const regex = /(<img[^>]*>)/ig
-      // const body = this.rssEntryContent.description[0];
-      // console.log("body is", body);
-      // const result = body.replace(regex, "");
-      // console.log("asad", result);
-    }
-
   }
 }
 </script>

@@ -159,7 +159,17 @@
                           <v-col cols="12" class="pb-0">
                             <!-- <v-img :src="resources.thumbnail_url" height="300" width="450" contain></v-img> -->
                           </v-col>
-                          <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
+
+                          <v-col cols="12" class="pb-0">
+                            <!-- Title -->
+                            <p class="resourceCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{resources.title[0]}}</p>
+                            <p class="resourceCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{resources.title[0]}}</p>
+                            <p class="resourceCardTitle" style="font-size: 18px; height:90px;" v-else>{{resources.title[0]}}</p>
+                            <!-- Description -->
+                            <p class="resourceDescription" v-html="resources.description[0].replace(/<img[^>]*>/, '')"></p>
+                          </v-col>
+
+                          <!-- <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0 mt-5">
                             <p class="resourceCardTitle">{{resources.title}}</p>
                           </v-col>
                           <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-10" v-if="$vuetify.breakpoint.mdAndDown">
@@ -167,7 +177,7 @@
                           </v-col>
                           <v-col cols="12" style="height:130px;" class="mb-0 ml-2 pb-0 mt-4" v-else>
                             <p class="resourceDescription">{{resources.description}}</p>
-                          </v-col>
+                          </v-col> -->
                           <!-- <v-col cols="12">
                             <p>{{resources}}</p>
                           </v-col> -->
