@@ -8,7 +8,6 @@ import DigitalLearningDesign from '../views/DigitalLearningDesign.vue'
 import DigitalPedagogicalStrategy from '../views/DigitalPedagogicalStrategy.vue'
 import Resources from '../views/Resources.vue'
 import Partners from '../views/Partner.vue'
-import ResourcesSMAB from '../views/smab/SmabResources.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +20,6 @@ const routes = [
   { path: '/digitallearningdesign', name: 'DigitalLearningDesign', component: DigitalLearningDesign },
   { path: '/digitalpedagogicalstrategy', name: 'DigitalPedagogicalStrategy', component: DigitalPedagogicalStrategy },
   { path: '/resources', name: 'Resources', component: Resources },
-  { path: '/test', name: 'Test', component: ResourcesSMAB },
 ]
 
 const router = new VueRouter({
