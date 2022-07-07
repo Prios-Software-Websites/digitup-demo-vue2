@@ -16,15 +16,25 @@
               <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" :href="rssCard.link" target="_blank">
               <!-- <v-card class="pa-5 pb-1" :elevation="hover ? 12 : 2" > -->
                 <v-row>
-                  <!-- Image comes, and Logo comes here when created (make a new col) -->
-                  <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
+                  
+                  <!-- Title and Description -->
+                  <v-col cols="12" class="pb-0">
+                    <!-- Title -->
+                    <p class="rssCardTitle" style="font-size: 16px; height:20px;" v-if="$vuetify.breakpoint.width <= 959">{{rssCard.title[0]}}</p>
+                    <p class="rssCardTitle" style="font-size: 14px; height:80px;" v-else-if="$vuetify.breakpoint.width <= 1300 && $vuetify.breakpoint.width >= 960">{{rssCard.title[0]}}</p>
+                    <p class="rssCardTitle" style="font-size: 18px; height:90px;" v-else>{{rssCard.title[0]}}</p>
+                    <!-- Description -->
+                    <p class="rssDescriptionPre" v-html="rssCard.description[0].replace(/<img[^>]*>/, '')"></p>
+                  </v-col>
+
+                  <!-- <v-col cols="12" style="height:80px;" class="mb-0 ml-2 pb-0">
                     <p class="rssCardTitle">{{rssCard.title[0]}}</p>
                   </v-col>
                   <v-col style="height:70px;" class="mb-0 ml-2 pb-0 mt-3">
                     <p class="rssDescriptionPre" v-html="rssCard.description[0].replace(/<img[^>]*>/, '')"></p>
-                  </v-col>
+                  </v-col> -->
                   <v-col cols="12" class="pt-0 mt-0 pb-0">
-                    <v-card-actions class="pt-0 mt-5">
+                    <v-card-actions class="pt-0">
                       <p class="rssCardButton mr-2 pt-3">Read article</p>
                       <v-icon class="rssCardButtonArrow">mdi-arrow-right</v-icon>
                     </v-card-actions>
@@ -123,7 +133,6 @@ export default {
 .rssCardTitle {
   font-family: 'Barlow', sans-serif;
   font-weight: bold;
-  font-size: 18px;
   color: #434343;
   letter-spacing: 0px;
   text-align: left;
@@ -146,7 +155,7 @@ export default {
 .rssCardButton {
   font-family: 'Lato', sans-serif;
   font-weight: regular;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   color: #205072;
   opacity: 1;
