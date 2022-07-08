@@ -48,13 +48,6 @@
           </v-row>
         </v-card>
       </v-col>
-
-      <!-- See all news button - go to page -->
-      <v-col cols="12" align="center" class="mt-2">
-        <v-btn class="seeAllButtonBorder seeAllButtonText" rounded to="/news">
-          See all news
-        </v-btn>
-      </v-col>
     </v-row>
   </div>
 </template>

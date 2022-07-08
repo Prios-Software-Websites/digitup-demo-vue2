@@ -54,6 +54,12 @@
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pt-0">
         <NewsMainPage></NewsMainPage>
       </v-col>
+      <!-- See all news button - go to page -->
+      <v-col cols="12" align="center" class="mt-2">
+        <v-btn class="seeAllButtonBorder seeAllButtonText" rounded to="/news">
+          See all news
+        </v-btn>
+      </v-col>
 
       <!-- To keep the structure -->
       <v-col cols="12"></v-col>
@@ -189,6 +195,35 @@ import NewsMainPage from "@/components/News/NewsMainPage.vue"
   color: #6A6A6A;
   opacity: 1;
   letter-spacing: 0px;
+}
+
+/* See All News / RSS Button */
+.seeAllButtonText {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  color: #205072;
+  opacity: 1;
+  text-align: center;
+  letter-spacing: 0px;
+  text-transform: initial;
+}
+.seeAllButtonBorder {
+  border: 3px solid #205072;
+  font-family: 'Lato', sans-serif;
+  opacity: 1;
+  border-radius: 52px;
+}
+.seeAllButtonBorder:after {
+  border: 3px solid #d6d2d24d;
+  content: '';
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  bottom: -9px;
+  left: -9px;
+  border-radius: 4em;
+  box-shadow: 0px 2px 12px #00000033;
 }
 
 </style>
