@@ -115,6 +115,15 @@ export default {
   color: #434343;
   letter-spacing: 0px;
   text-align: left;
+  opacity: 1;
+  letter-spacing: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  height: 90px;
 }
 .rssDescriptionPre {
   font-family: 'Lato', sans-serif;
@@ -126,9 +135,10 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-line-clamp: 3;
   line-clamp: 3; 
   -webkit-box-orient: vertical;
+  height: 70px;
 }
 
 .rssCardButton {
