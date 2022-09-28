@@ -1,5 +1,10 @@
 <template>
   <div class="mb-10">
+    <pre>
+      -- 
+      <!-- {{rssEntryContent}} -->
+      ---
+    </pre>
     <RssModuleDialog ref="openRssDialog"></RssModuleDialog>
     <v-row>
       <v-col cols="12" class="pt-15 mt-15 pb-0">
@@ -7,7 +12,7 @@
       </v-col>
       <v-divider class="newsCardDividerPositioning" width="98%" style="padding: 2px;"></v-divider>
       <!-- Display RSS cards -->
-      <v-col cols="12" v-for="(item, index) in rssEntryContent" :key="index">
+      <v-col cols="12" v-for="(item, index) in randomList" :key="index">
         
         <v-row>
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12" v-for="(rssCard, rssCardIndex) in item.items" :key="rssCardIndex">
@@ -97,6 +102,15 @@ export default {
         console.log("%cError", "color: red; display: block; width: 100%; font-size:36px; font-weight: bold; border:solid black 2px; padding:5px; background-color: lightblue;",error.toJSON());
       });
     },
+  },
+  computed: {
+    randomList: function(){
+
+      // this.rssEntryContent.sort((a, b) => {
+      //     return a.pubDate[0] - b.pubDate[0];
+      // });
+      return this.rssEntryContent.sort(() => 0.5 - Math. random());
+    }
   }
 }
 </script>
@@ -123,7 +137,7 @@ export default {
   -webkit-line-clamp: 3;
   line-clamp: 3; 
   -webkit-box-orient: vertical;
-  height: 90px;
+  height: 90px; 
 }
 .rssDescriptionPre {
   font-family: 'Lato', sans-serif;

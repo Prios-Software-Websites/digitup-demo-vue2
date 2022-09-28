@@ -1,5 +1,7 @@
 <template>
   <v-app>
+
+    <VisitorTracker></VisitorTracker>
     <Sidebar v-if="$vuetify.breakpoint.mdAndDown"></Sidebar>
     <Navbar v-else></Navbar>
     
@@ -19,6 +21,7 @@ import LanguageTest from "@/components/TestAndDevelopment/LanguageTest.vue"
 import SelectLocale from "@/components/TestAndDevelopment/SelectLocale.vue"
 import Sidebar from "@/components/Global/Sidebar.vue"
 import Footer from "@/components/Global/Footer.vue"
+import VisitorTracker from "@/components/VisitTracker/VisitorTracker.vue"
 
 export default {
   name: 'App',
@@ -28,7 +31,8 @@ export default {
     NavbarPhone,
     LanguageTest,
     SelectLocale,
-    Footer
+    Footer,
+    VisitorTracker
   },
   data(){
     return {

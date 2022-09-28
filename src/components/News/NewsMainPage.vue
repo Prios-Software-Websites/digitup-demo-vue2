@@ -96,8 +96,11 @@ export default {
 
     // Open the Dialog while passing the correct data
     openTheDialog(originalData, contentData){
+      // Run the funciton Within
       this.$refs.openingNewsDialog.openNewsDialog(originalData, contentData);
     },
+
+
   }
 }
 </script>
