@@ -33,7 +33,8 @@ O<template>
       <a href="/partners">Partners</a>
       <a href="/news">News</a>
       <!-- <a href="/rss">RSS</a> -->
-      <a href="/trainingmodules">Training Modules</a>
+      <a href="/mappingtool">Mapping Tool</a>
+      <a href="/handbook">Handbook</a>
       <a href="/resources" class="mr-2">Resources</a>
 
       <!-- <v-btn text to="/">{{ $t('navbar.home') }}</v-btn>

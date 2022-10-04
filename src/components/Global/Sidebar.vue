@@ -70,7 +70,8 @@ export default {
         { name: "Partners", location: "/partners", icon: "" },
         { name: "News", location: "/news", icon: "" },
         // { name: "RSS", location: "/rss", icon: "" },
-        { name: "Training Modules", location: "/trainingmodules", icon: "" },
+        { name: "Mapping Tool", location: "/mappingtool", icon: "" },
+        { name: "Handbook", location: "/handbook", icon: "" },
         { name: "Resources", location: "/resources", icon: "" },
       ]
     }

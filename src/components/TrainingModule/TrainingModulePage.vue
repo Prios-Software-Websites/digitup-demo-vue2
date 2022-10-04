@@ -6,7 +6,7 @@
       <v-col cols="12" class="mt-15"></v-col>
       <v-col cols="2"></v-col>
       <v-col cols="8">
-        <p class="trainingChapterTitle">Training Modules</p>
+        <p class="trainingChapterTitle">Mapping Tool</p>
         <p class="trainingChapterDescription">
           Our partnership is still working on the curriculum, resources center and the training materials.  <br>
           Once they are available, you will be able to find them here.
