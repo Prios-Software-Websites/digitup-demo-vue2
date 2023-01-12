@@ -10,6 +10,7 @@ import DigitalPedagogicalStrategy from '../views/DigitalPedagogicalStrategy.vue'
 import Resources from '../views/Resources.vue'
 import Partners from '../views/Partner.vue'
 import Handbook from '../views/Handbook.vue'
+import MappingTool from "../views/MappingTools.vue"
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ const routes = [
   { path: '/about', name: 'About', component: About },
   { path: '/partners', name: 'Partner', component: Partners },
   { path: '/news', name: 'News', component: Newss },
-  { path: '/mappingtool', name: 'Mappingtool', component: TrainingModules },
+  // { path: '/mappingtool', name: 'Mappingtool', component: TrainingModules },
+  { path: '/mappingtool', name: 'Mappingtool', component: MappingTool },
   { path: '/digitallearningdesign', name: 'DigitalLearningDesign', component: DigitalLearningDesign },
   { path: '/digitalpedagogicalstrategy', name: 'DigitalPedagogicalStrategy', component: DigitalPedagogicalStrategy },
   { path: '/resources', name: 'Resources', component: Resources },
