@@ -26,11 +26,6 @@
       <!-- Form Itself -->
       <template v-if="mappingTemplate == 2">
 
-
-
-        <!-- <pre>{{completedSections}}</pre> -->
-
-
         <v-row class="ma-0 pa-0">
           <v-col class="ma-0 pa-0">
             <v-btn @click="navigateMainTemplate(3)">go to Megatrends</v-btn>
@@ -406,7 +401,6 @@
               <v-row class="ma-0 pa-0">
                 <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrend, macroTrendIndex) in selectedMegaTrend.macroTrends" :key="macroTrendIndex">
                   <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name"  :value="macroTrend"></v-checkbox>
-                  <p>{{macroTrend}}</p>
                 </v-col>
               </v-row>
             </v-col>
@@ -434,23 +428,7 @@
               </v-radio-group>
             </v-col>
           </v-row>
-          <v-btn @click="calculateMacroQuestions">Submit</v-btn>
-      
-          <!-- <v-layout row wrap>
-            <v-flex xs6>
-              <h2>Opportunities</h2>
-              <div v-for="(trend,index) in trends.opportunities.data" :key="index">
-                <p><b>{{trend.trend_name}}</b> {{trend.trend_text}}</p>
-              </div>
-            </v-flex>
-            <v-flex xs6>
-              <h2>Threats</h2>
-              <div v-for="(trend,index) in trends.threats.data" :key="index">
-                <p><b>{{trend.trend_name}}</b> {{trend.trend_text}}</p>
-              </div>
-            </v-flex>
-            <v-flex xs12><pre>{{trends}}</pre></v-flex>
-          </v-layout> -->
+          <v-btn @click="calculateMacroQuestions()">Submit</v-btn>
         </template>
       </template>
     </v-card>
@@ -867,6 +845,7 @@ export default {
   methods: {
 
 
+    // Reset the Array, before populating it again
     resetMacroQuestionArray(){
       this.trends.threats.data = [];
       this.trends.opportunities.data = [];
@@ -903,6 +882,10 @@ export default {
           }
         } 
       })
+
+      // To fix {__ob__: Observer}
+      let fixedObject = JSON.parse(JSON.stringify(this.trends))
+      console.log("Check the fundation", fixedObject);
     },
 
 
