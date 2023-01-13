@@ -384,8 +384,8 @@
         <template v-if="megaTemplate == 2">
           <p class="title text-center">Choose Up to 3 megatrends</p>
           <v-row class="ma-0 pa-0">
-            <v-col cols="12" class="ma-0 pa-0 ml-15" v-for="(megaTrend, megaTrendIndex) in megaTrends" :key="megaTrendIndex">
-              <v-checkbox v-model="selectedMegaTrends" :label="megaTrend.name"  :value="megaTrend"></v-checkbox>
+            <v-col cols="12" class="ma-0 pa-0 pl-15" v-for="(megaTrend, megaTrendIndex) in megaTrends" :key="megaTrendIndex">
+              <v-checkbox v-model="selectedMegaTrends" :label="megaTrend.name"  :value="megaTrend" class="ma-0 pa-0"></v-checkbox>
             </v-col>
           </v-row>
           <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)">Choose Macro Trends</v-btn>
@@ -400,7 +400,7 @@
               <p class="title text-center"> {{selectedMegaTrend.name}} </p>
               <v-row class="ma-0 pa-0">
                 <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrend, macroTrendIndex) in selectedMegaTrend.macroTrends" :key="macroTrendIndex">
-                  <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name"  :value="macroTrend"></v-checkbox>
+                  <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name"  :value="macroTrend" class="ma-0 pa-0"></v-checkbox>
                 </v-col>
               </v-row>
             </v-col>
@@ -887,6 +887,8 @@ export default {
       let fixedObject = JSON.parse(JSON.stringify(this.trends))
       console.log("Check the fundation", fixedObject);
     },
+
+
 
 
 
