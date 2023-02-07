@@ -340,7 +340,6 @@
             </v-tabs>
           </div>
           <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Send form</v-btn>
-          <v-btn v-if="isFormDone" @click="mainCalculationOfTheForm()">asdasdasdqwdq</v-btn>
         </div>
       </template>
 
@@ -449,7 +448,6 @@
             </v-col>
           </v-row>
           <v-btn @click="calculateMacroQuestions()">Submit</v-btn>
-          <v-btn @click="calcualtePdfScore()"> test submit</v-btn>
 
 
           <v-dialog v-model="pdfResultDisplayDialog"> 
@@ -475,7 +473,7 @@ export default {
   },
   data(){
     return {
-      formPdfData: "",
+      formPdfData: null,
       pdfResultDisplayDialog: false,
 
       swotText:[
@@ -1099,12 +1097,11 @@ export default {
           }
         } 
       })
-
       // To fix {__ob__: Observer}
-      let fixedObject = JSON.parse(JSON.stringify(this.trends))
+      // let fixedObject = JSON.parse(JSON.stringify(this.trends))
       // console.log("Check the fundation", fixedObject);
 
-      this.calcualtePdfScore(fixedObject);
+      this.calcualtePdfScore(this.trends);
     },
 
 
@@ -1442,16 +1439,17 @@ export default {
         front_page:{},
         categories:[
         ],
-        trends:{
-          opportunities:{
-            showdata:true,
-            data:[]
-          },
-          threats:{
-            showdata:true,
-            data:[]
-          }
-        },
+        // trends:{
+        //   opportunities:{
+        //     showdata:true,
+        //     data:[]
+        //   },
+        //   threats:{
+        //     showdata:true,
+        //     data:[]
+        //   }
+        // },
+        trends:trendData,
         swot_text:{
           strengths:{
             showdata:false,
@@ -1514,6 +1512,9 @@ export default {
 
 
             let findHighestQuestionValue = null;
+            if(findCategory.sub_category == 320){
+              console.log("YES")
+            }
             if(findQuestion.type == "q_checkboxes"){
               findHighestQuestionValue = JSON.parse(findQuestion.options).map(i => i.weight).reduce((a, b) => Number(a) + Number(b), 0);
               findCategory.total_score = findCategory.total_score + findHighestQuestionValue;
@@ -1541,6 +1542,7 @@ export default {
               })
             }
             else if(findQuestion.type == "q_front_checkbox"){
+              console.log(questionAnswer)
               let newQuestionAnswers = []
               JSON.parse(findQuestion.options).forEach(item =>{
                 if(questionAnswer.value.includes(item.label)){
@@ -1620,7 +1622,8 @@ export default {
         })
 
 
-
+      this.formPdfData = createObj;
+      this.pdfResultDisplayDialog = true;
 
 
 
@@ -1633,33 +1636,33 @@ export default {
         
         
         // // Makes a GET request to the localhost server to retrieve the HTML template for the PDF
-        this.$http.get("http://localhost:8080/pdf_template/inprofuturepdftemplate.html").then(getHtmlTemplate =>{
+        // this.$http.get("http://localhost:8080/pdf_template/inprofuturepdftemplate.html").then(getHtmlTemplate =>{
           
-          // Creates an object containing the HTML template and the data for the PDF
-          let pdfData = {
-            html: getHtmlTemplate.data,
-            data: createObj
-          }
+        //   // Creates an object containing the HTML template and the data for the PDF
+        //   let pdfData = {
+        //     html: getHtmlTemplate.data,
+        //     data: createObj
+        //   }
 
-          this.pdfResultDisplayDialog = true;
-          this.formPdfData = {
-            html: getHtmlTemplate.data,
-            data: createObj
-          }
+        //   this.pdfResultDisplayDialog = true;
+        //   this.formPdfData = {
+        //     html: getHtmlTemplate.data,
+        //     data: createObj
+        //   }
 
-          // Makes a POST request to the server to generate the PDF
-          this.$http({ url: 'https://app.followup.prios.no/api/generate_pdf', method: 'post', responseType: 'blob', data: pdfData }).then(response =>{
-            this.pdfProgressDialog = false;
+        //   // Makes a POST request to the server to generate the PDF
+        //   this.$http({ url: 'https://app.followup.prios.no/api/generate_pdf', method: 'post', responseType: 'blob', data: pdfData }).then(response =>{
+        //     this.pdfProgressDialog = false;
 
-            // Creates a URL for the generated PDF
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', "InprofutureResultPdf.pdf");
-            link.setAttribute('target', '_blank');
-            link.click();
-          })
-        })
+        //     // Creates a URL for the generated PDF
+        //     const url = window.URL.createObjectURL(new Blob([response.data]));
+        //     const link = document.createElement('a');
+        //     link.href = url;
+        //     link.setAttribute('download', "InprofutureResultPdf.pdf");
+        //     link.setAttribute('target', '_blank');
+        //     link.click();
+        //   })
+        // })
 
 
 
