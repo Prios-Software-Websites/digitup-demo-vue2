@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charest="utf-8" />
+    <title>Inprofuture PDF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-polar.min.js"></script>
+  </head>
+  <body>
+    <!--Front page container-->
+    <div class="mainDisplayContainer">
+      <div>
+        <p class="containerHeader">Company information</p>
+        <!-- <p>{{this.front_page.name}}</p> -->
+        <p class="subHeader">{{this.front_page.description}}</p>
+      </div>
+      <div class="companyInfoFlexContainer">
+        {{#each this.front_page.questions}}
+          <div class="companyInfoFlexItem">
+            <p style="margin: 0px 0px 5px 0px"><b>{{this.title}}:</b></p>
+            {{#if this.checkbox}}
+            <ul>
+              {{#each this.answer}}
+              <li>
+                <p style="margin: 5px 0px 5px 0px">{{this.label}}</p>
+              </li>
+              {{/each}}
+            </ul>
+            {{else}}
+              <p style="margin: 5px 0px 5px 0px">{{this.answer}}</p>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <!--Graph container-->
+    <div class="mainDisplayContainer">
+      <!-- <div class="companyInfoFlexContainer"> -->
+        <div class="divContainer">
+          <p class="containerHeader">Categories and sub categories</p>
+          {{#each this.categories}}
+          <div >
+            <div class="categoryContainer" class="subHeader" style="--score-color:{{this.color}};--score-value:{{this.score}}">
+              {{this.name}} {{this.score}}
+            </div>
+            {{#each this.sub_categories}}
+              <div class="subCategoryContainer" style="--score-color:{{this.color}};--score-value:{{this.score}}">
+                {{this.name}} {{this.score}}
+              </div>
+            {{/each}}
+          </div>
+          {{/each}}
+        </div>
+    </div>
+    <!--Graph container 2-->
+    <div style="page-break-before: always;">
+      <p class="containerHeader">Categories</p>
+      <div id="chartContainer" style="height:40em;width:40em;"></div>
+    </div>
+    <!--Trends container-->
+    <div class="mainDisplayContainer">
+      <p class="containerHeader">Makro and mega trends</p>
+      <div class="companyInfoFlexContainer">
+        <!-- Strength/weakness from form-->
+        <div class="trendsFlexItem">
+          <div class="swotBorderStyle" style="background:#81C784">
+            <p class="swotHeader"><b>Strengths</b></p>
+            {{#if swot_text.strengths.showdata}}
+            <p>According to our rating system these could be the strengths of your company:</p>
+            {{else}}
+            <p>You didn't achieve enough points in all of the five domains and neither of them can be considered your strength.</p>
+            {{/if}}
+            {{#each swot_text.strengths.data}}
+            <p><b>{{this.name}}</b></p>
+            <ul>
+              {{#each this.points}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+            {{/each}}
+          </div>
+        </div>
+        <div class="trendsFlexItem">
+          <div class="swotBorderStyle" style="background:#64B5F6">
+            <p class="swotHeader"><b>Weaknesses</b></p>
+            {{#if swot_text.weaknesses.showdata}}
+            <p>According to our rating system these could be the weaknesses of your company:</p>
+            {{else}}
+            <p>You didn't achieve enough points in all of the five domains and neither of them can be considered your weakness.</p>
+            {{/if}}
+            {{#each swot_text.weaknesses.data}}
+            <p><b>{{this.name}}</b></p>
+            <ul>
+              {{#each this.points}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+            {{/each}}
+          </div>
+        </div>
+        <!-- Opportunities/Threats from trends-->
+        <div class="trendsFlexItem" style="background:#FFB74D;">
+          <div class="swotBorderStyle">
+            <p class="swotHeader"><b>Opportunities</b></p>
+            <p>According to our rating system these could be the threats for your coampany:</p>
+            {{#each trends.opportunities.data}}
+            <p><b>{{this.trend_name}}</b> {{this.trend_text}}</p>
+            {{/each}}
+          </div>
+        </div>
+        <div class="trendsFlexItem" style="background:#E57373">
+          <div class="swotBorderStyle">
+            <p class="swotHeader"><b>Threats</b></p>
+            <p>According to our rating system these could be the opportunities for your coampany:</p>
+            {{#each trends.threats.data}}
+            <p><b>{{this.trend_name}}</b> {{this.trend_text}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  anychart.onDocumentReady(function () {
+    var chart = anychart.polar();
+    var data = [
+      {x:"{{categories.[0].name}}", value:Number("{{categories.[0].score}}".split("%")[0]), fill:'#FF8A65',stroke:"lightgrey"},
+      {x:"{{categories.[1].name}}", value:Number("{{categories.[1].score}}".split("%")[0]), fill:'#4DB6AC',stroke:"lightgrey"},
+      {x:"{{categories.[2].name}}", value:Number("{{categories.[2].score}}".split("%")[0]), fill:'#BA68C8',stroke:"lightgrey"},
+      {x:"{{categories.[3].name}}", value:Number("{{categories.[3].score}}".split("%")[0]), fill:'#7986CB',stroke:"lightgrey"},
+      {x:"{{categories.[4].name}}", value:Number("{{categories.[4].score}}".split("%")[0]), fill:'#DCE775',stroke:"lightgrey"}
+    ];
+    var columnSeries = chart.column(data);
+    columnSeries.labels(true);
+    let dataLabels = columnSeries.labels()
+    dataLabels.fontColor("black")
+    dataLabels.fontColor("black")
+    dataLabels.fontSize(16)
+    dataLabels.format("{%value}%");
+
+    chart.xScale('ordinal');
+
+    var axisLabels = chart.xAxis().labels()
+
+    axisLabels.fontSize(18);
+    axisLabels.fontWeight("bold");
+
+    chart.yAxis(false);
+
+    var interactivity = chart.interactivity();
+    interactivity.selectionMode("none");
+    interactivity.hoverMode("none");
+
+    // chart.title('Categories');
+
+    chart.container('chartContainer');
+    chart.draw();
+  });
+</script>
+
+<style>
+  body{
+    font-family: "Times New Roman", "Georgia", serif;
+    font-size:18px;
+  }
+  .mainDisplayContainer{
+    page-break-inside:avoid;
+  }
+  .containerHeader{
+    font-size:30px;
+    font-weight:600;
+    text-align: center;
+  }
+  .subHeader{
+    font-size:22px;
+    font-weight:500;
+  }
+  .companyInfoFlexContainer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+  }
+  .companyInfoFlexItem{
+    width:45%;
+    padding:5px;
+  }
+  .trendsFlexItem{
+    width:50%;
+  }
+  .swotHeader{
+    font-size:22px;
+    text-align: center;
+    margin:0;
+  }
+  .companyInfoFlexItem:nth-child(4n+1), .companyInfoFlexItem:nth-child(4n+2){
+    background-color: #f2f2f2;
+  }
+  .divContainer{
+    width:40em;
+    padding:10px;
+  }
+  .categoryContainer{
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    background:linear-gradient(to right, var(--score-color) var(--score-value), #EEEEEE 0%)
+  }
+  .subCategoryContainer{
+    margin-top:10px;
+    margin-left:30px;
+    padding:10px;
+    background:linear-gradient(to right, var(--score-color) var(--score-value), #EEEEEE 0%)
+  }
+  .swotBorderStyle{
+    height:100%;
+    padding:5px;
+    border:3px solid white;
+  }
+
+
+</style>
+
