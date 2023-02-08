@@ -361,7 +361,7 @@
             <v-btn @click="goToMegaTemplate(2)" class="mr-2">MegaTrends</v-btn>
             <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)" class="mr-2">MacroTrends</v-btn>
             <v-btn v-else disabled class="mr-2">MacroTrends</v-btn>
-            <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)">Questions</v-btn>
+            <v-btn v-if="(selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10) && (selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3)" @click="goToMegaTemplate(4)">Questions</v-btn>
             <v-btn v-else disabled>Questions</v-btn>
           </v-col>
         </v-row>
@@ -680,6 +680,7 @@ export default {
       megaTrends: [
         {
           "name": "Virtualization",
+          "idList":  [1,2],
           "macroTrends": [
             {
               "name": "VR",
@@ -703,6 +704,7 @@ export default {
         },
         {
           "name": "Ai",
+          "idList":  [3,4,5,6,7,8],
           "macroTrends": [
             {
               "name": "Artificial Coworkers/Robots",
@@ -757,6 +759,7 @@ export default {
         },
         {
           "name": "Data and Technologies",
+          "idList":  [9,10,11,12,13,14,15],
           "macroTrends": [
             {
               "name": "Big data and smart data",
@@ -818,6 +821,7 @@ export default {
         },
         {
           "name": "Security & Transparency",
+          "idList":  [16,17,18,19],
           "macroTrends": [
             {
               "name": "Cybersecurity",
@@ -855,6 +859,7 @@ export default {
         },
         {
           "name": "Energy, Climate Change & Sustainability",
+          "idList":  [20,21,22],
           "macroTrends": [
             {
               "name": "Climate Change",
@@ -885,6 +890,7 @@ export default {
         },
         {
           "name": "Digitally Connected Products, Offers & Services",
+          "idList":  [23,24,25],
           "macroTrends": [
             {
               "name": "Connected Services, Products & Apps",
@@ -915,6 +921,7 @@ export default {
         },
         {
           "name": "Future Working",
+          "idList":  [26,27,28,29],
           "macroTrends": [
             {
               "name": "Collaboration in Networks",
@@ -953,6 +960,7 @@ export default {
         },
         {
           "name": "Innovative Technologies & Manufacturing",
+          "idList":  [30,31,32,33,34,35,36],
           "macroTrends": [
             {
               "name": "Additive Manufacturing",
@@ -1017,6 +1025,7 @@ export default {
         },
         {
           "name": "New Business Models & Marketing Logics",
+          "idList":  [37,38,39],
           "macroTrends": [
             {
               "name": "Innovative Business Models",
@@ -1045,8 +1054,6 @@ export default {
           ]
         },
       ],
-
-     
     }
   },
   computed: {
@@ -1709,7 +1716,11 @@ export default {
     formSectionTabs(){
       this.selectedQuestionInfo = null;
       this.selectedChildCategory = null;
-    }
+    },
+    selectedMegaTrends(){
+      let includedIdList = this.selectedMegaTrends.map(i => i.idList).flat()
+      this.selectedMacroTrends = this.selectedMacroTrends.filter(i => includedIdList.includes(i.MacroID))
+    },
   },
 
 }
