@@ -189,7 +189,8 @@
               class="tabStyling"
               :style="gradientStyle(section.id)"
             >
-              {{section.name ? section.name : section.title}} {{checkIfSectionHasProgress(section.id)}} {{section.id}}
+              {{section.name ? section.name : section.title}} 
+              <!-- {{checkIfSectionHasProgress(section.id)}} {{section.id}} -->
             </v-tab>
 
 
@@ -341,6 +342,7 @@
           </div>
           <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Send form</v-btn>
           <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3 primary">go to Megatrends</v-btn>
+          <div class="pb-3"></div>
         </div>
       </template>
 
@@ -444,22 +446,22 @@
           <v-row class="ma-0 pa-0">
             <!-- Iterate in the MACRO Trends one have chosen -->
             <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrendSelected, macroTrendSelectedIndex) in selectedMacroTrends" :key="macroTrendSelectedIndex">
-              <h2 class="ml-2">{{macroTrendSelected.name}}</h2>
-              <p class="ml-2">You have chosen {{macroTrendSelected.name}} as relevant for your business. Please, define its current importance on this scale:</p>
-              <v-radio-group class="ma-0 pa-0 ml-2" v-model.lazy="macroTrendSelected.importance" row>
+              <h2 class="ml-5">{{macroTrendSelected.name}}</h2>
+              <p class="ml-5">You have chosen {{macroTrendSelected.name}} as relevant for your business. Please, define its current importance on this scale:</p>
+              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.importance" row>
                 <v-radio label="No importance" value="1"></v-radio>
                 <v-radio label="Weak influence" value="2"></v-radio>
                 <v-radio label="Medium influence" value="3"></v-radio>
                 <v-radio label="Impactful " value="4"></v-radio>
               </v-radio-group>
-              <p class="ml-2">Does your company have the competence to deal with this trend?</p>
-              <v-radio-group class="ma-0 pa-0 ml-2" v-model.lazy="macroTrendSelected.competence" value="0" row>
+              <p class="ml-5">Does your company have the competence to deal with this trend?</p>
+              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.competence" value="0" row>
                 <v-radio label="Yes" value="1"></v-radio>
                 <v-radio label="No" value="2"></v-radio>
               </v-radio-group>
             </v-col>
           </v-row>
-          <v-btn @click="calculateMacroQuestions()" class="ml-3 success">Submit</v-btn>
+          <v-btn @click="calculateMacroQuestions()" class="ml-6 success">Submit</v-btn>
 
 
           <v-dialog v-model="pdfResultDisplayDialog"> 
