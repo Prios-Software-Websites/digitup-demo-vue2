@@ -19,18 +19,18 @@
             <v-text-field label="username" v-model="mappingUsername"></v-text-field>
           </v-col>
         </v-row>
-        <v-btn @click="checkIfEmailGotContent()" class="primary">Take Mapping Tools</v-btn>
+        <v-btn :disabled="!mappingEmail || !mappingUsername" @click="checkIfEmailGotContent()" class="primary">Take Mapping Tools</v-btn>
 
       </template>
 
       <!-- Form Itself -->
       <template v-if="mappingTemplate == 2">
 
-        <v-row class="ma-0 pa-0">
+        <!-- <v-row class="ma-0 pa-0">
           <v-col class="ma-0 pa-0">
             <v-btn @click="navigateMainTemplate(3)">go to Megatrends</v-btn>
           </v-col>
-        </v-row>
+        </v-row> -->
         
         <div v-if="userForm && addedAnswers.length != 0">
           <div v-if="userForm.sections.filter(i => i.sub_category).length == 0">
@@ -340,6 +340,7 @@
             </v-tabs>
           </div>
           <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Send form</v-btn>
+          <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3">go to Megatrends</v-btn>
         </div>
       </template>
 
@@ -1047,19 +1048,27 @@ export default {
 
     // Checks if Mapping form are completed or Not. - If Not then one wont get to Megatrend section to send data.
     isFormDone(){
-      if(this.userForm.sections.map(i => i.questions).flat().length == this.addedAnswers.filter(i => i.answered == true).length){
-        console.log("I AM COMPLETE")
+      let allQuestions = this.userForm.sections.map(i => i.questions).flat()
+      let findAllNonFrontPageQuestions = allQuestions.filter(i => i.result_category_id)
+      let findAllAnswers = this.addedAnswers.filter(i => findAllNonFrontPageQuestions.map(i => i.id).includes(i.question_id)).filter(i => i.answered)
+      if(findAllAnswers.length == findAllNonFrontPageQuestions.length){
         return true;
-      } else {
-        console.log("Not complete after all")
-        return false;
       }
+      else{
+        return false
+      }
+
+      // if(this.userForm.sections.map(i => i.questions).flat().length == this.addedAnswers.filter(i => i.answered == true).length){
+      //   console.log("I AM COMPLETE")
+      //   return true;
+      // } else {
+      //   console.log("Not complete after all")
+      //   return false;
+      // }
     }
   },
 
   methods: {
-
-
     // Reset the Array, before populating it again
     resetMacroQuestionArray(){
       this.trends.threats.data = [];
@@ -1301,7 +1310,7 @@ export default {
       this.$http.post("https://app.followup.prios.no/api/form_builder/question_responses", newCreateArr, {headers:{Tempaccess:this.accessKey}}).then(() =>{
         
       })
-      this.getAllExistingFormData(this.loadedFormData);
+      // this.getAllExistingFormData(this.loadedFormData);
     },
 
 
@@ -1512,9 +1521,6 @@ export default {
 
 
             let findHighestQuestionValue = null;
-            if(findCategory.sub_category == 320){
-              console.log("YES")
-            }
             if(findQuestion.type == "q_checkboxes"){
               findHighestQuestionValue = JSON.parse(findQuestion.options).map(i => i.weight).reduce((a, b) => Number(a) + Number(b), 0);
               findCategory.total_score = findCategory.total_score + findHighestQuestionValue;
