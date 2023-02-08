@@ -19,7 +19,7 @@
             <v-text-field label="username" v-model="mappingUsername"></v-text-field>
           </v-col>
         </v-row>
-        <v-btn :disabled="!mappingEmail || !mappingUsername" @click="checkIfEmailGotContent()" class="primary">Take Mapping Tools</v-btn>
+        <v-btn :disabled="!mappingEmail || !mappingUsername" @click="checkIfEmailGotContent()" class="primary ml-3 mb-3">Take Mapping Tools</v-btn>
 
       </template>
 
@@ -340,7 +340,7 @@
             </v-tabs>
           </div>
           <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Send form</v-btn>
-          <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3">go to Megatrends</v-btn>
+          <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3 primary">go to Megatrends</v-btn>
         </div>
       </template>
 
@@ -352,13 +352,13 @@
         <v-row class="ma-0 pa-0">
           <!-- Go back to Mapping Tool -->
           <v-col cols="12" class="ma-0 pa-0">
-            <v-btn @click="navigateMainTemplate(2)">Go to Form</v-btn>
+            <v-btn @click="navigateMainTemplate(2)" class="primary ml-3">Go to Form</v-btn>
           </v-col>
           <!-- Navigation Within MegaForm -->
           <v-col cols="12" v-if="megaTemplate !== 1">
-            <v-btn @click="goToMegaTemplate(2)">MegaTrends</v-btn>
-            <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)">MacroTrends</v-btn>
-            <v-btn v-else disabled>MacroTrends</v-btn>
+            <v-btn @click="goToMegaTemplate(2)" class="mr-2">MegaTrends</v-btn>
+            <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)" class="mr-2">MacroTrends</v-btn>
+            <v-btn v-else disabled class="mr-2">MacroTrends</v-btn>
             <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)">Questions</v-btn>
             <v-btn v-else disabled>Questions</v-btn>
           </v-col>
@@ -397,13 +397,13 @@
               <v-checkbox v-model="selectedMegaTrends" :label="megaTrend.name"  :value="megaTrend" class="ma-0 pa-0"></v-checkbox>
             </v-col>
           </v-row>
-          <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)">Choose Macro Trends</v-btn>
+          <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)" class="success ml-3">Choose Macro Trends</v-btn>
           <v-btn v-else disabled>Choose Macro Trends</v-btn>
         </template>
 
         <!-- Choose Macro Trends -->
         <template v-if="megaTemplate == 3">
-          <p>Choose Macro Trend - template 3</p>
+          <p class="title text-center">Choose up to 10 Macro Trend</p>
           <v-row class="ma-0 pa-0">
             <v-col cols="12" v-for="(selectedMegaTrend, selectedMegaTrendIndex) in selectedMegaTrends" :key="selectedMegaTrendIndex">
               <p class="title text-center"> {{selectedMegaTrend.name}} </p>
@@ -411,44 +411,55 @@
                 <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrend, macroTrendIndex) in selectedMegaTrend.macroTrends" :key="macroTrendIndex">
                   <v-row cols="12" class="ma-0 pa-0">
                     <v-col cols="auto" class="ma-0 pa-0 pr-5">
-                      <v-icon title="Read question description and score help text" size="30"> mdi-help-circle </v-icon>
+                      <v-icon v-if="macroTrend.MacroID === selectedMacroHelperID" style="color:green;" title="Read question description and score help text" size="30" @click="toggleMacroHelperText(macroTrend.MacroID)"> mdi-help-circle </v-icon>
+                      <v-icon v-else title="Read question description and score help text" size="30" @click="toggleMacroHelperText(macroTrend.MacroID)"> mdi-help-circle </v-icon>
+
                     </v-col>
-                    <v-col cols="auto" class="ma-0 pa-0">
+                    <v-col cols="4" class="ma-0 pa-0">
                       <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name"  :value="macroTrend" class="ma-0 pa-0"></v-checkbox>
                     </v-col>
+                    <v-col cols="4" class="ma-0 pa-0">
+
+                      <v-card v-if="macroTrend.MacroID === selectedMacroHelperID">
+                        <v-card-title class="title"> {{macroTrend.name}} </v-card-title>
+                        <v-card-text>
+                          <p> {{macroTrend.helperText}} </p>
+                        </v-card-text>
+                      </v-card>
+                    </v-col>
                   </v-row>
+                  
       
-                  <!-- <pre>{{macroTrend}}</pre> -->
                 </v-col>
               </v-row>
             </v-col>
           </v-row>
-          <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)">Answer Questions</v-btn>
-          <v-btn v-else disabled>Answer Questions</v-btn> 
+          <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)" class="ml-3">Answer Questions</v-btn>
+          <v-btn v-else disabled class="ml-3">Answer Questions</v-btn> 
         </template>
 
         <!-- Question regarding the MacroTrends -->
         <template v-if="megaTemplate == 4">
-          <p>Questions - template 4</p>
+          <p class="title text-center">Questions</p>
           <v-row class="ma-0 pa-0">
             <!-- Iterate in the MACRO Trends one have chosen -->
             <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrendSelected, macroTrendSelectedIndex) in selectedMacroTrends" :key="macroTrendSelectedIndex">
-              <h2>{{macroTrendSelected.name}}</h2>
-              <p>You have chosen {{macroTrendSelected.name}} as relevant for your business. Please, define its current importance on this scale:</p>
-              <v-radio-group class="ma-0 pa-0" v-model.lazy="macroTrendSelected.importance" row>
+              <h2 class="ml-2">{{macroTrendSelected.name}}</h2>
+              <p class="ml-2">You have chosen {{macroTrendSelected.name}} as relevant for your business. Please, define its current importance on this scale:</p>
+              <v-radio-group class="ma-0 pa-0 ml-2" v-model.lazy="macroTrendSelected.importance" row>
                 <v-radio label="No importance" value="1"></v-radio>
                 <v-radio label="Weak influence" value="2"></v-radio>
                 <v-radio label="Medium influence" value="3"></v-radio>
                 <v-radio label="Impactful " value="4"></v-radio>
               </v-radio-group>
-              <p>Does your company have the competence to deal with this trend?</p>
-              <v-radio-group class="ma-0 pa-0" v-model.lazy="macroTrendSelected.competence" value="0" row>
+              <p class="ml-2">Does your company have the competence to deal with this trend?</p>
+              <v-radio-group class="ma-0 pa-0 ml-2" v-model.lazy="macroTrendSelected.competence" value="0" row>
                 <v-radio label="Yes" value="1"></v-radio>
                 <v-radio label="No" value="2"></v-radio>
               </v-radio-group>
             </v-col>
           </v-row>
-          <v-btn @click="calculateMacroQuestions()">Submit</v-btn>
+          <v-btn @click="calculateMacroQuestions()" class="ml-3 success">Submit</v-btn>
 
 
           <v-dialog v-model="pdfResultDisplayDialog"> 
@@ -476,7 +487,7 @@ export default {
     return {
       formPdfData: null,
       pdfResultDisplayDialog: false,
-
+      selectedMacroHelperID: "",
       swotText:[
           {
             id:320,
@@ -1677,6 +1688,16 @@ export default {
 
 
 
+      },
+
+      
+      toggleMacroHelperText(macroID){
+        console.log(macroID)
+        if(macroID == this.selectedMacroHelperID){
+          this.selectedMacroHelperID = "";
+        } else {
+          this.selectedMacroHelperID = macroID;
+        }
       }
 
 
