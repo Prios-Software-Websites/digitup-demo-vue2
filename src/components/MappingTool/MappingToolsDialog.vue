@@ -183,7 +183,7 @@
 
 
         <div v-else>
-          <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;">
+          <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;" active-class="isActive">
             <v-tab
               v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index"
               class="tabStyling"
@@ -340,7 +340,7 @@
 
             </v-tabs>
           </div>
-          <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Send form</v-btn>
+          <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Save Answers</v-btn>
           <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3 primary">go to Megatrends</v-btn>
           <div class="pb-3"></div>
         </div>
@@ -1741,6 +1741,7 @@ export default {
   background-color: #ECEFF1;
 }
 
+/*  */
 .v-tabs >>> .v-tabs__item:not(.v-tabs__item--active) {
   opacity: 1;
   border: 1px solid transparent;
@@ -1760,6 +1761,13 @@ export default {
   color: #1a7c92;
   border-radius: 5px;
   text-transform: none;
+}
+
+
+
+.isActive {
+  color: brown !important;
+  font-weight: bold;
 }
 
 </style>
