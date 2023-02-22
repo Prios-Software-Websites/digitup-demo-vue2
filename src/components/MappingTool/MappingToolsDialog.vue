@@ -1691,6 +1691,26 @@ export default {
         // })
 
 
+        this.$http.get("inprofuturepdftemplate.html")
+        .then(getHtmlTemplate =>{
+          let pdfData = {
+            html: getHtmlTemplate.data,
+            data: this.formPdfData
+          }
+          this.$http({ url: 'https://pdfservice.prios.no/api/pdf_service', method: 'post', responseType: 'blob', data: pdfData })
+          .then(response =>{
+            this.pdfProgressDialog = false;
+            let pdfName = "InprofutureResultPdf.pdf";
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', pdfName);
+            link.setAttribute('target', '_blank');
+            link.click();
+          })
+        })
+
+
 
 
 
