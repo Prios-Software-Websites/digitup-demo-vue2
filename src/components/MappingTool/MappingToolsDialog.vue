@@ -138,7 +138,7 @@
                             :value="index + '-' + item.weight"
                           ></v-checkbox>
                         </div>
-                        <div v-else>
+                        <div v-else>asdasdwdwqad
                           <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
                         </div>
                       </v-flex>
@@ -189,7 +189,9 @@
               class="tabStyling"
               :style="gradientStyle(section.id)"
             >
-              {{section.name ? section.name : section.title}} 
+            <span>
+              {{section.name ? section.name : section.title}}  
+            </span>
               <!-- {{checkIfSectionHasProgress(section.id)}} {{section.id}} -->
             </v-tab>
 
@@ -226,7 +228,7 @@
                       ></v-select>
                     </div>
                     <div v-else-if="question.type == 'q_front_checkbox'">
-                      <p>{{question.title}}</p>
+                      <p>{{question.title}}asdadasd</p>
                       <v-checkbox
                         v-for="(item, index) in JSON.parse(question.options)" 
                         :key="index"
@@ -238,103 +240,108 @@
                       ></v-checkbox>
                     </div>
                     <div v-else>
-                      <p>{{question.title}}</p>
-                      <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                      <p class="pb-0 mb-0">{{question.title}}</p>
+                      <v-text-field v-if="question.title == 'Role'" class="mb-5" style="width: 250px; border:1px solid black; border-radius: 5px; padding-left: 5px; padding-right: 5px; padding-top:20px;" hide-details label="Fill in the role"></v-text-field>
+                      <v-text-field v-else :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
                     </div>
                   </v-flex>
                 </v-layout>
               </v-container>
             </div>
             <div v-else>
-              <v-layout justify-start>
+
+              <v-row class="ma-0 pa-0">
+                <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
+                  <v-navigation-drawer permanent style="width:100%;z-index:0">
+                    <v-list dense class="py-0">
+                      <v-list-item-group v-model="selectedItem" style="color: darkblue;">
+                        <v-list-item v-for="(subSection,subIndex) in userForm.sections.filter(i => i.sub_category == section.id)" :key="subIndex" @click="selectedChildCategory = subSection;">
+                          <v-list-item-action>
+                            <v-icon :color="caluclateSectionProgress(subSection.id) < 1 ? 'error' : caluclateSectionProgress(subSection.id) < 99 ? 'yellow' : 'success'"> mdi-record </v-icon>
+                          </v-list-item-action>
+                          <v-list-item-content>
+                            <p>{{ subSection.name }}</p>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-list-item-group>
+                    </v-list>
+                  </v-navigation-drawer>
+                </v-col>
+
+                <v-col cols="12" v-if="selectedChildCategory">
+                  <v-container v-for="(question,questionIndex) in selectedChildCategory.questions" :key="questionIndex" class="fu-container-styling mt-4">
+                    <v-layout row wrap>
+                      <v-flex xs12 class="pa-1">
 
 
-
-                    <!-- Sub Sections in an category -->
-                    <v-flex xs2>
-                      <v-navigation-drawer permanent style="width:100%;z-index:0">
-                        <v-list dense class="py-0">
-                          <v-list-item-group v-model="selectedItem" color="primary">
-                            <v-list-item v-for="(subSection,subIndex) in userForm.sections.filter(i => i.sub_category == section.id)" :key="subIndex" @click="selectedChildCategory = subSection;">
-                              <v-list-item-action>
-                                <v-icon :color="caluclateSectionProgress(subSection.id) < 1 ? 'error' : caluclateSectionProgress(subSection.id) < 99 ? 'yellow' : 'success'"> mdi-record </v-icon>
-                              </v-list-item-action>
-                              <v-list-item-content>
-                                <p>{{ subSection.name }}</p>
-                              </v-list-item-content>
-                            </v-list-item>
-                          </v-list-item-group>
-                        </v-list>
-                      </v-navigation-drawer>
-                    </v-flex>
-                    <v-flex xs12 v-if="selectedChildCategory">
-                      <v-container v-for="(question,questionIndex) in selectedChildCategory.questions" :key="questionIndex" class="fu-container-styling mt-4">
-                        <v-layout row wrap>
-                          <v-flex xs12 class="pa-1">
-                            <p style="font-size: 16px">
-                              {{ question.title }}
-                              <v-menu offset-x>
-                                <template v-slot:activator="{ on }">
-                                  <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" text icon small>
-                                    <v-icon title="Read question description and score help text" size="30"> mdi-information </v-icon>
-                                  </v-btn>
-                                </template>
-                                <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
-                                  <div v-if="selectedQuestionInfo">
-                                    <p><b>Question description:</b></p>
-                                    <p>{{ selectedQuestionInfo.description }}</p>
-                                    <p><b>Score explanation:</b></p>
-                                    <ol>
-                                      <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
-                                    </ol>
-                                  </div>
-                                </v-card>
-                              </v-menu>
-                            </p>
-                            <div v-if="question.type == 'q_scale'">
-                              <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
-                                <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                                  <v-radio label="1" value="1"></v-radio>
-                                  <v-radio label="2" value="2"></v-radio>
-                                  <v-radio label="3" value="3"></v-radio>
-                                  <v-radio label="4" value="4"></v-radio>
-                                  <v-radio label="5" value="5"></v-radio>
-                                </v-radio-group>
+                        <!-- Help Text -->
+                        <p style="font-size: 16px" class="mb-0">
+                          {{ question.title }}
+                          <v-menu offset-x>
+                            <template v-slot:activator="{ on }">
+                              <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" text icon small>
+                                <v-icon title="Read question description and score help text" size="30"> mdi-information </v-icon>
+                              </v-btn>
+                            </template>
+                            <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
+                              <div v-if="selectedQuestionInfo">
+                                <p><b>Question description:</b></p>
+                                <p>{{ selectedQuestionInfo.description }}</p>
+                                <p><b>Score explanation:</b></p>
+                                <ol>
+                                  <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
+                                </ol>
                               </div>
-                              <div v-else>
-                                <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                                  <v-radio label="1" value="1"></v-radio>
-                                  <v-radio label="2" value="2"></v-radio>
-                                  <v-radio label="3" value="3"></v-radio>
-                                  <v-radio label="4" value="4"></v-radio>
-                                  <v-radio label="5" value="5"></v-radio>
-                                </v-radio-group>
-                              </div>
-                            </div>
-                            <div v-else-if="question.type == 'q_multiple_choice'">
-                              <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                                <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
-                              </v-radio-group>
-                            </div>
-                            <div v-else-if="question.type == 'q_checkboxes'">
-                              <v-checkbox
-                                v-for="(item, index) in JSON.parse(question.options)" 
-                                :key="index"
-                                multiple
-                                :disabled="setQuestionAnswerVariable(question.id).answered"
-                                v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                                :label="item.label"
-                                :value="index + '-' + item.weight"
-                              ></v-checkbox>
-                            </div>
-                            <div v-else>
-                              <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
-                            </div>
-                          </v-flex>
-                        </v-layout>
-                      </v-container>
-                    </v-flex>
-                  </v-layout>
+                            </v-card>
+                          </v-menu>
+                        </p>
+
+
+                        <div v-if="question.type == 'q_scale'">
+                          <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
+                            <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                              <v-radio label="1" value="1"></v-radio>
+                              <v-radio label="2" value="2"></v-radio>
+                              <v-radio label="3" value="3"></v-radio>
+                              <v-radio label="4" value="4"></v-radio>
+                              <v-radio label="5" value="5"></v-radio>
+                            </v-radio-group>
+                          </div>
+                          <div v-else>
+                            <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                              <v-radio label="1" value="1"></v-radio>
+                              <v-radio label="2" value="2"></v-radio>
+                              <v-radio label="3" value="3"></v-radio>
+                              <v-radio label="4" value="4"></v-radio>
+                              <v-radio label="5" value="5"></v-radio>
+                            </v-radio-group>
+                          </div>
+                        </div>
+                        <div v-else-if="question.type == 'q_multiple_choice'">
+                          <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                            <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
+                          </v-radio-group>
+                        </div>
+                        <div v-else-if="question.type == 'q_checkboxes'">
+                          <v-checkbox
+                            v-for="(item, index) in JSON.parse(question.options)" 
+                            :key="index"
+                            multiple
+                            :disabled="setQuestionAnswerVariable(question.id).answered"
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                            :label="item.label"
+                            :value="index + '-' + item.weight"
+                          ></v-checkbox>
+                        </div>
+                        <div v-else>
+                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                        </div>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-col>
+              </v-row>
+             
                 </div>
               </v-tab-item>
 
@@ -368,7 +375,7 @@
 
         <!-- Information -->
         <template v-if="megaTemplate == 1">
-          <p class="title text-center">Megatrends</p>
+          <p class="title">Megatrends</p>
           <v-row class="ma-0 pa-0">
             <v-col cols="2" class="ma-0 pa-0"></v-col>
             <v-col class="ma-0 pa-0">
@@ -386,29 +393,30 @@
                 Choose up to <span style="color: red; font-weight: bold;"> 3 mega </span> and <span style="color: red; font-weight: bold;"> 10 macrotrends </span>.
               </p>
               <p> In the second step you will be asked to evaluate the trends you have chosen and decide if they represent a revolutionary opportunity or a threat for your business. </p>
-              <v-btn @click="goToMegaTemplate(2)">Choose Megatrends</v-btn>
+              <v-btn @click="goToMegaTemplate(2)" dark class="mt-15">Choose Megatrends</v-btn>
             </v-col>
           </v-row>
         </template>
 
         <!-- Choosing MegaTrends -->
         <template v-if="megaTemplate == 2">
-          <p class="title text-center">Choose Up to 3 megatrends</p>
+          <p class="title ml-3 mt-15">Choose Up to 3 megatrends</p>
           <v-row class="ma-0 pa-0">
             <v-col cols="12" class="ma-0 pa-0 pl-15" v-for="(megaTrend, megaTrendIndex) in megaTrends" :key="megaTrendIndex">
               <v-checkbox v-model="selectedMegaTrends" :label="megaTrend.name"  :value="megaTrend" class="ma-0 pa-0"></v-checkbox>
             </v-col>
           </v-row>
           <v-btn v-if="selectedMegaTrends.length !== 0 && selectedMegaTrends.length <= 3" @click="goToMegaTemplate(3)" class="success ml-3">Choose Macro Trends</v-btn>
-          <v-btn v-else disabled>Choose Macro Trends</v-btn>
+          <v-btn v-else disabled class="mb-15">Choose Macro Trends</v-btn>
         </template>
 
         <!-- Choose Macro Trends -->
         <template v-if="megaTemplate == 3">
-          <p class="title text-center">Choose up to 10 Macro Trend</p>
+          <p class="title ml-3 mt-15">Choose up to 10 Macro Trend</p>
           <v-row class="ma-0 pa-0">
             <v-col cols="12" v-for="(selectedMegaTrend, selectedMegaTrendIndex) in selectedMegaTrends" :key="selectedMegaTrendIndex">
-              <p class="title text-center"> {{selectedMegaTrend.name}} </p>
+              <!-- <p class="title ml-13"> {{selectedMegaTrend.name}} </p> -->
+              <h2 class="mb-5">{{selectedMegaTrend.name}}</h2>
               <v-row class="ma-0 pa-0">
                 <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrend, macroTrendIndex) in selectedMegaTrend.macroTrends" :key="macroTrendIndex">
                   <v-row cols="12" class="ma-0 pa-0">
@@ -418,7 +426,7 @@
 
                     </v-col>
                     <v-col cols="4" class="ma-0 pa-0">
-                      <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name"  :value="macroTrend" class="ma-0 pa-0"></v-checkbox>
+                      <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name" :value="macroTrend" class="ma-0 pa-0"></v-checkbox>
                     </v-col>
                     <v-col cols="4" class="ma-0 pa-0">
 
@@ -436,32 +444,32 @@
               </v-row>
             </v-col>
           </v-row>
-          <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)" class="ml-3">Answer Questions</v-btn>
-          <v-btn v-else disabled class="ml-3">Answer Questions</v-btn> 
+          <v-btn v-if="selectedMacroTrends.length !== 0 && selectedMacroTrends.length <= 10" @click="goToMegaTemplate(4)" class="ml-3 mb-15">Answer Questions</v-btn>
+          <v-btn v-else disabled class="ml-3 mb-15 mt-15">Answer Questions</v-btn> 
         </template>
 
         <!-- Question regarding the MacroTrends -->
         <template v-if="megaTemplate == 4">
-          <p class="title text-center">Questions</p>
+          <p class="title ml-3 mt-15">Questions</p>
           <v-row class="ma-0 pa-0">
             <!-- Iterate in the MACRO Trends one have chosen -->
-            <v-col cols="12" class="ma-0 pa-0" v-for="(macroTrendSelected, macroTrendSelectedIndex) in selectedMacroTrends" :key="macroTrendSelectedIndex">
+            <v-col cols="12" class="ma-0 pa-0 mb-5" v-for="(macroTrendSelected, macroTrendSelectedIndex) in selectedMacroTrends" :key="macroTrendSelectedIndex">
               <h2 class="ml-5">{{macroTrendSelected.name}}</h2>
               <p class="ml-5">You have chosen {{macroTrendSelected.name}} as relevant for your business. Please, define its current importance on this scale:</p>
-              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.importance" row>
+              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.importance">
                 <v-radio label="No importance" value="1"></v-radio>
                 <v-radio label="Weak influence" value="2"></v-radio>
                 <v-radio label="Medium influence" value="3"></v-radio>
                 <v-radio label="Impactful " value="4"></v-radio>
               </v-radio-group>
               <p class="ml-5">Does your company have the competence to deal with this trend?</p>
-              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.competence" value="0" row>
+              <v-radio-group class="ma-0 pa-0 ml-5" v-model.lazy="macroTrendSelected.competence" value="0">
                 <v-radio label="Yes" value="1"></v-radio>
                 <v-radio label="No" value="2"></v-radio>
               </v-radio-group>
             </v-col>
           </v-row>
-          <v-btn @click="calculateMacroQuestions()" class="ml-6 success">Submit</v-btn>
+          <v-btn @click="calculateMacroQuestions()" class="ml-6 success mb-15">Submit</v-btn>
 
 
           <v-dialog v-model="pdfResultDisplayDialog"> 
@@ -1089,12 +1097,13 @@ export default {
   },
 
   methods: {
-    // Reset the Array, before populating it again
+    // Reset the Array, before populating it again #MEGATRENDS
     resetMacroQuestionArray(){
       this.trends.threats.data = [];
       this.trends.opportunities.data = [];
     },
 
+    // Calculate the Macro Questions #MEGATRENDS
     calculateMacroQuestions(){
       this.resetMacroQuestionArray();
       this.selectedMacroTrends.forEach(question =>{
@@ -1126,9 +1135,6 @@ export default {
           }
         } 
       })
-      // To fix {__ob__: Observer}
-      // let fixedObject = JSON.parse(JSON.stringify(this.trends))
-      // console.log("Check the fundation", fixedObject);
 
       this.calcualtePdfScore(this.trends);
     },
@@ -1139,17 +1145,20 @@ export default {
 
 
 
-
+    // Open the Dialog #CORE
     openDialog(){
       this.openMappingToolDialog = true;
       this.getTodaysDate();
       this.mappingTemplate = 1;
     },
+
+    // Close the Dialog #CORE
     closeDialog(){
       this.openMappingToolDialog = false;
       this.resetFunction();
     },
 
+    // Reset the Mapping Tool #CORE
     resetFunction(){
       this.mappingTemplate = 1;
       this.todaysDate = "";
@@ -1167,6 +1176,7 @@ export default {
       this.completedSections = [];
     },
 
+    // Get Todays Date #CORE
     getTodaysDate() {
       let today = new Date();
       let dd = String(today.getDate()).padStart(2, '0');
@@ -1174,8 +1184,6 @@ export default {
       let yyyy = today.getFullYear();
 
       this.todaysDate = yyyy + '-' + mm + '-' + dd;
-
-      // Use today's date in your function here
     },
 
     /* ===== Pre Check Functions for Mapping Tool ===== */
@@ -1245,7 +1253,6 @@ export default {
       });
     },
     
-
     /* ===== Get form data and its existing answers ===== */
 
     // Getting all the data of the form, including the userObject made / gotten
@@ -1288,6 +1295,11 @@ export default {
       this.navigateMainTemplate(2);
     },
 
+
+
+
+
+    
     /* ===== Form Functionalities ===== */
 
     selectQuestionInfo(question){
@@ -1334,6 +1346,7 @@ export default {
     },
 
 
+    // Get the question ID and the value of the question and push it to the array
     setQuestionAnswerVariable(questionId){
       return this.addedAnswers.find(i => i.question_id == questionId)
     },
@@ -1394,7 +1407,7 @@ export default {
     // Calculate the progress of the parent section based on the progress of the child sections (if any)
     gradientStyle(sectionId) {
       let completedValue = this.calculateParentSectionProgress(sectionId);
-      return `background: linear-gradient(to right, rgba(147, 250, 165) ${completedValue}%, rgba(236, 239, 241, 50) ${completedValue}%)`;
+      return `background: linear-gradient(to right, rgba(71, 181, 176, 0.65) ${completedValue}%, rgba(236, 239, 241, 50) ${completedValue}%)`;
     },
 
 
@@ -1424,12 +1437,6 @@ export default {
 
 
 
-
-
-    // WIP - Trying to get the sections that have been marked as Completed 
-    mainCalculationOfTheForm(){
-      console.log("Form are completed!!!")
-    },
 
     /* Navigate between the main templates (Login/Reg, Mapping Form and Megatrends)
       - If changing from Mapping form to Mega Trends - then go to megaTemplate 1.
@@ -1733,6 +1740,7 @@ export default {
   },
 
   watch:{
+    // 
     formSectionTabs(){
       this.selectedQuestionInfo = null;
       this.selectedChildCategory = null;
@@ -1786,8 +1794,10 @@ export default {
 
 
 .isActive {
-  color: brown !important;
+  color: black !important;
   font-weight: bold;
+  border-bottom: 5px solid black;
 }
+
 
 </style>

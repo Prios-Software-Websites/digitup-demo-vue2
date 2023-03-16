@@ -19,7 +19,7 @@
       All of these activities help to increase the level of digitalisation of your business and at the same time motivate other small and medium-sized entrepreneurs in Europe.
     </p>
 
-    <v-btn @click="$refs.openMappingDialog.openDialog()"> Try it out </v-btn>
+    <v-btn @click="$refs.openMappingDialog.openDialog()" large dark class="mt-15"> Start the Assessment Tool </v-btn>
 
     <MappingToolsDialog ref="openMappingDialog"></MappingToolsDialog>
   </div>

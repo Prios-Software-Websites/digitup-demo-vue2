@@ -45,7 +45,7 @@
 import MainCourseDataDialog from "@/components/TrainingModule/TrainingModuleDialog.vue"
 import MainTrainingDialogPhone from "@/components/TrainingModule/TrainingModuleDialogPhone.vue"
 export default {
-  name: 'Training-Modules',
+  name: 'Training-Modules', 
   components: {
     MainCourseDataDialog,
     MainTrainingDialogPhone
