@@ -1,16 +1,20 @@
 <template>
-  <div class="homePageWidth">
+  <div>
     <v-row>
       <v-col cols="12" class="mt-15"></v-col>
-      <v-col cols="2"></v-col>
-      <v-col cols="8">
+      <v-col cols="12" class="ma-0 pa-0 mb-15">
         <p class="handbookTitle">Handbook</p>
-        <!-- <p class="handbookDescription">
-          Our partnership is still working on the curriculum, resources center and the training materials.  <br>
-          Once they are available, you will be able to find them here.
-          <br>
-          Below you will find an example of one such module.
-        </p> -->
+      </v-col>
+
+      <v-col cols="4" class="ma-0 pa-0" v-for="(handbook, handbookIndex) in handbooks" :key="handbookIndex">
+        <!-- <a href="https://www.google.com/" target="_blank">
+          <v-card>
+            <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
+          </v-card>
+        </a> -->
+        <v-card>
+          <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
+        </v-card>
       </v-col>
     </v-row>
   </div>
@@ -18,7 +22,17 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      handbooks: [
+        {
+          handbookTitle: 'Handbook 1',
+          handbookImage: "img/handbook1.jpg",
+          link: "https://www.google.com/"
+        },
+      ]
+    }
+  },
 }
 </script>
 

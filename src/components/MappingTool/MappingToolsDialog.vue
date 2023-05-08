@@ -138,7 +138,7 @@
                             :value="index + '-' + item.weight"
                           ></v-checkbox>
                         </div>
-                        <div v-else>asdasdwdwqad
+                        <div v-else>
                           <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
                         </div>
                       </v-flex>
@@ -208,17 +208,20 @@
 
 
 
-            <v-tab-item v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index">
-              <div v-if="section.form_intro_page && section.form_intro_page == 1">
-                <v-container class="fu-container-styling mt-4" v-if="section.description">
-                  <p>{{section.description}}</p>
-                </v-container>
-                <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
-                  <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
-                    <v-flex xs12>
-                      <div v-if="question.type == 'q_front_select'">
+          <v-tab-item v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index">
+            <div v-if="section.form_intro_page && section.form_intro_page == 1">
+              <v-container class="fu-container-styling mt-4" v-if="section.description">
+                <p>{{section.description}}</p>
+              </v-container>
+              <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
+                <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
+                  <v-flex xs12>
+
+                      <!-- Selects -->
+                    <div v-if="question.type == 'q_front_select'">
                       <p>{{question.title}}</p>
                       <v-select
+                        class="inputLarge"
                         :items="JSON.parse(question.options)"
                         item-text="label"
                         item-value="label"
@@ -227,11 +230,14 @@
                         v-model.lazy="setQuestionAnswerVariable(question.id).value"
                       ></v-select>
                     </div>
+
+                    <!-- Checkboxes -->
                     <div v-else-if="question.type == 'q_front_checkbox'">
-                      <p>{{question.title}}asdadasd</p>
+                      <p>{{question.title}}</p>
                       <v-checkbox
                         v-for="(item, index) in JSON.parse(question.options)" 
                         :key="index"
+                        class="ma-0 pa-0"
                         multiple
                         :disabled="setQuestionAnswerVariable(question.id).answered"
                         v-model.lazy="setQuestionAnswerVariable(question.id).value"
@@ -239,10 +245,158 @@
                         :value="item.label"
                       ></v-checkbox>
                     </div>
+
+                    <!-- Simple Input Fields -->
                     <div v-else>
-                      <p class="pb-0 mb-0">{{question.title}}</p>
-                      <v-text-field v-if="question.title == 'Role'" class="mb-5" style="width: 250px; border:1px solid black; border-radius: 5px; padding-left: 5px; padding-right: 5px; padding-top:20px;" hide-details label="Fill in the role"></v-text-field>
-                      <v-text-field v-else :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                      <p v-if="question.title == 'Name of the enterprise supported by the EDIH'" class="pb-0 mb-0 mt-10" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
+                        {{question.title}}
+                      </p>
+                      <p v-else class="pb-0 mb-0" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
+                        {{question.title}}
+                      </p>
+                      <!-- Name of the Enterprice -->
+                      <v-text-field 
+                        v-if="question.title == 'Name of the enterprise supported by the EDIH'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Name of the Company">
+                      </v-text-field>
+                      
+                      <!-- Fiscal Registration Number (VAT) -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Fiscal registration number (VAT or equivalent)'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''"
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Fiscal Registration Number">
+                      </v-text-field>
+
+                      <!-- Contact Person -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Contact person'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Contact Person of the Company">
+                      </v-text-field>
+                      
+                      <!-- Role -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Role'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputMedium'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Fill in the role">
+                      </v-text-field>
+
+                      <!-- E-mail -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Email'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Company Email">
+                      </v-text-field>
+
+                      <!-- Phone -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Phone'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Company Phone">
+                      </v-text-field>
+
+                      <!-- Website -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Website'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Company Website">
+                      </v-text-field>
+
+                      <!-- Company foundation year -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Company foundation year'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Year Company were Founded">
+                      </v-text-field>
+
+                      <!-- County/NUTS2 -->
+                      <v-text-field 
+                        v-else-if="question.title == 'Company foundation year'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="County/NUTS2">
+                      </v-text-field>
+
+                      <!-- If sector was not listed in the previous question, please specify here... -->
+                      <v-text-field 
+                        v-else-if="question.title == 'If sector was not listed in the previous question, please specify here...'" 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="">
+                      </v-text-field>
+
+                      <!-- Rest of the input fields -->
+                      <v-text-field 
+                        v-else 
+                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                        class="inputStyling" 
+                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                        :disabled="setQuestionAnswerVariable(question.id).answered" 
+                        hide-details 
+                        label="Write your answer here">
+                      </v-text-field>
+
                     </div>
                   </v-flex>
                 </v-layout>
@@ -253,7 +407,7 @@
               <v-row class="ma-0 pa-0">
                 <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
                   <v-navigation-drawer permanent style="width:100%;z-index:0">
-                    <v-list dense class="py-0">
+                    <v-list dense class="py-0 mt-15">
                       <v-list-item-group v-model="selectedItem" style="color: darkblue;">
                         <v-list-item v-for="(subSection,subIndex) in userForm.sections.filter(i => i.sub_category == section.id)" :key="subIndex" @click="selectedChildCategory = subSection;">
                           <v-list-item-action>
@@ -268,14 +422,20 @@
                   </v-navigation-drawer>
                 </v-col>
 
-                <v-col cols="12" v-if="selectedChildCategory">
+                
+                <!-- Sub Category Selected -->
+                <v-col cols="12" xl="10" lg="10" md="10" sm="12" xs="12" v-if="selectedChildCategory" class="mt-15">
                   <v-container v-for="(question,questionIndex) in selectedChildCategory.questions" :key="questionIndex" class="fu-container-styling mt-4">
+
                     <v-layout row wrap>
                       <v-flex xs12 class="pa-1">
 
-
                         <!-- Help Text -->
                         <p style="font-size: 16px" class="mb-0">
+                          <span>
+                            <v-icon v-if="setQuestionAnswerVariable(question.id).answered" color="success">mdi-check</v-icon>
+                            <v-icon v-else color="error">mdi-close</v-icon>
+                          </span>
                           {{ question.title }}
                           <v-menu offset-x>
                             <template v-slot:activator="{ on }">
@@ -299,7 +459,10 @@
 
                         <div v-if="question.type == 'q_scale'">
                           <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
-                            <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                            <v-radio-group
+                             :disabled="setQuestionAnswerVariable(question.id).answered"  
+                             v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                            >
                               <v-radio label="1" value="1"></v-radio>
                               <v-radio label="2" value="2"></v-radio>
                               <v-radio label="3" value="3"></v-radio>
@@ -308,7 +471,10 @@
                             </v-radio-group>
                           </div>
                           <div v-else>
-                            <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                            <v-radio-group 
+                              :disabled="setQuestionAnswerVariable(question.id).answered"  
+                              v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                            >
                               <v-radio label="1" value="1"></v-radio>
                               <v-radio label="2" value="2"></v-radio>
                               <v-radio label="3" value="3"></v-radio>
@@ -318,7 +484,10 @@
                           </div>
                         </div>
                         <div v-else-if="question.type == 'q_multiple_choice'">
-                          <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered"  v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                          <v-radio-group 
+                            :disabled="setQuestionAnswerVariable(question.id).answered"  
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                          >
                             <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
                           </v-radio-group>
                         </div>
@@ -340,6 +509,22 @@
                     </v-layout>
                   </v-container>
                 </v-col>
+
+                <!-- No Sub Category Selected Yet -->
+                <v-col v-else cols="12" xl="10" lg="10" md="10" sm="12" xs="12" class="mt-15">
+                  <p class="title" v-if="$vuetify.breakpoint.mdAndUp"> 
+                    <span>
+                      <v-icon large>mdi-arrow-left</v-icon>
+                    </span>
+                    <span class="pl-5">Select one of the side categories to see the category questions</span>
+                  </p>
+                  <p class="title" v-else> 
+                    <span>
+                      <v-icon large>mdi-arrow-up</v-icon>
+                    </span>
+                    <span class="pl-5">Select one of the sub categories to see the category questions</span>
+                  </p>
+                </v-col> 
               </v-row>
              
                 </div>
@@ -347,8 +532,43 @@
 
             </v-tabs>
           </div>
-          <v-btn color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Save Answers</v-btn>
-          <v-btn @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3 primary">go to Megatrends</v-btn>
+          <div class="pl-5 pt-5 pb-5">
+            <v-btn title="Save new answered questions" color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Save Answers</v-btn>
+            <span style="font-size: 16px" class="mb-0">
+              <v-menu offset-y nudge-bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn @click="selectedQuestionInfo = 'yep'" v-on="on" color="primary" style="transform: translateY(5px)" text icon small>
+                    <v-icon title="More information regarding the Save Answer button" size="30"> mdi-information </v-icon>
+                  </v-btn>
+                </template>
+                <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px" style="transform: translateY(-3px)">
+                  <div v-if="selectedQuestionInfo" class="pa-5">
+                    <p>Save Answer button will save any questions you have answered</p>
+                    <p>It will be disabled if no new question have been answered</p>
+                  </div>
+                </v-card>
+              </v-menu>
+            </span>
+            <v-btn title="take you to megatrends, once all categories have been answered" @click="navigateMainTemplate(3)" :disabled="!isFormDone" right class="mt-3 ml-3 primary">go to Megatrends</v-btn>
+            <span style="font-size: 16px" class="mb-0">
+              <v-menu offset-y nudge-bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn @click="selectedQuestionInfo = 'yep'" v-on="on" color="primary" style="transform: translateY(5px)" text icon small>
+                    <v-icon title="More information regarding the Go to Megatrends button" size="30"> mdi-information </v-icon>
+                  </v-btn>
+                </template>
+                <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px" style="transform: translateY(-3px)">
+                  <div v-if="selectedQuestionInfo" class="pa-5">
+                    <p>All categories need to be answered, to activate this button</p>
+                  </div>
+                </v-card>
+              </v-menu>
+            </span>
+          </div>
+
+          
+
+
           <div class="pb-3"></div>
         </div>
       </template>
@@ -484,6 +704,7 @@
       </template>
     </v-card>
   </v-dialog>
+  
 </template>
 
 <script>
@@ -1799,5 +2020,26 @@ export default {
   border-bottom: 5px solid black;
 }
 
+.inputStyling {
+  border:1px solid black; 
+  border-radius: 5px; 
+  padding-left: 5px; 
+  padding-right: 5px; 
+  padding-top:20px;
+}
+
+.inputSmall {
+  width: 200px;
+}
+.inputMedium {
+  width: 250px;
+}
+.inputLarge {
+  width: 300px;
+}
+
+.inputPhone {
+  margin: 10px;
+}
 
 </style>
