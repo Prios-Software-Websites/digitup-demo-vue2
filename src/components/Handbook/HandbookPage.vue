@@ -12,9 +12,11 @@
             <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
           </v-card>
         </a> -->
-        <v-card>
-          <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
-        </v-card>
+        <v-hover v-slot:default="{ hover }">
+          <v-card :elevation="hover ? 12 : 2">
+            <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
+          </v-card>
+        </v-hover>
       </v-col>
     </v-row>
   </div>
