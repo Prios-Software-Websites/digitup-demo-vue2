@@ -7,16 +7,13 @@
       </v-col>
 
       <v-col cols="4" class="ma-0 pa-0" v-for="(handbook, handbookIndex) in handbooks" :key="handbookIndex">
-        <!-- <a href="https://www.google.com/" target="_blank">
-          <v-card>
-            <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
-          </v-card>
-        </a> -->
-        <v-hover v-slot:default="{ hover }">
-          <v-card :elevation="hover ? 12 : 2">
-            <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
-          </v-card>
-        </v-hover>
+        <a :href="handbook.handbookLink" target="_blank">
+          <v-hover v-slot:default="{ hover }">
+            <v-card :elevation="hover ? 12 : 2">
+              <v-img :src="handbook.handbookImage" width="300px" height="auto" contain class="mx-auto"></v-img>
+            </v-card>
+          </v-hover>
+        </a>
       </v-col>
     </v-row>
   </div>
@@ -30,7 +27,7 @@ export default {
         {
           handbookTitle: 'Handbook 1',
           handbookImage: "img/handbook1.jpg",
-          link: "https://www.google.com/"
+          handbookLink: "https://anyflip.com/whhx/byvg/"
         },
       ]
     }

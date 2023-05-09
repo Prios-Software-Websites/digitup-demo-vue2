@@ -9,7 +9,7 @@
         <v-card class="mt-15 introImage" flat>
           <v-img src="../assets/images/Homepagesmab.jpg" height="600">
             <p class="introTitle">Welcome to InproFuture</p>
-            <p class="introDescription">Some short information about the project</p>
+            <!-- <p class="introDescription">Some short information about the project</p> -->
           </v-img>
         </v-card>
       </v-col>
@@ -116,7 +116,7 @@ import NewsMainPage from "@/components/News/NewsMainPage.vue"
   /* background-color:rgb(213, 211, 211); */
 }
 .introTitle {
-  font-size:48px;
+  font-size:52px;
   color: #FF7E26;
   opacity: 1;
   letter-spacing: 0px;
