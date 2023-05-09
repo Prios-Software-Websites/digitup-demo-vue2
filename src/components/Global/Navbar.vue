@@ -103,10 +103,10 @@ a:visited {
 a:hover {
   text-decoration: underline;
 }
-a:active {
+/* a:active {
   background-color:black;
   color: orangered;
-}
+} */
 
 /* Contact Button */
 .contactButton {
