@@ -1,10 +1,10 @@
 <template>
-  <v-dialog v-model="openMappingToolDialog" role="An dialog for the user to try out the mapping tool" :width="dialogWidth" :fullscreen="isFullscreen">
+  <v-dialog v-model="openMappingToolDialog" :role="$t('mappingFormGlobal.dialogRoleText')" :width="dialogWidth" :fullscreen="isFullscreen">
      <v-card>
       <v-card-title>
-          <span class="headline">Mapping Form</span>
+          <span class="headline">{{$t("mappingFormGlobal.headline")}}</span>
           <v-spacer />
-          <v-btn color="error" icon @click="closeDialog()">
+          <v-btn color="error" icon @click="closeDialog()" :title="$t('mappingFormGlobal.closeDialogButtonTooltip')">
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-card-title>
@@ -15,11 +15,18 @@
         <!-- <p>Tekst tekst tekst</p> -->
         <v-row class="ma-0 pa-0">
           <v-col cols="4">
-            <v-text-field label="email" v-model="mappingEmail"></v-text-field>
-            <v-text-field label="username" v-model="mappingUsername"></v-text-field>
+            <v-text-field :label="$t('mappingFormLoginPage.emailLabel')" v-model="mappingEmail"></v-text-field>
+            <v-text-field :label="$t('mappingFormLoginPage.usernameLabel')" v-model="mappingUsername"></v-text-field>
           </v-col>
         </v-row>
-        <v-btn :disabled="!mappingEmail || !mappingUsername" @click="checkIfEmailGotContent()" class="primary ml-3 mb-3">Take Mapping Tools</v-btn>
+        <v-btn 
+          :disabled="!mappingEmail || !mappingUsername" 
+          @click="checkIfEmailGotContent()" 
+          class="primary ml-3 mb-3"
+          :title="$t('mappingFormGlobal.closeDialogButtonTooltip')"
+        >
+          {{$t("mappingFormLoginPage.takeMappingToolButtonTooltip")}}
+        </v-btn>
 
       </template>
 
@@ -723,115 +730,115 @@ export default {
           {
             id:320,
             strengths:{
-              name:"Business strategy",
+              name: this.$t('swotText.BusinessStrategy.name'),
               points:[
-                "Being able to react faster to changes in the market situation (as fluctuating demand, lack of certain resources, necessity to change your logistic channels)",
-                "Being able to embrace latest market trends",
-                "Using digital simulation to better predict outcome of digitalization projects (as using digital twins and techniques as “test-before-invest”)",
-                "Providing products with implemented connectivity (that are sending data about their utilization)",
-                "Raising the value of your company",
+                this.$t('swotText.BusinessStrategy.pointsOne'),
+                this.$t('swotText.BusinessStrategy.pointsTwo'),
+                this.$t('swotText.BusinessStrategy.pointsThree'),
+                this.$t('swotText.BusinessStrategy.pointsFour'),
+                this.$t('swotText.BusinessStrategy.pointsFive'),
               ]
             },
             weaknesses:{
-              name:"Business strategy",
+              name: this.$t('swotText.BusinessStrategyTwo.name'),
               points:[
-                "Not able to react faster to changes in the market situation (as fluctuating demand, lack of certain resources, necessity to change your logistic channels)",
-                "Not able to embrace latest market trends",
-                "Not using digital simulation to better predict outcome of digitalization projects (as using digital twins and techniques as “test-before-invest”)",
-                "Not providing products with implemented connectivity (that are sending data about their utilization)",
+                this.$t('swotText.BusinessStrategyTwo.pointsOne'),
+                this.$t('swotText.BusinessStrategyTwo.pointsTwo'),
+                this.$t('swotText.BusinessStrategyTwo.pointsThree'),
+                this.$t('swotText.BusinessStrategyTwo.pointsFour'),
               ]
             }
           },
           {
             id:323,
             strengths:{
-              name:"Business operations",
+              name: this.$t('swotText.BusinessOperations.name'),
               points:[
-                "Higher agility in introducing new products or product upgrades",
-                "Easier acceptance of required delivery time frames",
-                "Being able to provide new ordering options",
-                "Providing improved or different level of service",
-                "Providing electronic communication with customers",
-                "Producing higher quality products by better and faster tracing defects and faults",
+                this.$t('swotText.BusinessOperations.pointsOne'),
+                this.$t('swotText.BusinessOperations.pointsTwo'),
+                this.$t('swotText.BusinessOperations.pointsThree'),
+                this.$t('swotText.BusinessOperations.pointsFour'),
+                this.$t('swotText.BusinessOperations.pointsFive'),
+                this.$t('swotText.BusinessOperations.pointsSix'),
               ]
             },
             weaknesses:{
-              name:"Business operations",
+              name: this.$t('swotText.BusinessOperationsTwo.name'),
               points:[
-                "Losing contact with technology trends",
-                "Not able to react fast enough to the requirements of the fluctuating marke",
-                "At risk of losing customers",
-                "Missing a significant chance to established a culture of systematic innovation of products, upskilling of staff, data harvesting with potential of improvement",
-                "Not able to provide new ordering options or different level of service",
+                this.$t('swotText.BusinessOperationsTwo.pointsOne'),
+                this.$t('swotText.BusinessOperationsTwo.pointsTwo'),
+                this.$t('swotText.BusinessOperationsTwo.pointsThree'),
+                this.$t('swotText.BusinessOperationsTwo.pointsFour'),
+                this.$t('swotText.BusinessOperationsTwo.pointsFive'),
               ]
             }
           },
           {
             id:326,
             strengths:{
-              name:"HR and Culture",
+              name: this.$t('swotText.HRAndCulture.name'),
               points:[
-                "You do not suffer of a shortage of experts",
-                "Your employees understand the potential and challenges of digital implementation",
-                "Your key engineers get appropriate upskilling in the areas of digitalization",
-                "You might even have a dedicated team for digitalization",
-                "You have a company culture of openness that is required for your staff to be aware and ready for the upcoming changes",
+                this.$t('swotText.HRAndCulture.pointsOne'),
+                this.$t('swotText.HRAndCulture.pointsTwo'),
+                this.$t('swotText.HRAndCulture.pointsThree'),
+                this.$t('swotText.HRAndCulture.pointsFour'),
+                this.$t('swotText.HRAndCulture.pointsFive'),
               ]
             },
             weaknesses:{
-              name:"HR and Culture",
+              name: this.$t('swotText.HRAndCultureTwo.name'),
               points:[
-                "You suffer of a shortage of experts",
-                "Your employees do not understand the potential and challenges of digital implementation",
-                "Your key engineers are not being appropriate educated in the areas of digitalization",
-                "You don't have a dedicated team for digitalization",
-                "You don't have a company culture of openness that is required for your staff to be aware and ready for the upcoming changes, which can result in scepticism of the staff and their perspective regarding the company.",
+                this.$t('swotText.HRAndCultureTwo.pointsOne'),
+                this.$t('swotText.HRAndCultureTwo.pointsTwo'),
+                this.$t('swotText.HRAndCultureTwo.pointsThree'),
+                this.$t('swotText.HRAndCultureTwo.pointsFour'),
+                this.$t('swotText.HRAndCultureTwo.pointsFive'),
               ]
             }
           },
           {
             id:329,
             strengths:{
-              name:"Technology and Data management",
+              name: this.$t('swotText.TechnologyAndDataManagement.name'),
               points:[
-                "You were able to identify relevant data within your existing system",
-                "You are collecting data effectively from you machines, production to distribution",
-                "You are using collected data to interpret them and use the results to further improve your business",
-                "You have your IT landscape regularly audited to discover sources of its vulnerability and avoid its exploitation",
-                "You have partaken relevant steps to improve your cyber security",
-                "Your management has endorsed the establishment of “data culture” within your business",
+                this.$t('swotText.TechnologyAndDataManagement.pointsOne'),
+                this.$t('swotText.TechnologyAndDataManagement.pointsTwo'),
+                this.$t('swotText.TechnologyAndDataManagement.pointsThree'),
+                this.$t('swotText.TechnologyAndDataManagement.pointsFour'),
+                this.$t('swotText.TechnologyAndDataManagement.pointsFive'),
+                this.$t('swotText.TechnologyAndDataManagement.pointsSix'),
               ]
             },
             weaknesses:{
-              name:"Technology and Data management",
+              name: this.$t('swotText.TechnologyAndDataManagementTwo.name'),
               points:[
-                "Not able to identify relevant data within your existing system",
-                "Not collecting data effectively from you machines, production to distribution",
-                "Not using collected data to interpret them and use the results to further improve your business",
-                "Not having your IT landscape regularly audited to discover sources of its vulnerability and avoid its exploitation",
-                "Not partaking relevant steps to improve your cyber security",
-                "Not endorsing the establishment of “data culture” within your business",
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsOne'),
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsTwo'),
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsThree'),
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsFour'),
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsFive'),
+                this.$t('swotText.TechnologyAndDataManagementTwo.pointsSix'),
               ]
             }
           },
           {
             id:333,
             strengths:{
-              name:"Green digitalization",
+              name: this.$t('swotText.GreenDigitalization.name'),
               points:[
-                "Sustainable service provision by using tracking for further reuse",
-                "Better emission, pollution or waste management",
-                "Optimization of raw material consumption",
-                "Reduction of transport and packaging cost with these implementations, you can benefit from more funding or other business opportunities, gain more market share and meet the energy standards and regulations easier.",
+                this.$t('swotText.GreenDigitalization.pointsOne'),
+                this.$t('swotText.GreenDigitalization.pointsTwo'),
+                this.$t('swotText.GreenDigitalization.pointsThree'),
+                this.$t('swotText.GreenDigitalization.pointsFour'),
               ]
             },
             weaknesses:{
-              name:"Green digitalization",
+              name: this.$t('swotText.GreenDigitalizationTwo.name'),
               points:[
-                "Sustainable service provision by using tracking for further reuse ",
-                "Better emission, pollution or waste management",
-                "Optimization of raw material consumption",
-                "Reduction of transport and packaging cost without these implementations, you cannot benefit from more funding or other business opportunities, gain more market share or meet the energy standards and regulations.",
+                this.$t('swotText.GreenDigitalizationTwo.pointsOne'),
+                this.$t('swotText.GreenDigitalizationTwo.pointsTwo'),
+                this.$t('swotText.GreenDigitalizationTwo.pointsThree'),
+                this.$t('swotText.GreenDigitalizationTwo.pointsFour'),
               ]
             }
           },

@@ -242,5 +242,107 @@
         }
       }
     }
+  },
+  "swotText": {
+    "BusinessStrategy": {
+      "name": "Business strategy",
+      "pointsOne": "Being able to react faster to changes in the market situation (as fluctuating demand, lack of certain resources, necessity to change your logistic channels)",
+      "pointsTwo": "Being able to embrace latest market trends",
+      "pointsThree": "Using digital simulation to better predict outcome of digitalization projects (as using digital twins and techniques as “test-before-invest”)",
+      "pointsFour": "Providing products with implemented connectivity (that are sending data about their utilization)",
+      "pointsFive": "Raising the value of your company"
+    },
+    "BusinessStrategyTwo": {
+      "name": "Business strategy",
+      "pointsOne": "Not able to react faster to changes in the market situation (as fluctuating demand, lack of certain resources, necessity to change your logistic channels)",
+      "pointsTwo": "Not able to embrace latest market trends",
+      "pointsThree": "Not using digital simulation to better predict outcome of digitalization projects (as using digital twins and techniques as “test-before-invest”)",
+      "pointsFour": "Not providing products with implemented connectivity (that are sending data about their utilization)"
+    },
+    "BusinessOperations": {
+      "name": "Business operations",
+      "pointsOne": "Higher agility in introducing new products or product upgrades",
+      "pointsTwo": "Easier acceptance of required delivery time frames",
+      "pointsThree": "Being able to provide new ordering options",
+      "pointsFour": "Providing improved or different level of service",
+      "pointsFive": "Providing electronic communication with customers",
+      "pointsSix": "Producing higher quality products by better and faster tracing defects and faults"
+    },
+    "BusinessOperationsTwo": {
+      "name": "Business operations",
+      "pointsOne": "Losing contact with technology trends",
+      "pointsTwo": "Not able to react fast enough to the requirements of the fluctuating marked",
+      "pointsThree": "At risk of losing customers",
+      "pointsFour": "Missing a significant chance to established a culture of systematic innovation of products, upskilling of staff, data harvesting with potential of improvement",
+      "pointsFive": "Not able to provide new ordering options or different level of service"
+    },
+    "HRAndCulture": {
+      "name": "HR and Culture",
+      "pointsOne": "You do not suffer of a shortage of experts",
+      "pointsTwo": "Your employees understand the potential and challenges of digital implementation",
+      "pointsThree": "Your key engineers get appropriate upskilling in the areas of digitalization",
+      "pointsFour": "You might even have a dedicated team for digitalization",
+      "pointsFive": "You have a company culture of openness that is required for your staff to be aware and ready for the upcoming changes"
+    },
+    "HRAndCultureTwo": {
+      "name": "HR and Culture",
+      "pointsOne": "You suffer of a shortage of experts",
+      "pointsTwo": "Your employees do not understand the potential and challenges of digital implementation",
+      "pointsThree": "Your key engineers are not being appropriate educated in the areas of digitalization",
+      "pointsFour": "You don't have a dedicated team for digitalization",
+      "pointsFive": "You don't have a company culture of openness that is required for your staff to be aware and ready for the upcoming changes, which can result in scepticism of the staff and their perspective regarding the company."
+    },
+    "TechnologyAndDataManagement": {
+      "name": "Technology and Data management",
+      "pointsOne": "You were able to identify relevant data within your existing system",
+      "pointsTwo": "You are collecting data effectively from you machines, production to distribution",
+      "pointsThree": "You are using collected data to interpret them and use the results to further improve your business",
+      "pointsFour": "You have your IT landscape regularly audited to discover sources of its vulnerability and avoid its exploitation",
+      "pointsFive": "You have partaken relevant steps to improve your cyber security",
+      "pointsSix": "Your management has endorsed the establishment of “data culture” within your business"
+    },
+    "TechnologyAndDataManagementTwo": {
+      "name": "Technology and Data management",
+      "pointsOne": "Not able to identify relevant data within your existing system",
+      "pointsTwo": "Not collecting data effectively from you machines, production to distribution",
+      "pointsThree": "Not using collected data to interpret them and use the results to further improve your business",
+      "pointsFour": "Not having your IT landscape regularly audited to discover sources of its vulnerability and avoid its exploitation",
+      "pointsFive": "Not partaking relevant steps to improve your cyber security",
+      "pointsSix": "Not endorsing the establishment of “data culture” within your business"
+    },
+    "GreenDigitalization": {
+      "name": "Green digitalization",
+      "pointsOne": "Sustainable service provision by using tracking for further reuse",
+      "pointsTwo": "Better emission, pollution or waste management",
+      "pointsThree": "Optimization of raw material consumption",
+      "pointsFour": "Reduction of transport and packaging cost with these implementations, you can benefit from more funding or other business opportunities, gain more market share and meet the energy standards and regulations easier."
+    },
+    "GreenDigitalizationTwo": {
+      "name": "Green digitalization",
+      "pointsOne": "Sustainable service provision by using tracking for further reuse",
+      "pointsTwo": "Better emission, pollution or waste management",
+      "pointsThree": "Optimization of raw material consumption",
+      "pointsFour": "Reduction of transport and packaging cost without these implementations, you cannot benefit from more funding or other business opportunities, gain more market share or meet the energy standards and regulations."
+    }
+  },
+  "mappingToolFrontpage": {
+    "title": "Digital Maturity Assessment Tool",
+    "paragraphOne": "Assessing your level of digitalisation. The Digital Maturity Assessment Tool (DMAT) is an online tool that assesses digital maturity based on a questionnaire in 5 categories: Business Strategy, Business Operations, Data and Technology, HR and Culture, Green Digitalization.",
+    "paragraphTwo": "For eacaaah category there are two questions and their corresponding answers, from which please choose all that you consider relevant. This assessment is standard and uniform across the EU for possible comparisons and subsequent adjustment for improvement.",
+    "paragraphThree": "It is necessary to look at these aspects and categories of business from a higher perspective, the so-called helicopter view. Try to be unbiased and evaluate objectively.",
+    "paragraphFour": "You may have been thinking about opportunities to engage and extend digital technologies within the business, it is likely that you have taken the first steps, have a plan to implement digital measures or are consulting externally on digital solutions. All of these activities help to increase the level of digitalisation of your business and at the same time motivate other small and medium-sized entrepreneurs in Europe.",
+    "startAssessmentButton": "Start the Assessment Tool",
+    "startAssessmentButtonTooltip": "Click to start the Assessment Tool"
+  },
+  "mappingFormGlobal": {
+    "headline": "Mapping Form",
+    "closeDialogButtonTooltip": "Close Mapping Tool",
+    "dialogRoleText": "An dialog for the user to try out the mapping tool"
+  },
+  "mappingFormLoginPage": {
+    "emailLabel": "email",
+    "usernameLabel": "username",
+    "takeMappingToolButton": "Take mapping tools",
+    "takeMappingToolButtonTooltip": "Click to take mapping tool"
   }
 }

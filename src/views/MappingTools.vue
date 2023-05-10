@@ -1,25 +1,21 @@
 <template>
   <div class="homePageWidth">
     <p class="mt-15"></p>
-    <p class="trainingChapterTitle">Digital Maturity Assessment Tool</p>
-    <p class="trainingChapterDescription">
-      Assessing your level of digitalisation. The Digital Maturity Assessment Tool (DMAT) is an online tool that assesses digital maturity based on a questionnaire in 5 categories: 
-      Business Strategy, Business Operations, Data and Technology, HR and Culture, Green Digitalization.
-    </p>
-    <p>
-      For each category there are two questions and their corresponding answers, from which please choose all that you consider relevant.
-      This assessment is standard and uniform across the EU for possible comparisons and subsequent adjustment for improvement.
-    </p>
-    <p>
-      It is necessary to look at these aspects and categories of business from a higher perspective, the so-called helicopter view. Try to be unbiased and evaluate objectively.
-    </p>
-    <p>
-      You may have been thinking about opportunities to engage and extend digital technologies within the business, 
-      it is likely that you have taken the first steps, have a plan to implement digital measures or are consulting externally on digital solutions. 
-      All of these activities help to increase the level of digitalisation of your business and at the same time motivate other small and medium-sized entrepreneurs in Europe.
-    </p>
+    <p class="trainingChapterTitle">{{$t("mappingToolFrontpage.title")}}</p>
+    <p class="trainingChapterDescription">{{$t("mappingToolFrontpage.paragraphOne")}}</p>
+    <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
+    <p>{{$t("mappingToolFrontpage.paragraphThree")}}</p>
+    <p>{{$t("mappingToolFrontpage.paragraphFour")}}</p>
 
-    <v-btn @click="$refs.openMappingDialog.openDialog()" large dark class="mt-15"> Start the Assessment Tool </v-btn>
+    <v-btn 
+      @click="$refs.openMappingDialog.openDialog()" 
+      large 
+      dark 
+      class="mt-15" 
+      :title="this.$t('mappingToolFrontpage.startAssessmentButtonTooltip')"
+    > 
+      {{$t("mappingToolFrontpage.startAssessmentButton")}} 
+    </v-btn>
 
     <MappingToolsDialog ref="openMappingDialog"></MappingToolsDialog>
   </div>
