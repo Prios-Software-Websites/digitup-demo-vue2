@@ -36,5 +36,211 @@
     "elearning": "E-Learning",
     "resources": "Resources",
     "project": "Project"
+  },
+  "megatrends": {
+    "Virtualization": {
+      "name": "Virtualization",
+      "macrotrends": {
+        "VR": {
+          "name": "VR",
+          "helperText": "With the help of VR glasses, full-body suits, or tactile gloves, we can not only see the virtual world but also interact with it. VR has long since ceased to be used merely for entertainment purposes. Now it has its uses in the fields of architecture, planning, and therapy for example."
+        },
+        "AR": {
+          "name": "AR",
+          "helperText": "Wearables and other technologies increasingly unite our real-world senses with the virtual world. Augmented Reality refers to the reality that is expanded with virtual content, e.g. spectacle lenses that supplement our field of vision with digital, personalized information such as messages or navigation data."
+        }
+      }
+    },
+    "AI": {
+      "name": "AI",
+      "macrotrends": {
+        "ArtificialCoworkers": {
+          "name": "Artificial Coworkers/Robots",
+          "helperText": "In the world of work, AI (in the form of intelligent assistants, smart tools, and robots) can take on increasingly demanding tasks and massively facilitate or replace the need for human workers."
+        },
+        "Chatbots": {
+          "name": "Chatbots",
+          "helperText": "A chatbot is a technical system that responds autonomously, and as “humanly” as possible, via a dialogue system. The concept includes automated chatbots that communicate in writing on websites, as well as apps that are used to converse/speak in a human-like manner. Chatbots help to clarify questions and problems and explain products."
+        },
+        "IntelligentPersonalAssistants": {
+          "name": "Intelligent Personal Assistants",
+          "helperText": "AI can facilitate and even revolutionize our everyday lives through personal assistants, tools, and robots. Real-world examples include language assistants such as Siri, assistants that remind users of an appointment via pop-ups, or household/care robots."
+        },
+        "MachineDeepLearning": {
+          "name": "Machine & Deep Learning",
+          "helperText": "The term machine learning refers to self-learning technologies that simulate human learning and thinking processes. These self-adaptive algorithms develop their own solutions to problems through collected data and experience."
+        },
+        "NaturalLanguageProcessing": {
+          "name": "Natural Language Processing",
+          "helperText": "The aim of Natural Language Processing (NLP) is direct communication between man and machine by means of natural language. Software is able to understand, process, and manipulate human language (e.g. the translation of a spoken/written text in real time)."
+        },
+        "PatternAndImageRecognition": {
+          "name": "Pattern & Image Recognition",
+          "helperText": "Visual intelligence focuses on the analysis and recognition of patterns, images, and shapes and can also be used for pattern prediction (e.g. personal identification using face or handwriting recognition, industrial quality control)."
+        }
+      }
+    },
+    "DataAndTechnologies": {
+      "name": "Data and Technologies",
+      "macrotrends": {
+        "BigDataAndSmartData": {
+          "name": "Big data and smart data",
+          "helperText": "Smart Data describes the intelligent processing of large amounts of data (Big Data). In contrast to Big Data, data in Smart Data is already structured and prepared for the end user through data collection and analysis methods."
+        },
+        "Blockchain": {
+          "name": "Blockchain",
+          "helperText": "Blockchain is a decentralized database that can be continuously expanded with datasets. The data records are linked by cryptographic procedures and can contain a time stamp and transaction metadata."
+        },
+        "CloudComputing": {
+          "name": "Cloud Computing",
+          "helperText": "Cloud computing is an IT infrastructure service that provides data storage, software applications, and services. Data is not stored on local computers; instead, access is granted via networks, allowing usage that is independent of limiting factors such as time, location, and device."
+        },
+        "DataTransmission": {
+          "name": "Data Transmission",
+          "helperText": "New technologies and new possibilities for data transmission are increasingly improving transmission speeds and eliminating data volumes as a limiting factor (e.g. 5G, Near Field Communication, RFID, Li-Fi)."
+        },
+        "Geodata": {
+          "name": "Geodata",
+          "helperText": "Geodata is information that is assigned to a specific geographical position. With the help of this data, satellite-based analysis of market potentials, harvest forecasts, traffic flow, etc. can be carried out."
+        },
+        "OpenData": {
+          "name": "Open Data",
+          "helperText": "Open data refers to data that is made available for free use or dissemination, without restrictions, and in the interest of the general public. These include statistical data, geodata, teaching materials, and research results, which are made available by either government agencies or private-sector companies."
+        },
+        "OpenSource": {
+          "name": "Open Source",
+          "helperText": "Open source refers to software whose source code is usually publicly accessible free of charge and can be viewed, modified, used, and distributed by third parties. In contrast to proprietary software, open source products are thus often less expensive, more flexible, and more durable."
+        }
+      }
+    },
+    "SecurityAndTransparency": {
+      "name": "Security & Transparency",
+      "macrotrends": {
+        "Cybersecurity": {
+          "name": "Cybersecurity",
+          "helperText": "Cybersecurity is the protection of computer systems, servers, and networks against theft and damage as well as against misuse or interruption of services and functions."
+        },
+        "DataProtectionAndTransparency": {
+          "name": "Data Protection & Transparency",
+          "helperText": "In the digital world, the dissemination of private data quickly leads to a loss of privacy. Therefore, data protection becomes a requirement. The demand for transparency aims to ensure that all information and further processing of data is disclosed."
+        },
+        "DigitalCurrencyAndPayment": {
+          "name": "Digital Currency & Payments",
+          "helperText": "This trend includes all payments made by electronic means, including anonymous cryptographic payment systems and currencies (e.g. Bitcoins), as well as all other online payments such as Paypal or mobile payment (e.g. Apple Pay)."
+        },
+        "VerifiedContent": {
+          "name": "Verified Content",
+          "helperText": "The rising wave of fake news and fake profiles makes many users suspicious of online content. Many networks and media providers, therefore, rely on new tools that reliably check content for accuracy."
+        }
+      }
+    },
+    "EnergyClimateChangesAndSustainability": {
+      "name": "Energy, Climate Change & Sustainability",
+      "macrotrends": {
+        "ClimateChange": {
+          "name": "Climate Change",
+          "helperText": "Global warming, which is mainly caused by humans, is an example of very rapid climate change. The associated negative impacts will affect all facets of human life and economic activity. More and more people, nations, and institutions are therefore committed to initiatives to reduce greenhouse gas emissions."
+        },
+        "EnergyEfficiency": {
+          "name": "Energy Efficiency",
+          "helperText": "Innovative concepts and technological developments open up new possibilities for significantly reduced energy consumption in the form of electricity, heat, etc. For an increasing number of people and companies, these concepts and developments make it possible to live and work in a more sustainable way."
+        },
+        "ZeroWasteAndCircularEconomy": {
+          "name": "Zero Waste & Circular Economy",
+          "helperText": "These concepts aim to minimize waste production, emissions, and energy consumption as much as possible. Such important objectives are achieved through reuse, composting, remanufacturing, refurbishing, or recycling."
+        }
+      }
+
+    },
+    "DigitallyConnectedProductsOffersAndServices": {
+      "name": "Digitally Connected Products, Offers & Services",
+      "macrotrends": {
+        "ConnectedServicesProductsAndApps": {
+          "name": "Connected Services Products & Apps",
+          "helperText": "Networked services and products are linked to other devices and/or systems via the Internet. They mutually exchange data and can also be controlled by humans using integrated functions. Often, these devices/systems can also be controlled or applied via apps."
+        },
+        "LocationBasedServices": {
+          "name": "Location Based Services",
+          "helperText": "Geospecific products offer the user of a mobile device specific services based on their location, e.g. route planning or restaurant finders. The location is shared via GPS, WiFi, or Bluetooth."
+        },
+        "SmartHomeAndBuilding": {
+          "name": "Smart Home & Building",
+          "helperText": "The term Smart Home refers to technically networked devices and installations within a living space that can be operated remotely, often by voice. Intelligent home applications and smart building solutions are designed to enhance our lives in terms of health, safety, benefits, and comfort."
+        }
+      }
+
+    },
+    "FutureWorking": {
+      "name": "Future Working",
+      "macrotrends": {
+        "CollaborationInNetworks": {
+          "name": "Collaboration in Networks",
+          "helperText": "Digitisation opens up new possibilities for collaborative work in networks. New innovation “ecosystems” are being created, and open innovation and open management are becoming easier to implement."
+        },
+        "NewLearning": {
+          "name": "New Learning",
+          "helperText": "Online higher-education courses, customized blended learning concepts, “learning apps” etc. allow us to enable a lifelong learning process that is independent of time or place."
+        },
+        "NewWorkingModelsAndForms": {
+          "name": "New Working Models & Forms",
+          "helperText": "Digitisation promises more flexibility in terms of working hours and locations. New employment relationships and concepts are also changing our world of work. The aim is to find solutions that are as individualized as possible in order to help maintain a healthy work-life balance."
+        },
+        "TechnologisationOfWork": {
+          "name": "Technologisation of Work",
+          "helperText": "Digitisation, intelligent tools, smart instruments, or wearables can help employees perform tasks better, faster, easier, or more innovatively. Furthermore, workers can be analyzed in terms of work performance and efficiency. The resulting data can be used for specific training, team compositions, etc."
+        }
+      }
+    },
+    "InnovativeTechnologiesAndManufacturing": {
+      "name": "Innovative Technologies & Manufacturing",
+      "macrotrends": {
+        "AdditiveManufacturing": {
+          "name": "Additive Manufacturing",
+          "helperText": "Additive manufacturing or 3D printing is the name given to computer-controlled manufacturing processes for creating three-dimensional objects and shapes made up of multiple layers of material and constructed according to specified dimensions."
+        },
+        "BiotechnologyAndGeneticEngineering": {
+          "name": "Biotechnology & Genetic Engineering",
+          "helperText": "Bioengineering applies engineering's scientific methods, in combination with computer science knowledge, to organic materials. With the help of these methods, tissue structures - or even complete living beings - can be manipulated or altered. Genetic engineering deals with the conversion of DNA building blocks and enables for example the breeding of new plants or the development of new drugs."
+        },
+        "IndustrialRobotics": {
+          "name": "Industrial Robotics",
+          "helperText": "The primary aim of including robotics in the industry is to have certain production processes, such as assembly or processing of products, carried out by robots. This automation results in enormous savings in terms of both time and resources."
+        },
+        "InnovativeProcessEngineering": {
+          "name": "Innovative Process Engineering",
+          "helperText": "Process engineering refers to how a specific product or material can be produced using either physical, chemical, or biological conversion processes, or digital approaches. Innovations in this field can be used in the manufacture of many everyday products and lead to better or completely new materials, products, and applications."
+        },
+        "IntelligentProduction": {
+          "name": "Intelligent Production",
+          "helperText": "Intelligent production refers to a production process - from manufacturing to logistics - which ideally is controlled and organized completely automatically and is relatively energy - and resource-efficient. By incorporating dynamic processes in the business and engineering area, even the production of individual customer requirements is possible without human intervention."
+        },
+        "NewMaterialsAndSubstances": {
+          "name": "New Materials & Substances",
+          "helperText": "Novel materials and substances have interesting properties that give them optimized performance and open up numerous new possibilities. Innovations include smart materials that react autonomously to changing environmental conditions or existing materials that gain additional functions through nanotechnology."
+        },
+        "SensorTechnologies": {
+          "name": "Sensor Technologies",
+          "helperText": "Sensors are used to measure and control important process parameters in a wide range of applications (industry, medicine, etc.). The technologies range from infrared, ultrasound, and radar, to high-resolution stereo cameras. New innovations include multi-sensor systems and are used to equip machines with artificial sensory perception."
+        }
+      }
+
+    },
+    "NewBusinessModelsAndMarketingLogics": {
+      "name": "New Business Models & Marketing Logics",
+      "macrotrends": {
+        "InnovativeBusinessModels": {
+          "name": "Innovative Business Models",
+          "helperText": "New sales & marketing opportunities, increasing virtualization, and technical developments (e.g. additive manufacturing) open up numerous possibilities for expanding existing business models, or finding completely new approaches."
+        },
+        "NewMarketing": {
+          "name": "New Marketing",
+          "helperText": "Ever more powerful communication devices, as well as progressive networking, allow new solutions in marketing - e.g. interaction marketing, content marketing, benefit-generating marketing, sensation marketing, and influencer marketing."
+        },
+        "PlatformEconomy": {
+          "name": "Platform Economy",
+          "helperText": "The term platform economy refers to a digital business model that brings together consumers and providers in a kind of digital marketplace and results in product purchases or in resource sharing (e.g. Amazon, Airbnb, Uber)."
+        }
+      }
+    }
   }
 }

@@ -841,7 +841,7 @@ export default {
       readyToSendTrendsData: "",
       openMappingToolDialog: false,
       accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
-      mappingTemplate: 1,
+      mappingTemplate: 3,
       formID: 168,
       todaysDate: "",
       mappingEmail: "",
@@ -908,78 +908,67 @@ export default {
       */
       megaTrends: [
         {
-          "name": "Virtualization",
+          "name": this.$t('megatrends.Virtualization.name'),
           "idList":  [1,2],
           "macroTrends": [
             {
-              "name": "VR",
+              "name": this.$t('megatrends.Virtualization.macrotrends.VR.name'),
               "MacroID": 1,
-              "helperText": `With the help of VR glasses, full-body suits, or tactile gloves, we can not only see the virtual world but also interact with it. 
-                VR has long since ceased to be used merely for entertainment purposes. 
-                Now it has its uses in the fields of architecture, planning, and therapy for example.`,
+              "helperText": this.$t('megatrends.Virtualization.macrotrends.VR.helperText'),
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "AR",
+              "name": this.$t('megatrends.Virtualization.macrotrends.AR.name'),
               "MacroID": 2,
-              "helperText": `Wearables and other technologies increasingly unite our real-world senses with the virtual world. 
-                Augmented Reality refers to the reality that is expanded with virtual content, e.g. spectacle lenses that supplement our field of vision with digital, 
-                personalized information such as messages or navigation data.`,
+              "helperText": this.$t('megatrends.Virtualization.macrotrends.AR.helperText'),
               "importance": 0,
               "competence": 0
             }
           ]
         },
         {
-          "name": "Ai",
+          "name": this.$t('megatrends.AI.name'),
           "idList":  [3,4,5,6,7,8],
           "macroTrends": [
             {
-              "name": "Artificial Coworkers/Robots",
-              "helperText": `In the world of work, AI (in the form of intelligent assistants, smart tools, and robots) 
-                can take on increasingly demanding tasks and massively facilitate or replace the need for human workers.`,
+              "name": this.$t('megatrends.AI.macrotrends.ArtificialCoworkers.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.ArtificialCoworkers.helperText'),
               "MacroID": 3,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Chatbots",
-              "helperText": `A chatbot is a technical system that responds autonomously, and as “humanly” as possible, via a dialogue system. 
-                The concept includes automated chatbots that communicate in writing on websites, as well as apps that are used to converse/speak in a human-like manner. 
-                Chatbots help to clarify questions and problems and explain products.`,
+              "name": this.$t('megatrends.AI.macrotrends.Chatbots.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.Chatbots.helperText'),
               "MacroID": 4,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Intelligent Personal Assistants",
-              "helperText": `AI can facilitate and even revolutionize our everyday lives through personal assistants, tools, and robots. 
-                Real-world examples include language assistants such as Siri, assistants that remind users of an appointment via pop-ups, or household/care robots.`,
+              "name": this.$t('megatrends.AI.macrotrends.IntelligentPersonalAssistants.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.IntelligentPersonalAssistants.helperText'),
               "MacroID": 5,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Machine & Deep Learning",
-              "helperText": `The term machine learning refers to self-learning technologies that simulate human learning and thinking processes. 
-                These self-adaptive algorithms develop their own solutions to problems through collected data and experience.`,
+              "name": this.$t('megatrends.AI.macrotrends.MachineDeepLearning.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.MachineDeepLearning.helperText'),
               "MacroID": 6,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Natural Language Processing",
-              "helperText": `The aim of Natural Language Processing (NLP) is direct communication between man and machine by means of natural language. 
-                Software is able to understand, process, and manipulate human language (e.g. the translation of a spoken/written text in real time).`,
+              "name": this.$t('megatrends.AI.macrotrends.NaturalLanguageProcessing.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.NaturalLanguageProcessing.helperText'),
               "MacroID": 7,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Pattern & Image Recognition",
-              "helperText": `Visual intelligence focuses on the analysis and recognition of patterns, images, and shapes and can also be used for pattern prediction 
-                (e.g. personal identification using face or handwriting recognition, industrial quality control).`,
+              "name": this.$t('megatrends.AI.macrotrends.PatternAndImageRecognition.name'),
+              "helperText": this.$t('megatrends.AI.macrotrends.PatternAndImageRecognition.helperText'),
               "MacroID": 8,
               "importance": 0,
               "competence": 0
@@ -987,61 +976,54 @@ export default {
           ]
         },
         {
-          "name": "Data and Technologies",
+          "name": this.$t('megatrends.DataAndTechnologies.name'),
           "idList":  [9,10,11,12,13,14,15],
           "macroTrends": [
             {
-              "name": "Big data and smart data",
-              "helperText": `Smart Data describes the intelligent processing of large amounts of data (Big Data). 
-                In contrast to Big Data, data in Smart Data is already structured and prepared for the end user through data collection and analysis methods.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.BigDataAndSmartData.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.BigDataAndSmartData.helperText'),
               "MacroID": 9,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Blockchain",
-              "helperText": `Blockchain is a decentralized database that can be continuously expanded with datasets. 
-                The data records are linked by cryptographic procedures and can contain a time stamp and transaction metadata.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.Blockchain.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.Blockchain.helperText'),
               "MacroID": 10,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Cloud computing",
-              "helperText": `Cloud computing is an IT infrastructure service that provides data storage, software applications, and services. 
-                Data is not stored on local computers; instead, access is granted via networks, allowing usage that is independent of limiting factors such as time, location, and device.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.CloudComputing.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.CloudComputing.helperText'),
               "MacroID": 11,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Data Transmission",
-              "helperText": `New technologies and new possibilities for data transmission are increasingly improving transmission speeds and eliminating data volumes as a limiting factor 
-                (e.g. 5G, Near Field Communication, RFID, Li-Fi).`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.DataTransmission.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.DataTransmission.helperText'),
               "MacroID": 12,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Geodata",
-              "helperText": `Geodata is information that is assigned to a specific geographical position. With the help of this data, satellite-based analysis of market potentials, 
-                harvest forecasts, traffic flow, etc. can be carried out.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.Geodata.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.Geodata.helperText'),
               "MacroID": 13,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Open Data",
-              "helperText": `Open data refers to data that is made available for free use or dissemination, without restrictions, and in the interest of the general public. 
-                These include statistical data, geodata, teaching materials, and research results, which are made available by either government agencies or private-sector companies.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.OpenData.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.OpenData.helperText'),
               "MacroID": 14,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Open Source",
-              "helperText": `Open source refers to software whose source code is usually publicly accessible free of charge and can be viewed, modified, used, and distributed by third parties. 
-                In contrast to proprietary software, open source products are thus often less expensive, more flexible, and more durable.`,
+              "name": this.$t('megatrends.DataAndTechnologies.macrotrends.OpenSource.name'),
+              "helperText": this.$t('megatrends.DataAndTechnologies.macrotrends.OpenSource.helperText'),
               "MacroID": 15,
               "importance": 0,
               "competence": 0
@@ -1049,37 +1031,33 @@ export default {
           ]
         },
         {
-          "name": "Security & Transparency",
+          "name": this.$t('megatrends.SecurityAndTransparency.name'),
           "idList":  [16,17,18,19],
           "macroTrends": [
             {
-              "name": "Cybersecurity",
-              "helperText": `Cybersecurity is the protection of computer systems, servers, and networks against theft and damage as well as against misuse or interruption of services and functions.`,
+              "name": this.$t('megatrends.SecurityAndTransparency.macrotrends.Cybersecurity.name'),
+              "helperText": this.$t('megatrends.SecurityAndTransparency.macrotrends.Cybersecurity.helperText'),
               "MacroID": 16,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Data Protection & Transparency",
-              "helperText": `In the digital world, the dissemination of private data quickly leads to a loss of privacy. 
-                Therefore, data protection becomes a requirement. 
-                The demand for transparency aims to ensure that all information and further processing of data is disclosed.`,
+              "name": this.$t('megatrends.SecurityAndTransparency.macrotrends.DataProtectionAndTransparency.name'),
+              "helperText": this.$t('megatrends.SecurityAndTransparency.macrotrends.DataProtectionAndTransparency.helperText'),
               "MacroID": 17,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Digital Currency & Payments",
-              "helperText": `This trend includes all payments made by electronic means, including anonymous cryptographic payment systems and currencies (e.g. Bitcoins), 
-                as well as all other online payments such as Paypal or mobile payment (e.g. Apple Pay).`,
+              "name": this.$t('megatrends.SecurityAndTransparency.macrotrends.DigitalCurrencyAndPayment.name'),
+              "helperText": this.$t('megatrends.SecurityAndTransparency.macrotrends.DigitalCurrencyAndPayment.helperText'),
               "MacroID": 18,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Verified Content",
-              "helperText": `The rising wave of fake news and fake profiles makes many users suspicious of online content. 
-                Many networks and media providers, therefore, rely on new tools that reliably check content for accuracy.`,
+              "name": this.$t('megatrends.SecurityAndTransparency.macrotrends.VerifiedContent.name'),
+              "helperText": this.$t('megatrends.SecurityAndTransparency.macrotrends.VerifiedContent.helperText'),
               "MacroID": 19,
               "importance": 0,
               "competence": 0
@@ -1087,20 +1065,18 @@ export default {
           ]
         },
         {
-          "name": "Energy, Climate Change & Sustainability",
+          "name": this.$t('megatrends.EnergyClimateChangesAndSustainability.name'),
           "idList":  [20,21,22],
           "macroTrends": [
             {
-              "name": "Climate Change",
-              "helperText": `Global warming, which is mainly caused by humans, is an example of very rapid climate change. 
-                The associated negative impacts will affect all facets of human life and economic activity. 
-                More and more people, nations, and institutions are therefore committed to initiatives to reduce greenhouse gas emissions.`,
+              "name": this.$t('megatrends.EnergyClimateChangesAndSustainability.macrotrends.ClimateChange.name'),
+              "helperText": this.$t('megatrends.EnergyClimateChangesAndSustainability.macrotrends.ClimateChange.helperText'),
               "MacroID": 20,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Energy Efficiency",
+              "name": this.$t('megatrends.EnergyClimateChangesAndSustainability.macrotrends.EnergyEfficiency.name'),
               "helperText": `Innovative concepts and technological developments open up new possibilities for significantly reduced energy consumption in the form of electricity, heat, etc. 
                 For an increasing number of people and companies, these concepts and developments make it possible to live and work in a more sustainable way.`,
               "MacroID": 21,
@@ -1108,9 +1084,8 @@ export default {
               "competence": 0
             },
             {
-              "name": "Zero Waste & Circular Economy",
-              "helperText": `These concepts aim to minimize waste production, emissions, and energy consumption as much as possible. 
-                Such important objectives are achieved through reuse, composting, remanufacturing, refurbishing, or recycling.`,
+              "name": this.$t('megatrends.EnergyClimateChangesAndSustainability.macrotrends.ZeroWasteAndCircularEconomy.name'),
+              "helperText": this.$t('megatrends.EnergyClimateChangesAndSustainability.macrotrends.ZeroWasteAndCircularEconomy.helperText'),
               "MacroID": 22,
               "importance": 0,
               "competence": 0
@@ -1118,30 +1093,26 @@ export default {
           ]
         },
         {
-          "name": "Digitally Connected Products, Offers & Services",
+          "name": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.name'),
           "idList":  [23,24,25],
           "macroTrends": [
             {
-              "name": "Connected Services, Products & Apps",
-              "helperText": `Networked services and products are linked to other devices and/or systems via the Internet. 
-                They mutually exchange data and can also be controlled by humans using integrated functions. 
-                Often, these devices/systems can also be controlled or applied via apps.`,
+              "name": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.ConnectedServicesProductsAndApps.name'),
+              "helperText": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.ConnectedServicesProductsAndApps.helperText'),
               "MacroID": 23,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Location Based Services",
-              "helperText": `Geospecific products offer the user of a mobile device specific services based on their location, e.g. 
-                route planning or restaurant finders. The location is shared via GPS, WiFi, or Bluetooth.`,
+              "name": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.LocationBasedServices.name'),
+              "helperText": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.LocationBasedServices.helperText'),
               "MacroID": 24,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Smart Home & Building",
-              "helperText": `The term Smart Home refers to technically networked devices and installations within a living space that can be operated remotely, often by voice. 
-                Intelligent home applications and smart building solutions are designed to enhance our lives in terms of health, safety, benefits, and comfort.`,
+              "name": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.SmartHomeAndBuilding.name'),
+              "helperText": this.$t('megatrends.DigitallyConnectedProductsOffersAndServices.macrotrends.SmartHomeAndBuilding.helperText'),
               "MacroID": 25,
               "importance": 0,
               "competence": 0
@@ -1149,38 +1120,33 @@ export default {
           ]
         },
         {
-          "name": "Future Working",
+          "name": this.$t('megatrends.FutureWorking.name'),
           "idList":  [26,27,28,29],
           "macroTrends": [
             {
-              "name": "Collaboration in Networks",
-              "helperText": `Digitisation opens up new possibilities for collaborative work in networks. 
-                New innovation “ecosystems” are being created, and open innovation and open management are becoming easier to implement.`,
+              "name": this.$t('megatrends.FutureWorking.macrotrends.CollaborationInNetworks.name'),
+              "helperText": this.$t('megatrends.FutureWorking.macrotrends.CollaborationInNetworks.helperText'),
               "MacroID": 26,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "New Learning",
-              "helperText": `Online higher-education courses, customized blended learning concepts, “learning apps” etc. allow us to enable a lifelong learning process that is independent of time or place.`,
+              "name": this.$t('megatrends.FutureWorking.macrotrends.NewLearning.name'),
+              "helperText": this.$t('megatrends.FutureWorking.macrotrends.NewLearning.helperText'),
               "MacroID": 27,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "New Working Models & Forms",
-              "helperText": `Digitisation promises more flexibility in terms of working hours and locations. 
-                New employment relationships and concepts are also changing our world of work. 
-                The aim is to find solutions that are as individualized as possible in order to help maintain a healthy work-life balance.`,
+              "name": this.$t('megatrends.FutureWorking.macrotrends.NewWorkingModelsAndForms.name'),
+              "helperText": this.$t('megatrends.FutureWorking.macrotrends.NewWorkingModelsAndForms.helperText'),
               "MacroID": 28,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Technologisation of Work",
-              "helperText": `Digitisation, intelligent tools, smart instruments, or wearables can help employees perform tasks better, faster, easier, or more innovatively. 
-                Furthermore, workers can be analyzed in terms of work performance and efficiency. 
-                The resulting data can be used for specific training, team compositions, etc.`,
+              "name": this.$t('megatrends.FutureWorking.macrotrends.TechnologisationOfWork.name'),
+              "helperText": this.$t('megatrends.FutureWorking.macrotrends.TechnologisationOfWork.helperText'),
               "MacroID": 29,
               "importance": 0,
               "competence": 0
@@ -1188,64 +1154,54 @@ export default {
           ]
         },
         {
-          "name": "Innovative Technologies & Manufacturing",
+          "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.name'),
           "idList":  [30,31,32,33,34,35,36],
           "macroTrends": [
             {
-              "name": "Additive Manufacturing",
-              "helperText": `Additive manufacturing or 3D printing is the name given to computer-controlled manufacturing processes for creating three-dimensional objects 
-                and shapes made up of multiple layers of material and constructed according to specified dimensions.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.AdditiveManufacturing.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.AdditiveManufacturing.helperText'),
               "MacroID": 30,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Biotechnology & Genetic Engineering",
-              "helperText": `Bioengineering applies engineering's scientific methods, in combination with computer science knowledge, to organic materials. 
-                With the help of these methods, tissue structures - or even complete living beings - can be manipulated or altered. 
-                Genetic engineering deals with the conversion of DNA building blocks and enables for example the breeding of new plants or the development of new drugs.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.BiotechnologyAndGeneticEngineering.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.BiotechnologyAndGeneticEngineering.helperText'),
               "MacroID": 31,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Industrial Robotics",
-              "helperText": `The primary aim of including robotics in the industry is to have certain production processes, such as assembly or processing of products, carried out by robots. 
-                This automation results in enormous savings in terms of both time and resources.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.IndustrialRobotics.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.IndustrialRobotics.helperText'),
               "MacroID": 32,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Innovative Process Engineering",
-              "helperText": `Process engineering refers to how a specific product or material can be produced using either physical, chemical, or biological conversion processes, or digital approaches. 
-                Innovations in this field can be used in the manufacture of many everyday products and lead to better or completely new materials, products, and applications.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.InnovativeProcessEngineering.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.InnovativeProcessEngineering.helperText'),
               "MacroID": 33,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Intelligent Production",
-              "helperText": `Intelligent production refers to a production process - from manufacturing to logistics 
-                - which ideally is controlled and organized completely automatically and is relatively energy 
-                - and resource-efficient. By incorporating dynamic processes in the business and engineering area, even the production of individual customer requirements is possible without human intervention.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.IntelligentProduction.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.IntelligentProduction.helperText'),
               "MacroID": 34,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "New Materials & Substances",
-              "helperText": `Novel materials and substances have interesting properties that give them optimized performance and open up numerous new possibilities. 
-                Innovations include smart materials that react autonomously to changing environmental conditions or existing materials that gain additional functions through nanotechnology.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.NewMaterialsAndSubstances.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.NewMaterialsAndSubstances.helperText'),
               "MacroID": 35,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Sensor Technologies",
-              "helperText": `Sensors are used to measure and control important process parameters in a wide range of applications (industry, medicine, etc.). 
-                The technologies range from infrared, ultrasound, and radar, to high-resolution stereo cameras. 
-                New innovations include multi-sensor systems and are used to equip machines with artificial sensory perception.`,
+              "name": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.SensorTechnologies.name'),
+              "helperText": this.$t('megatrends.InnovativeTechnologiesAndManufacturing.macrotrends.SensorTechnologies.helperText'),
               "MacroID": 36,
               "importance": 0,
               "competence": 0
@@ -1253,29 +1209,26 @@ export default {
           ]
         },
         {
-          "name": "New Business Models & Marketing Logics",
+          "name": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.name'),
           "idList":  [37,38,39],
           "macroTrends": [
             {
-              "name": "Innovative Business Models",
-              "helperText": `New sales & marketing opportunities, increasing virtualization, and technical developments (e.g. additive manufacturing) 
-                open up numerous possibilities for expanding existing business models, or finding completely new approaches.`,
+              "name": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.InnovativeBusinessModels.name'),
+              "helperText": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.InnovativeBusinessModels.helperText'),
               "MacroID": 37,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "New Marketing",
-              "helperText": `Ever more powerful communication devices, as well as progressive networking, allow new solutions in marketing 
-                - e.g. interaction marketing, content marketing, benefit-generating marketing, sensation marketing, and influencer marketing.`,
+              "name": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.NewMarketing.name'),
+              "helperText": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.NewMarketing.helperText'),
               "MacroID": 38,
               "importance": 0,
               "competence": 0
             },
             {
-              "name": "Platform Economy",
-              "helperText": `The term platform economy refers to a digital business model that brings together consumers and providers in a kind of digital marketplace and results in product purchases 
-                or in resource sharing (e.g. Amazon, Airbnb, Uber).`,
+              "name": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.PlatformEconomy.name'),
+              "helperText": this.$t('megatrends.NewBusinessModelsAndMarketingLogics.macrotrends.PlatformEconomy.helperText'),
               "MacroID": 39,
               "importance": 0,
               "competence": 0
