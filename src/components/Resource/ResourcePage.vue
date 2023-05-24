@@ -6,6 +6,9 @@
       <v-col cols="12">
         <p class="text-center title">Resources</p>
       </v-col>
+
+
+      <!-- <pre>{{resourceContent}}</pre> -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12"></v-col>
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12">
         <v-row>

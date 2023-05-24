@@ -1,15 +1,18 @@
 <template>
   <div class="homePageWidth">
-    <ResourcePage></ResourcePage>
+    <!-- <ResourcePage></ResourcePage> -->
+    <ResourcePageTwo></ResourcePageTwo>
   </div>
 </template>
 
 <script>
 import ResourcePage from "@/components/Resource/ResourcePage.vue"
+import ResourcePageTwo from "@/components/Resource/ResourcePageV2.vue"
 export default {
   name: 'Resource Page',
   components: {
-    ResourcePage
+    ResourcePage,
+    ResourcePageTwo
   },
   data(){
     return {

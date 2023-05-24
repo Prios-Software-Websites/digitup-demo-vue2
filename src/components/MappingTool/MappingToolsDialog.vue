@@ -9,10 +9,8 @@
           </v-btn>
         </v-card-title>
 
-      <!-- Fill in user Form -->
+      <!-- Template 1:  Login Form -->
       <template v-if="mappingTemplate == 1">
-
-        <!-- <p>Tekst tekst tekst</p> -->
         <v-row class="ma-0 pa-0">
           <v-col cols="4">
             <v-text-field :label="$t('mappingFormLoginPage.emailLabel')" v-model="mappingEmail"></v-text-field>
@@ -27,18 +25,10 @@
         >
           {{$t("mappingFormLoginPage.takeMappingToolButtonTooltip")}}
         </v-btn>
-
       </template>
 
-      <!-- Form Itself -->
+      <!-- Template 2: The Form Itself -->
       <template v-if="mappingTemplate == 2">
-
-        <!-- <v-row class="ma-0 pa-0">
-          <v-col class="ma-0 pa-0">
-            <v-btn @click="navigateMainTemplate(3)">go to Megatrends</v-btn>
-          </v-col>
-        </v-row> -->
-        
         <div v-if="userForm && addedAnswers.length != 0">
           <div v-if="userForm.sections.filter(i => i.sub_category).length == 0">
             <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;">
@@ -94,14 +84,14 @@
                           <v-menu offset-x>
                             <template v-slot:activator="{ on }">
                               <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" flat icon small>
-                                <v-icon title="Read question description and score help text" size="30"> mdi-information </v-icon>
+                                <v-icon :title="$t('mappingForm.informationButtonTooltip')" size="30"> mdi-information </v-icon>
                               </v-btn>
                             </template>
                             <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
                               <div v-if="selectedQuestionInfo">
-                                <p><b>Question description:</b></p>
+                                <p><b>{{$t("mappingForm.informationDialogQuestionDescription")}}</b></p>
                                 <p>{{ selectedQuestionInfo.description }}</p>
-                                <p><b>Score explanation:</b></p>
+                                <p><b>{{$t("mappingForm.informationDialogScoreExplanation")}}</b></p>
                                 <ol>
                                   <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
                                 </ol>
@@ -146,7 +136,7 @@
                           ></v-checkbox>
                         </div>
                         <div v-else>
-                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" :label="$t('mappingForm.writeYourAnswerHereLabel')"></v-text-field>
                         </div>
                       </v-flex>
                     </v-layout>
@@ -216,11 +206,13 @@
 
 
           <v-tab-item v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index">
+            <!-- Company info - Tab 1 -->
             <div v-if="section.form_intro_page && section.form_intro_page == 1">
               <v-container class="fu-container-styling mt-4" v-if="section.description">
                 <p>{{section.description}}</p>
               </v-container>
               <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
+
                 <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
                   <v-flex xs12>
 
@@ -409,9 +401,13 @@
                 </v-layout>
               </v-container>
             </div>
-            <div v-else>
 
+
+            <!-- ===== The rest of Mapping Form - not macro section ===== -->
+            <div v-else>
               <v-row class="ma-0 pa-0">
+
+                <!-- Tabs -->
                 <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
                   <v-navigation-drawer permanent style="width:100%;z-index:0">
                     <v-list dense class="py-0 mt-15">
@@ -437,7 +433,7 @@
                     <v-layout row wrap>
                       <v-flex xs12 class="pa-1">
 
-                        <!-- Help Text -->
+                        <!-- Help Text to Questions -->
                         <p style="font-size: 16px" class="mb-0">
                           <span>
                             <v-icon v-if="setQuestionAnswerVariable(question.id).answered" color="success">mdi-check</v-icon>
@@ -463,7 +459,7 @@
                           </v-menu>
                         </p>
 
-
+                        <!-- Question Scale -->
                         <div v-if="question.type == 'q_scale'">
                           <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
                             <v-radio-group
@@ -490,6 +486,8 @@
                             </v-radio-group>
                           </div>
                         </div>
+
+                        <!-- Question Multiple Choice -->
                         <div v-else-if="question.type == 'q_multiple_choice'">
                           <v-radio-group 
                             :disabled="setQuestionAnswerVariable(question.id).answered"  
@@ -498,6 +496,8 @@
                             <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
                           </v-radio-group>
                         </div>
+
+                        <!-- Question CheckBoxes -->
                         <div v-else-if="question.type == 'q_checkboxes'">
                           <v-checkbox
                             v-for="(item, index) in JSON.parse(question.options)" 
@@ -509,12 +509,36 @@
                             :value="index + '-' + item.weight"
                           ></v-checkbox>
                         </div>
+
+                        <!-- Question Unclear - Text Field -->
                         <div v-else>
                           <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
                         </div>
+                        
                       </v-flex>
                     </v-layout>
                   </v-container>
+                  <!-- <pre>{{comments}}</pre> -->
+                  <!-- <pre>---{{selectedChildCategory}}---</pre> -->
+
+                  <!-- This will work, but it is NOT pretty or best practice.  But deadline... -->
+
+                  <!-- Have your enterprise invested in digitalization in the following business areas? -->
+                  <v-textarea v-if="selectedChildCategory.id == 321" v-model="comments.tabOneSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 322" v-model="comments.tabOneSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 324" v-model="comments.tabTwoSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 325" v-model="comments.tabTwoSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 327" v-model="comments.tabThreeSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 328" v-model="comments.tabThreeSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 330" v-model="comments.tabFourSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 331" v-model="comments.tabFourSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 332" v-model="comments.tabFourSubThree" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 334" v-model="comments.tabFiveSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 335" v-model="comments.tabFiveSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <!-- <v-btn color="primary" @click="saveCommentToLocalstorage">Save Comment</v-btn> -->
+
+                  <!-- <v-textarea v-model="saveComment"></v-textarea>
+                  <button @click="saveData">Save Data</button> -->
                 </v-col>
 
                 <!-- No Sub Category Selected Yet -->
@@ -723,6 +747,31 @@ export default {
   },
   data(){
     return {
+
+      comments: {
+        tabOneSubOne: "",
+        tabOneSubOneText: "Have your enterprise invested in digitalization in the following business areas?",
+        tabOneSubTwo: "A",
+        tabOneSubTwoText: "Are you prepared for digitalization in following business strategy areas?",
+        tabTwoSubOne: "",
+        tabTwoSubOneText: "Which of the following digital solutions are already implemented in your business operations",
+        tabTwoSubTwo: "",
+        tabTwoSubTwoText: "Which of the following advanced digital solutions are already used in your business strategy?",
+        tabThreeSubOne: "",
+        tabThreeSubOneText: "Which of these options does your company use to help re-skill and up-skill your employees to further their digital competence?",
+        tabThreeSubTwo: "",
+        tabThreeSubTwoText: "Does your company engage and empower their employees when it comes to adopting new digital solutions?",
+        tabFourSubOne: "",
+        tabFourSubOneText: "Which of the following technologies is your company already using?",
+        tabFourSubTwo: "",
+        tabFourSubTwoText: "How are the data in your company managed(stored/organized/accessed)",
+        tabFourSubThree: "",
+        tabFourSubThreeText: "What measures has your company taken to secure your data?",
+        tabFiveSubOne: "",
+        tabFiveSubOneText: "How does your enterprise make use of digital technologies to contribute to enviromental sustainability?",
+        tabFiveSubTwo: "",
+        tabFiveSubTwoText: "Is your company taking into consideration the enviromental impact in your digital choices and practices?",
+      },
       formPdfData: null,
       pdfResultDisplayDialog: false,
       selectedMacroHelperID: "",
@@ -844,7 +893,7 @@ export default {
           },
         ],
 
-
+        items: [],
       readyToSendTrendsData: "",
       openMappingToolDialog: false,
       accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
@@ -1278,6 +1327,25 @@ export default {
   },
 
   methods: {
+
+
+    getText(item) {
+      // Get the text value for the corresponding item
+      const index = this.items.indexOf(item);
+      return this.textValues[index] || '';
+    },
+    updateText(item, value) {
+      // Update the text value for the corresponding item
+      const index = this.items.indexOf(item);
+      this.$set(this.textValues, index, value);
+    },
+    saveData() {
+      // Access the text values for each item and process them as needed answer
+      console.log(this.textValues);
+    },
+
+
+
     // Reset the Array, before populating it again #MEGATRENDS
     resetMacroQuestionArray(){
       this.trends.threats.data = [];
@@ -1525,6 +1593,7 @@ export default {
       })
       // this.getAllExistingFormData(this.loadedFormData);
     },
+    
 
 
     // Get the question ID and the value of the question and push it to the array
@@ -1654,6 +1723,7 @@ export default {
       /** Initializes an empty object that will store information about the front page, categories, trends, and SWOT analysis of the PDF - @type {Object} */
       let createObj = {
         front_page:{},
+        comments:{},
         categories:[
         ],
         // trends:{
@@ -1678,6 +1748,7 @@ export default {
           }
         }
       }
+
 
       /** Initializes an array that will store subcategories @type {Array} */
       let subCategories = [];
@@ -1835,8 +1906,13 @@ export default {
           category.sub_categories = cleanedSubCategoryArray
         })
 
+      createObj.comments = this.comments;
 
+
+      console.log("Check the data out yo", this.comments);
       this.formPdfData = createObj;
+
+
       this.pdfResultDisplayDialog = true;
 
 

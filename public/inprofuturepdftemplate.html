@@ -14,6 +14,7 @@
         <p class="containerHeader">Company information</p>
         <!-- <p>{{this.front_page.name}}</p> -->
         <p class="subHeader">{{this.front_page.description}}</p>
+
       </div>
       <div class="companyInfoFlexContainer">
         {{#each this.front_page.questions}}
@@ -120,6 +121,101 @@
         </div>
       </div>
     </div>
+
+    <div class="mainDisplayContainer">
+      <div style="page-break-before: always;">
+        <p class="containerHeader">Comments</p>
+        <p>
+          <span>
+            <strong>{{this.comments.tabOneSubOneText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabOneSubOne}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabOneSubTwoText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabOneSubTwo}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabTwoSubOneText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabTwoSubOne}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabTwoSubTwoText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabTwoSubTwo}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabThreeSubOneText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabThreeSubOne}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabThreeSubTwoText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabThreeSubTwo}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabFourSubOneText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabFourSubOne}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabFourSubTwoText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabFourSubTwo}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabFourSubThreeText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabFourSubThree}}</span>
+        </p>
+        
+        <p>
+          <span>
+            <strong>{{this.comments.tabFiveSubOneText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabFiveSubOne}}</span>
+        </p>
+
+        <p>
+          <span>
+            <strong>{{this.comments.tabFiveSubTwoText}}</strong>
+          </span>
+          <br/>
+          <span>{{this.comments.tabFiveSubTwo}}</span>
+        </p>
+
+      </div>
+    </div>
+
   </body>
 </html>
 
@@ -166,6 +262,18 @@
     font-family: "Times New Roman", "Georgia", serif;
     font-size:18px;
   }
+
+  .categoryPmatch{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .splitCommentAppart{
+    margin-top: 10px;
+  }
+
   .mainDisplayContainer{
     page-break-inside:avoid;
   }
