@@ -1392,6 +1392,7 @@ export default {
         this.commentsOfForm.forEach(section => {
           section.comment = "";
         })
+        this.saveCommentsOfForm();
       }
     },
 
