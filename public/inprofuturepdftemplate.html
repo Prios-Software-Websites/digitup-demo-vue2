@@ -125,10 +125,13 @@
     <!-- Comments given on the Form -->
     <div class="mainDisplayContainer">
       <div style="page-break-before: always;">
-        <p class="containerHeader">Test</p>
+        <p class="containerHeader">Comments</p>
         {{#each this.commentsArray}}
-          <p>{{this.commentText}}</p>
-          <p>{{this.comment}}</p>
+          <p>
+            <span style="color: #034661; font-size: 20px;">{{this.commentText}}</span>
+            <br/>
+            <span style="font-weight: bold; color: #263238; margin-top: 10px;">{{this.comment}}</span>
+          </p>
         {{/each}}
       </div>
     </div>
