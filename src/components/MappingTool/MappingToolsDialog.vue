@@ -535,7 +535,7 @@
                   <v-textarea v-if="selectedChildCategory.id == 332" v-model="commentsOfForm[8].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 334" v-model="commentsOfForm[9].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 335" v-model="commentsOfForm[10].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-btn color="primary" @click="saveCommentsOfForm()">Save Comment</v-btn>
+                  <v-btn color="primary" @click="saveCommentsOfForm()">Add Comment</v-btn>
 
                 </v-col>
 
@@ -1377,11 +1377,22 @@ export default {
     // Save commentsOfForm to local storage
     saveCommentsOfForm(){
       localStorage.setItem('commentsOfForm', JSON.stringify(this.commentsOfForm));
+      localStorage.setItem('prevLoggedUser', this.mappingEmail);
     },
 
     // Get commentsOfForm from local storage and set it to commentsOfForm
     getCommentsOfForm(){
-      this.commentsOfForm = JSON.parse(localStorage.getItem('commentsOfForm'));
+      let prevLoggedUser = localStorage.getItem('prevLoggedUser');
+      if(prevLoggedUser == this.mappingEmail){
+        this.commentsOfForm = JSON.parse(localStorage.getItem('commentsOfForm'));
+        console.log("Same User Logged IN")
+      } else {
+        // If the user is not the same as the one who saved the comments, then go through this.commentsOfForm and set all comments to empty
+        console.log("New User Logged IN")
+        this.commentsOfForm.forEach(section => {
+          section.comment = "";
+        })
+      }
     },
 
 
@@ -1439,7 +1450,6 @@ export default {
       this.openMappingToolDialog = true;
       this.getTodaysDate();
       this.mappingTemplate = 1;
-      this.getCommentsOfForm();
     },
 
     // Close the Dialog #CORE
@@ -1482,6 +1492,7 @@ export default {
     checkIfEmailGotContent(){
       if(this.mappingEmail.trim() && this.mappingUsername.trim()){
         this.checkIfUserEntryExists();
+        this.getCommentsOfForm();
       } else {
         console.log("Email or username field got no content");
       }
