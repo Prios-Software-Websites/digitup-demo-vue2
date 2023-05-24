@@ -525,16 +525,16 @@
 
                   <!-- Have your enterprise invested in digitalization in the following business areas? -->
                   <v-textarea v-if="selectedChildCategory.id == 321" v-model="commentsOfForm[0].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 322" v-model="comments.tabOneSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 324" v-model="comments.tabTwoSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 325" v-model="comments.tabTwoSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 327" v-model="comments.tabThreeSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 328" v-model="comments.tabThreeSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 330" v-model="comments.tabFourSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 331" v-model="comments.tabFourSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 332" v-model="comments.tabFourSubThree" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 334" v-model="comments.tabFiveSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 335" v-model="comments.tabFiveSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 322" v-model="commentsOfForm[1].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 324" v-model="commentsOfForm[2].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 325" v-model="commentsOfForm[3].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 327" v-model="commentsOfForm[4].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 328" v-model="commentsOfForm[5].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 330" v-model="commentsOfForm[6].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 331" v-model="commentsOfForm[7].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 332" v-model="commentsOfForm[8].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 334" v-model="commentsOfForm[9].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 335" v-model="commentsOfForm[10].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <!-- <v-btn color="primary" @click="saveCommentToLocalstorage">Save Comment</v-btn> -->
 
                   <!-- <v-textarea v-model="saveComment"></v-textarea>
@@ -1770,8 +1770,7 @@ export default {
       /** Initializes an empty object that will store information about the front page, categories, trends, and SWOT analysis of the PDF - @type {Object} */
       let createObj = {
         front_page:{},
-        comments:{},
-        testArray:[],
+        commentsArray:[],
         categories:[
         ],
         // trends:{
@@ -1956,7 +1955,7 @@ export default {
 
         createObj.comments = this.comments;
 
-        createObj.testArray = this.commentsOfForm;
+        createObj.commentsArray = this.commentsOfForm;
 
 
       console.log("Check the data out yo", this.comments);
