@@ -748,6 +748,53 @@ export default {
   data(){
     return {
 
+      commentsOfForm: [
+        {
+          comment: "",
+          commentText: "Have your enterprise invested in digitalization in the following business areas?",
+        },
+        {
+          comment: "Hallooo",
+          commentText: "Are you prepared for digitalization in following business strategy areas?",
+        },
+        {
+          comment: "",
+          commentText: "Which of the following digital solutions are already implemented in your business operations",
+        },
+        {
+          comment: "",
+          commentText: "Which of the following advanced digital solutions are already used in your business strategy?",
+        },
+        {
+          comment: "",
+          commentText: "Which of these options does your company use to help re-skill and up-skill your employees to further their digital competence?",
+        },
+        {
+          comment: "",
+          commentText: "Does your company engage and empower their employees when it comes to adopting new digital solutions?",
+        },
+        {
+          comment: "",
+          commentText: "Which of the following technologies is your company already using?",
+        },
+        {
+          comment: "",
+          commentText: "How are the data in your company managed(stored/organized/accessed)",
+        },
+        {
+          comment: "",
+          commentText: "What measures has your company taken to secure your data?",
+        },
+        {
+          comment: "",
+          commentText: "How does your enterprise make use of digital technologies to contribute to enviromental sustainability?",
+        },
+        {
+          comment: "",
+          commentText: "Is your company taking into consideration the enviromental impact in your digital choices and practices?",
+        },
+        
+      ],
       comments: {
         tabOneSubOne: "",
         tabOneSubOneText: "Have your enterprise invested in digitalization in the following business areas?",
@@ -1724,6 +1771,7 @@ export default {
       let createObj = {
         front_page:{},
         comments:{},
+        testArray:[],
         categories:[
         ],
         // trends:{
@@ -1906,7 +1954,9 @@ export default {
           category.sub_categories = cleanedSubCategoryArray
         })
 
-      createObj.comments = this.comments;
+        createObj.comments = this.comments;
+
+        createObj.testArray = this.commentsOfForm;
 
 
       console.log("Check the data out yo", this.comments);
