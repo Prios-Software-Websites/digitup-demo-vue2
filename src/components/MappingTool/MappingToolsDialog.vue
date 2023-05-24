@@ -524,7 +524,7 @@
                   <!-- This will work, but it is NOT pretty or best practice.  But deadline... -->
 
                   <!-- Have your enterprise invested in digitalization in the following business areas? -->
-                  <v-textarea v-if="selectedChildCategory.id == 321" v-model="comments.tabOneSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
+                  <v-textarea v-if="selectedChildCategory.id == 321" v-model="commentsOfForm[0].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 322" v-model="comments.tabOneSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 324" v-model="comments.tabTwoSubOne" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 325" v-model="comments.tabTwoSubTwo" label="Write a comment about this section" outlined style="width:60%;"/>
