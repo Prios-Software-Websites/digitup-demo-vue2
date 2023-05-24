@@ -535,10 +535,8 @@
                   <v-textarea v-if="selectedChildCategory.id == 332" v-model="commentsOfForm[8].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 334" v-model="commentsOfForm[9].comment" label="Write a comment about this section" outlined style="width:60%;"/>
                   <v-textarea v-if="selectedChildCategory.id == 335" v-model="commentsOfForm[10].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <!-- <v-btn color="primary" @click="saveCommentToLocalstorage">Save Comment</v-btn> -->
+                  <v-btn color="primary" @click="saveCommentsOfForm()">Save Comment</v-btn>
 
-                  <!-- <v-textarea v-model="saveComment"></v-textarea>
-                  <button @click="saveData">Save Data</button> -->
                 </v-col>
 
                 <!-- No Sub Category Selected Yet -->
@@ -1376,19 +1374,14 @@ export default {
   methods: {
 
 
-    getText(item) {
-      // Get the text value for the corresponding item
-      const index = this.items.indexOf(item);
-      return this.textValues[index] || '';
+    // Save commentsOfForm to local storage
+    saveCommentsOfForm(){
+      localStorage.setItem('commentsOfForm', JSON.stringify(this.commentsOfForm));
     },
-    updateText(item, value) {
-      // Update the text value for the corresponding item
-      const index = this.items.indexOf(item);
-      this.$set(this.textValues, index, value);
-    },
-    saveData() {
-      // Access the text values for each item and process them as needed answer
-      console.log(this.textValues);
+
+    // Get commentsOfForm from local storage and set it to commentsOfForm
+    getCommentsOfForm(){
+      this.commentsOfForm = JSON.parse(localStorage.getItem('commentsOfForm'));
     },
 
 
@@ -1446,6 +1439,7 @@ export default {
       this.openMappingToolDialog = true;
       this.getTodaysDate();
       this.mappingTemplate = 1;
+      this.getCommentsOfForm();
     },
 
     // Close the Dialog #CORE
