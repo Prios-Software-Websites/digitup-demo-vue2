@@ -1959,16 +1959,23 @@ export default {
           category.sub_categories = cleanedSubCategoryArray
         })
 
-        createObj.comments = this.comments;
+        // createObj.comments = this.comments;
 
-        createObj.commentsArray = this.commentsOfForm;
+        let NewCommentsArray = [];
+        this.commentsOfForm.forEach(element => {
+          if(element.comment != ""){
+            NewCommentsArray.push(element);
+          }
+        });
+
+        // createObj.commentsArray = this.commentsOfForm;
+        createObj.commentsArray = NewCommentsArray;
 
 
-      console.log("Check the data out yo", this.comments);
-      this.formPdfData = createObj;
+        this.formPdfData = createObj;
 
 
-      this.pdfResultDisplayDialog = true;
+        this.pdfResultDisplayDialog = true;
 
 
 
