@@ -752,7 +752,7 @@ export default {
           commentText: "Have your enterprise invested in digitalization in the following business areas?",
         },
         {
-          comment: "Hallooo",
+          comment: "",
           commentText: "Are you prepared for digitalization in following business strategy areas?",
         },
         {
@@ -793,30 +793,6 @@ export default {
         },
         
       ],
-      comments: {
-        tabOneSubOne: "",
-        tabOneSubOneText: "Have your enterprise invested in digitalization in the following business areas?",
-        tabOneSubTwo: "A",
-        tabOneSubTwoText: "Are you prepared for digitalization in following business strategy areas?",
-        tabTwoSubOne: "",
-        tabTwoSubOneText: "Which of the following digital solutions are already implemented in your business operations",
-        tabTwoSubTwo: "",
-        tabTwoSubTwoText: "Which of the following advanced digital solutions are already used in your business strategy?",
-        tabThreeSubOne: "",
-        tabThreeSubOneText: "Which of these options does your company use to help re-skill and up-skill your employees to further their digital competence?",
-        tabThreeSubTwo: "",
-        tabThreeSubTwoText: "Does your company engage and empower their employees when it comes to adopting new digital solutions?",
-        tabFourSubOne: "",
-        tabFourSubOneText: "Which of the following technologies is your company already using?",
-        tabFourSubTwo: "",
-        tabFourSubTwoText: "How are the data in your company managed(stored/organized/accessed)",
-        tabFourSubThree: "",
-        tabFourSubThreeText: "What measures has your company taken to secure your data?",
-        tabFiveSubOne: "",
-        tabFiveSubOneText: "How does your enterprise make use of digital technologies to contribute to enviromental sustainability?",
-        tabFiveSubTwo: "",
-        tabFiveSubTwoText: "Is your company taking into consideration the enviromental impact in your digital choices and practices?",
-      },
       formPdfData: null,
       pdfResultDisplayDialog: false,
       selectedMacroHelperID: "",
@@ -936,9 +912,8 @@ export default {
               ]
             }
           },
-        ],
+      ],
 
-        items: [],
       readyToSendTrendsData: "",
       openMappingToolDialog: false,
       accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),

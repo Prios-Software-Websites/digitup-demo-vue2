@@ -1,7 +1,7 @@
 <template>
   <div class="homePageWidth">
-    <!-- <ResourcePage></ResourcePage> -->
-    <ResourcePageTwo></ResourcePageTwo>
+    <ResourcePage></ResourcePage>
+    <!-- <ResourcePageTwo></ResourcePageTwo> -->
   </div>
 </template>
 
