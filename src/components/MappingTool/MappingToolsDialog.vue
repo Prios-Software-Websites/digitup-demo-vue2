@@ -1,15 +1,17 @@
 <template>
   <v-dialog v-model="openMappingToolDialog" :role="$t('mappingFormGlobal.dialogRoleText')" :width="dialogWidth" :fullscreen="isFullscreen">
-     <v-card>
-      <v-card-title>
-          <span class="headline">{{$t("mappingFormGlobal.headline")}}</span>
-          <v-spacer />
-          <v-btn color="error" icon @click="closeDialog()" :title="$t('mappingFormGlobal.closeDialogButtonTooltip')">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-card-title>
+    <v-card>
 
-      <!-- Template 1:  Login Form -->
+      <!-- Title of the Dialog and Close Button -->
+      <v-card-title>
+        <span class="headline">{{$t("mappingFormGlobal.headline")}}</span>
+        <v-spacer />
+        <v-btn color="error" icon @click="closeDialog()" :title="$t('mappingFormGlobal.closeDialogButtonTooltip')">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-card-title>
+
+      <!-- Template 1:  Login Form (Email and Username) -->
       <template v-if="mappingTemplate == 1">
         <v-row class="ma-0 pa-0">
           <v-col cols="4">
@@ -29,6 +31,8 @@
 
       <!-- Template 2: The Form Itself -->
       <template v-if="mappingTemplate == 2">
+
+        <!-- ===== LOOK INTO ===== -->
         <div v-if="userForm && addedAnswers.length != 0">
           <div v-if="userForm.sections.filter(i => i.sub_category).length == 0">
             <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;">
@@ -46,8 +50,12 @@
                       <p>{{section.description}}</p>
                     </v-container>
                     <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
+
+                      <!-- ===== Guess it is the first section ===== -->
                       <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
                         <v-flex xs12>
+
+                          <!-- Question Type of Front Select -->
                           <div v-if="question.type == 'q_front_select'">
                             <p>{{question.title}}</p>
                             <v-select
@@ -59,6 +67,8 @@
                               v-model.lazy="setQuestionAnswerVariable(question.id).value"
                             ></v-select>
                           </div>
+
+                          <!-- Question Type of Front Checkbox -->
                           <div v-else-if="question.type == 'q_front_checkbox'">
                             <p>{{question.title}}</p>
                             <v-checkbox
@@ -71,496 +81,474 @@
                               :value="item.label"
                             ></v-checkbox>
                           </div>
+
+                          <!-- Any other Question Types -->
                           <div v-else>
-                          <p>{{question.title}}</p>
-                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
-                        </div>
-                      </v-flex>
-                    </v-layout>
-                    <v-layout row wrap v-else>
-                      <v-flex xs12 class="pa-1">
-                        <p style="font-size: 16px">
-                          {{ question.title }}
-                          <v-menu offset-x>
-                            <template v-slot:activator="{ on }">
-                              <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" flat icon small>
-                                <v-icon :title="$t('mappingForm.informationButtonTooltip')" size="30"> mdi-information </v-icon>
-                              </v-btn>
-                            </template>
-                            <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
-                              <div v-if="selectedQuestionInfo">
-                                <p><b>{{$t("mappingForm.informationDialogQuestionDescription")}}</b></p>
-                                <p>{{ selectedQuestionInfo.description }}</p>
-                                <p><b>{{$t("mappingForm.informationDialogScoreExplanation")}}</b></p>
-                                <ol>
-                                  <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
-                                </ol>
-                              </div>
-                            </v-card>
-                          </v-menu>
-                        </p>
-                        <div v-if="question.type == 'q_scale'">
-                          <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
+                            <p>{{question.title}}</p>
+                            <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                          </div>
+
+
+                        </v-flex>
+                      </v-layout>
+
+
+                      <v-layout row wrap v-else>
+                        <v-flex xs12 class="pa-1">
+
+                          <!-- Tooltip for Question -->
+                          <p style="font-size: 16px">
+                            {{ question.title }}
+                            <v-menu offset-x>
+                              <template v-slot:activator="{ on }">
+                                <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" flat icon small>
+                                  <v-icon :title="$t('mappingForm.informationButtonTooltip')" size="30"> mdi-information </v-icon>
+                                </v-btn>
+                              </template>
+                              <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
+                                <div v-if="selectedQuestionInfo">
+                                  <p><b>{{$t("mappingForm.informationDialogQuestionDescription")}}</b></p>
+                                  <p>{{ selectedQuestionInfo.description }}</p>
+                                  <p><b>{{$t("mappingForm.informationDialogScoreExplanation")}}</b></p>
+                                  <ol>
+                                    <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
+                                  </ol>
+                                </div>
+                              </v-card>
+                            </v-menu>
+                          </p>
+
+                          <!-- Question Type Scale -->
+                          <div v-if="question.type == 'q_scale'">
+                            <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
+                              <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                                <v-radio label="1" value="1"></v-radio>
+                                <v-radio label="2" value="2"></v-radio>
+                                <v-radio label="3" value="3"></v-radio>
+                                <v-radio label="4" value="4"></v-radio>
+                                <v-radio label="5" value="5"></v-radio>
+                              </v-radio-group>
+                            </div>
+                            <div v-else>
+                              <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
+                                <v-radio label="1" value="1"></v-radio>
+                                <v-radio label="2" value="2"></v-radio>
+                                <v-radio label="3" value="3"></v-radio>
+                                <v-radio label="4" value="4"></v-radio>
+                                <v-radio label="5" value="5"></v-radio>
+                              </v-radio-group>
+                            </div>
+                          </div>
+
+                          <!-- Question Type Multiple Choice -->
+                          <div v-else-if="question.type == 'q_multiple_choice'">
                             <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                              <v-radio label="1" value="1"></v-radio>
-                              <v-radio label="2" value="2"></v-radio>
-                              <v-radio label="3" value="3"></v-radio>
-                              <v-radio label="4" value="4"></v-radio>
-                              <v-radio label="5" value="5"></v-radio>
+                              <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
                             </v-radio-group>
                           </div>
-                          <div v-else>
-                            <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                              <v-radio label="1" value="1"></v-radio>
-                              <v-radio label="2" value="2"></v-radio>
-                              <v-radio label="3" value="3"></v-radio>
-                              <v-radio label="4" value="4"></v-radio>
-                              <v-radio label="5" value="5"></v-radio>
-                            </v-radio-group>
+
+                          <!-- Question Type Checkboxes -->
+                          <div v-else-if="question.type == 'q_checkboxes'">
+                            <v-checkbox
+                              v-for="(item, index) in JSON.parse(question.options)" 
+                              :key="index"
+                              multiple
+                              :disabled="setQuestionAnswerVariable(question.id).answered"
+                              v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                              :label="item.label"
+                              :value="index + '-' + item.weight"
+                            ></v-checkbox>
                           </div>
-                        </div>
-                        <div v-else-if="question.type == 'q_multiple_choice'">
-                          <v-radio-group :disabled="setQuestionAnswerVariable(question.id).answered" row v-model.lazy="setQuestionAnswerVariable(question.id).value">
-                            <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
-                          </v-radio-group>
-                        </div>
-                        <div v-else-if="question.type == 'q_checkboxes'">
-                          <v-checkbox
-                            v-for="(item, index) in JSON.parse(question.options)" 
-                            :key="index"
-                            multiple
-                            :disabled="setQuestionAnswerVariable(question.id).answered"
-                            v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                            :label="item.label"
-                            :value="index + '-' + item.weight"
-                          ></v-checkbox>
-                        </div>
-                        <div v-else>
-                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" :label="$t('mappingForm.writeYourAnswerHereLabel')"></v-text-field>
-                        </div>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-flex>
-              </v-layout>
-            </v-tab-item>
-          </v-tabs>
-        </div>
 
+                          <!-- Any other Questions of unknown or new type -->
+                          <div v-else>
+                            <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" :label="$t('mappingForm.writeYourAnswerHereLabel')"></v-text-field>
+                          </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div v-else>
-          <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;" active-class="isActive">
-            <v-tab
-              v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index"
-              class="tabStyling"
-              :style="gradientStyle(section.id)"
-            >
-            <span>
-              {{section.name ? section.name : section.title}}  
-            </span>
-              <!-- {{checkIfSectionHasProgress(section.id)}} {{section.id}} -->
-            </v-tab>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <v-tab-item v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index">
-            <!-- Company info - Tab 1 -->
-            <div v-if="section.form_intro_page && section.form_intro_page == 1">
-              <v-container class="fu-container-styling mt-4" v-if="section.description">
-                <p>{{section.description}}</p>
-              </v-container>
-              <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
-
-                <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
-                  <v-flex xs12>
-
-                      <!-- Selects -->
-                    <div v-if="question.type == 'q_front_select'">
-                      <p>{{question.title}}</p>
-                      <v-select
-                        class="inputLarge"
-                        :items="JSON.parse(question.options)"
-                        item-text="label"
-                        item-value="label"
-                        label="Select one"
-                        :disabled="setQuestionAnswerVariable(question.id).answered"
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                      ></v-select>
-                    </div>
-
-                    <!-- Checkboxes -->
-                    <div v-else-if="question.type == 'q_front_checkbox'">
-                      <p>{{question.title}}</p>
-                      <v-checkbox
-                        v-for="(item, index) in JSON.parse(question.options)" 
-                        :key="index"
-                        class="ma-0 pa-0"
-                        multiple
-                        :disabled="setQuestionAnswerVariable(question.id).answered"
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                        :label="item.label"
-                        :value="item.label"
-                      ></v-checkbox>
-                    </div>
-
-                    <!-- Simple Input Fields -->
-                    <div v-else>
-                      <p v-if="question.title == 'Name of the enterprise supported by the EDIH'" class="pb-0 mb-0 mt-10" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
-                        {{question.title}}
-                      </p>
-                      <p v-else class="pb-0 mb-0" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
-                        {{question.title}}
-                      </p>
-                      <!-- Name of the Enterprice -->
-                      <v-text-field 
-                        v-if="question.title == 'Name of the enterprise supported by the EDIH'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Name of the Company">
-                      </v-text-field>
-                      
-                      <!-- Fiscal Registration Number (VAT) -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Fiscal registration number (VAT or equivalent)'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''"
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Fiscal Registration Number">
-                      </v-text-field>
-
-                      <!-- Contact Person -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Contact person'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Contact Person of the Company">
-                      </v-text-field>
-                      
-                      <!-- Role -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Role'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputMedium'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Fill in the role">
-                      </v-text-field>
-
-                      <!-- E-mail -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Email'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Company Email">
-                      </v-text-field>
-
-                      <!-- Phone -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Phone'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Company Phone">
-                      </v-text-field>
-
-                      <!-- Website -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Website'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Company Website">
-                      </v-text-field>
-
-                      <!-- Company foundation year -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Company foundation year'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Year Company were Founded">
-                      </v-text-field>
-
-                      <!-- County/NUTS2 -->
-                      <v-text-field 
-                        v-else-if="question.title == 'Company foundation year'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="County/NUTS2">
-                      </v-text-field>
-
-                      <!-- If sector was not listed in the previous question, please specify here... -->
-                      <v-text-field 
-                        v-else-if="question.title == 'If sector was not listed in the previous question, please specify here...'" 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="">
-                      </v-text-field>
-
-                      <!-- Rest of the input fields -->
-                      <v-text-field 
-                        v-else 
-                        v-model.lazy="setQuestionAnswerVariable(question.id).value" 
-                        class="inputStyling" 
-                        :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
-                        :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
-                        :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
-                        :disabled="setQuestionAnswerVariable(question.id).answered" 
-                        hide-details 
-                        label="Write your answer here">
-                      </v-text-field>
-
-                    </div>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
                   </v-flex>
                 </v-layout>
-              </v-container>
-            </div>
+              </v-tab-item>
+            </v-tabs>
+          </div>
 
+          <div v-else>
+            <v-tabs v-model="formSectionTabs" hide-slider style="border-radius:10px;" active-class="isActive">
+              <v-tab
+                v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index"
+                class="tabStyling"
+                :style="gradientStyle(section.id)"
+              >
+                <span>
+                  {{section.name ? section.name : section.title}}  
+                </span>
+                <!-- {{checkIfSectionHasProgress(section.id)}} {{section.id}} -->
+              </v-tab>
 
-            <!-- ===== The rest of Mapping Form - not macro section ===== -->
-            <div v-else>
-              <v-row class="ma-0 pa-0">
+              <v-tab-item v-for="(section,index) in userForm.sections.filter(i => !i.sub_category)" :key="index">
 
-                <!-- Tabs -->
-                <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
-                  <v-navigation-drawer permanent style="width:100%;z-index:0">
-                    <v-list dense class="py-0 mt-15">
-                      <v-list-item-group v-model="selectedItem" style="color: darkblue;">
-                        <v-list-item v-for="(subSection,subIndex) in userForm.sections.filter(i => i.sub_category == section.id)" :key="subIndex" @click="selectedChildCategory = subSection;">
-                          <v-list-item-action>
-                            <v-icon :color="caluclateSectionProgress(subSection.id) < 1 ? 'error' : caluclateSectionProgress(subSection.id) < 99 ? 'yellow' : 'success'"> mdi-record </v-icon>
-                          </v-list-item-action>
-                          <v-list-item-content>
-                            <p>{{ subSection.name }}</p>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </v-list-item-group>
-                    </v-list>
-                  </v-navigation-drawer>
-                </v-col>
+                <!-- Company info - Tab 1 -->
+                <div v-if="section.form_intro_page && section.form_intro_page == 1">
+                  <v-container class="fu-container-styling mt-4" v-if="section.description">
+                    <p>{{section.description}}</p>
+                  </v-container>
+                  <v-container v-for="(question,questionIndex) in section.questions" :key="questionIndex" class="fu-container-styling mt-4">
 
-                
-                <!-- Sub Category Selected -->
-                <v-col cols="12" xl="10" lg="10" md="10" sm="12" xs="12" v-if="selectedChildCategory" class="mt-15">
-                  <v-container v-for="(question,questionIndex) in selectedChildCategory.questions" :key="questionIndex" class="fu-container-styling mt-4">
+                    <v-layout row wrap v-if="section.form_intro_page && section.form_intro_page == 1">
+                      <v-flex xs12>
 
-                    <v-layout row wrap>
-                      <v-flex xs12 class="pa-1">
-
-                        <!-- Help Text to Questions -->
-                        <p style="font-size: 16px" class="mb-0">
-                          <span>
-                            <v-icon v-if="setQuestionAnswerVariable(question.id).answered" color="success">mdi-check</v-icon>
-                            <v-icon v-else color="error">mdi-close</v-icon>
-                          </span>
-                          {{ question.title }}
-                          <v-menu offset-x>
-                            <template v-slot:activator="{ on }">
-                              <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" text icon small>
-                                <v-icon title="Read question description and score help text" size="30"> mdi-information </v-icon>
-                              </v-btn>
-                            </template>
-                            <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
-                              <div v-if="selectedQuestionInfo">
-                                <p><b>Question description:</b></p>
-                                <p>{{ selectedQuestionInfo.description }}</p>
-                                <p><b>Score explanation:</b></p>
-                                <ol>
-                                  <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
-                                </ol>
-                              </div>
-                            </v-card>
-                          </v-menu>
-                        </p>
-
-                        <!-- Question Scale -->
-                        <div v-if="question.type == 'q_scale'">
-                          <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
-                            <v-radio-group
-                             :disabled="setQuestionAnswerVariable(question.id).answered"  
-                             v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                            >
-                              <v-radio label="1" value="1"></v-radio>
-                              <v-radio label="2" value="2"></v-radio>
-                              <v-radio label="3" value="3"></v-radio>
-                              <v-radio label="4" value="4"></v-radio>
-                              <v-radio label="5" value="5"></v-radio>
-                            </v-radio-group>
-                          </div>
-                          <div v-else>
-                            <v-radio-group 
-                              :disabled="setQuestionAnswerVariable(question.id).answered"  
-                              v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                            >
-                              <v-radio label="1" value="1"></v-radio>
-                              <v-radio label="2" value="2"></v-radio>
-                              <v-radio label="3" value="3"></v-radio>
-                              <v-radio label="4" value="4"></v-radio>
-                              <v-radio label="5" value="5"></v-radio>
-                            </v-radio-group>
-                          </div>
-                        </div>
-
-                        <!-- Question Multiple Choice -->
-                        <div v-else-if="question.type == 'q_multiple_choice'">
-                          <v-radio-group 
-                            :disabled="setQuestionAnswerVariable(question.id).answered"  
+                        <!-- Question of Type Front Select -->
+                        <div v-if="question.type == 'q_front_select'">
+                          <p>{{question.title}}</p>
+                          <v-select
+                            class="inputLarge"
+                            :items="JSON.parse(question.options)"
+                            item-text="label"
+                            item-value="label"
+                            label="Select one"
+                            :disabled="setQuestionAnswerVariable(question.id).answered"
                             v-model.lazy="setQuestionAnswerVariable(question.id).value"
-                          >
-                            <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
-                          </v-radio-group>
+                          ></v-select>
                         </div>
 
-                        <!-- Question CheckBoxes -->
-                        <div v-else-if="question.type == 'q_checkboxes'">
+                        <!-- Question of Type Checkboxes -->
+                        <div v-else-if="question.type == 'q_front_checkbox'">
+                          <p>{{question.title}}</p>
                           <v-checkbox
                             v-for="(item, index) in JSON.parse(question.options)" 
                             :key="index"
+                            class="ma-0 pa-0"
                             multiple
                             :disabled="setQuestionAnswerVariable(question.id).answered"
                             v-model.lazy="setQuestionAnswerVariable(question.id).value"
                             :label="item.label"
-                            :value="index + '-' + item.weight"
+                            :value="item.label"
                           ></v-checkbox>
                         </div>
 
-                        <!-- Question Unclear - Text Field -->
+                        <!-- Company Information Fields -->
                         <div v-else>
-                          <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+
+                          <!-- Title of the thingy - desktop -->
+                          <p v-if="question.title == 'Name of the enterprise supported by the EDIH'" class="pb-0 mb-0 mt-10" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
+                            {{question.title}}
+                          </p>
+
+                          <!-- Title of the thingy on phone-->
+                          <p v-else class="pb-0 mb-0" :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : ''">
+                            {{question.title}}
+                          </p>
+
+                          <!-- Name of the Enterprice -->
+                          <v-text-field 
+                            v-if="question.title == 'Name of the enterprise supported by the EDIH'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Name of the Company">
+                          </v-text-field>
+                          
+                          <!-- Fiscal Registration Number (VAT) -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Fiscal registration number (VAT or equivalent)'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''"
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Fiscal Registration Number">
+                          </v-text-field>
+
+                          <!-- Contact Person -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Contact person'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Contact Person of the Company">
+                          </v-text-field>
+                          
+                          <!-- Role -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Role'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputMedium'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Fill in the role">
+                          </v-text-field>
+
+                          <!-- E-mail -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Email'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Company Email">
+                          </v-text-field>
+
+                          <!-- Phone -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Phone'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Company Phone">
+                          </v-text-field>
+
+                          <!-- Website -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Website'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Company Website">
+                          </v-text-field>
+
+                          <!-- Company foundation year -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Company foundation year'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Year Company were Founded">
+                          </v-text-field>
+
+                          <!-- County/NUTS2 -->
+                          <v-text-field 
+                            v-else-if="question.title == 'Company foundation year'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="County/NUTS2">
+                          </v-text-field>
+
+                          <!-- If sector was not listed in the previous question, please specify here... -->
+                          <v-text-field 
+                            v-else-if="question.title == 'If sector was not listed in the previous question, please specify here...'" 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="">
+                          </v-text-field>
+
+                          <!-- Rest of the input fields -->
+                          <v-text-field 
+                            v-else 
+                            v-model.lazy="setQuestionAnswerVariable(question.id).value" 
+                            class="inputStyling" 
+                            :class="$vuetify.breakpoint.mdAndDown ? 'inputPhone' : 'inputLarge'"
+                            :style="setQuestionAnswerVariable(question.id).answered ? 'background-color: #e5fddc;' : ''" 
+                            :prepend-icon="setQuestionAnswerVariable(question.id).answered ? 'mdi-check' : 'mdi-close'"
+                            :disabled="setQuestionAnswerVariable(question.id).answered" 
+                            hide-details 
+                            label="Write your answer here">
+                          </v-text-field>
+
                         </div>
-                        
                       </v-flex>
                     </v-layout>
                   </v-container>
-                  <!-- <pre>{{comments}}</pre> -->
-                  <!-- <pre>---{{selectedChildCategory}}---</pre> -->
+                </div>
 
-                  <!-- This will work, but it is NOT pretty or best practice.  But deadline... -->
+                <!-- ===== The rest of Mapping Form - not macro section ===== -->
+                <div v-else>
+                  <v-row class="ma-0 pa-0">
 
-                  <!-- Have your enterprise invested in digitalization in the following business areas? -->
-                  <v-textarea v-if="selectedChildCategory.id == 321" v-model="commentsOfForm[0].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 322" v-model="commentsOfForm[1].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 324" v-model="commentsOfForm[2].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 325" v-model="commentsOfForm[3].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 327" v-model="commentsOfForm[4].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 328" v-model="commentsOfForm[5].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 330" v-model="commentsOfForm[6].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 331" v-model="commentsOfForm[7].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 332" v-model="commentsOfForm[8].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 334" v-model="commentsOfForm[9].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-textarea v-if="selectedChildCategory.id == 335" v-model="commentsOfForm[10].comment" label="Write a comment about this section" outlined style="width:60%;"/>
-                  <v-btn color="primary" @click="saveCommentsOfForm()">Add Comment</v-btn>
+                    <!-- Tabs -->
+                    <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
+                      <v-navigation-drawer permanent style="width:100%;z-index:0">
+                        <v-list dense class="py-0 mt-15">
+                          <v-list-item-group v-model="selectedItem" style="color: darkblue;">
+                            <v-list-item v-for="(subSection,subIndex) in userForm.sections.filter(i => i.sub_category == section.id)" :key="subIndex" @click="selectedChildCategory = subSection;">
+                              <v-list-item-action>
+                                <v-icon :color="caluclateSectionProgress(subSection.id) < 1 ? 'error' : caluclateSectionProgress(subSection.id) < 99 ? 'yellow' : 'success'"> mdi-record </v-icon>
+                              </v-list-item-action>
+                              <v-list-item-content>
+                                <p>{{ subSection.name }}</p>
+                              </v-list-item-content>
+                            </v-list-item>
+                          </v-list-item-group>
+                        </v-list>
+                      </v-navigation-drawer>
+                    </v-col>
+                
+                    <!-- Sub Category Selected - Questions and Comment -->
+                    <v-col cols="12" xl="10" lg="10" md="10" sm="12" xs="12" v-if="selectedChildCategory" class="mt-15">
 
-                </v-col>
+                      <!-- Sort by Question Type and display within the Form -->
+                      <v-container v-for="(question,questionIndex) in selectedChildCategory.questions" :key="questionIndex" class="fu-container-styling mt-4">
 
-                <!-- No Sub Category Selected Yet -->
-                <v-col v-else cols="12" xl="10" lg="10" md="10" sm="12" xs="12" class="mt-15">
-                  <p class="title" v-if="$vuetify.breakpoint.mdAndUp"> 
-                    <span>
-                      <v-icon large>mdi-arrow-left</v-icon>
-                    </span>
-                    <span class="pl-5">Select one of the side categories to see the category questions</span>
-                  </p>
-                  <p class="title" v-else> 
-                    <span>
-                      <v-icon large>mdi-arrow-up</v-icon>
-                    </span>
-                    <span class="pl-5">Select one of the sub categories to see the category questions</span>
-                  </p>
-                </v-col> 
-              </v-row>
+                        <v-layout row wrap>
+                          <v-flex xs12 class="pa-1">
+
+                            <!-- Help Text to Questions -->
+                            <p style="font-size: 16px" class="mb-0">
+                              <span>
+                                <v-icon v-if="setQuestionAnswerVariable(question.id).answered" color="success">mdi-check</v-icon>
+                                <v-icon v-else color="error">mdi-close</v-icon>
+                              </span>
+                              {{ question.title }}
+                              <v-menu offset-x>
+                                <template v-slot:activator="{ on }">
+                                  <v-btn @click="selectedQuestionInfo = question" v-on="on" color="primary" style="transform: translateY(-3px)" text icon small>
+                                    <v-icon title="Read question description and score help text" size="30"> mdi-information </v-icon>
+                                  </v-btn>
+                                </template>
+                                <v-card class="pa-3 font-weight-regular body-2 br-10" width="500px">
+                                  <div v-if="selectedQuestionInfo">
+                                    <p><b>Question description:</b></p>
+                                    <p>{{ selectedQuestionInfo.description }}</p>
+                                    <p><b>Score explanation:</b></p>
+                                    <ol>
+                                      <li v-for="(helpText, helpTextIndex) in JSON.parse(selectedQuestionInfo.options)" :key="helpTextIndex">{{ helpText.label }}</li>
+                                    </ol>
+                                  </div>
+                                </v-card>
+                              </v-menu>
+                            </p>
+
+                            <!-- Question Scale -->
+                            <div v-if="question.type == 'q_scale'">
+                              <div v-if="JSON.parse(question.options).map(i => i.weight).length == 0">
+                                <v-radio-group
+                                :disabled="setQuestionAnswerVariable(question.id).answered"  
+                                v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                                >
+                                  <v-radio label="1" value="1"></v-radio>
+                                  <v-radio label="2" value="2"></v-radio>
+                                  <v-radio label="3" value="3"></v-radio>
+                                  <v-radio label="4" value="4"></v-radio>
+                                  <v-radio label="5" value="5"></v-radio>
+                                </v-radio-group>
+                              </div>
+                              <div v-else>
+                                <v-radio-group 
+                                  :disabled="setQuestionAnswerVariable(question.id).answered"  
+                                  v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                                >
+                                  <v-radio label="1" value="1"></v-radio>
+                                  <v-radio label="2" value="2"></v-radio>
+                                  <v-radio label="3" value="3"></v-radio>
+                                  <v-radio label="4" value="4"></v-radio>
+                                  <v-radio label="5" value="5"></v-radio>
+                                </v-radio-group>
+                              </div>
+                            </div>
+
+                            <!-- Question Multiple Choice -->
+                            <div v-else-if="question.type == 'q_multiple_choice'">
+                              <v-radio-group 
+                                :disabled="setQuestionAnswerVariable(question.id).answered"  
+                                v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                              >
+                                <v-radio v-for="(item, index) in JSON.parse(question.options)" :label="item.label" :value="item.weight" :key="index"></v-radio>
+                              </v-radio-group>
+                            </div>
+
+                            <!-- Question CheckBoxes -->
+                            <div v-else-if="question.type == 'q_checkboxes'">
+                              <v-checkbox
+                                v-for="(item, index) in JSON.parse(question.options)" 
+                                :key="index"
+                                multiple
+                                :disabled="setQuestionAnswerVariable(question.id).answered"
+                                v-model.lazy="setQuestionAnswerVariable(question.id).value"
+                                :label="item.label"
+                                :value="index + '-' + item.weight"
+                              ></v-checkbox>
+                            </div>
+
+                            <!-- Question Unclear - Text Field -->
+                            <div v-else>
+                              <v-text-field :disabled="setQuestionAnswerVariable(question.id).answered" v-model.lazy="setQuestionAnswerVariable(question.id).value" label="Write your answer here"></v-text-field>
+                            </div>
+                            
+                          </v-flex>
+                        </v-layout>
+                      </v-container>
+
+                      <!-- Comments on Each Section of the Form
+                        - Due to it having to match each of the sections, it is not possible to make it dynamic
+                        - If you want to add a new section, you have to add a new v-textarea
+                      -->
+                      <v-textarea v-if="selectedChildCategory.id == 321" v-model="commentsOfForm[0].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 322" v-model="commentsOfForm[1].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 324" v-model="commentsOfForm[2].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 325" v-model="commentsOfForm[3].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 327" v-model="commentsOfForm[4].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 328" v-model="commentsOfForm[5].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 330" v-model="commentsOfForm[6].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 331" v-model="commentsOfForm[7].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 332" v-model="commentsOfForm[8].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 334" v-model="commentsOfForm[9].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-textarea v-if="selectedChildCategory.id == 335" v-model="commentsOfForm[10].comment" label="Write a comment about this section" outlined style="width:60%;"/>
+                      <v-btn color="primary" @click="saveCommentsOfForm()">Add Comment</v-btn>
+
+                    </v-col>
+
+                    <!-- No Sub Category Selected Yet -->
+                    <v-col v-else cols="12" xl="10" lg="10" md="10" sm="12" xs="12" class="mt-15">
+                      <p class="title" v-if="$vuetify.breakpoint.mdAndUp"> 
+                        <span>
+                          <v-icon large>mdi-arrow-left</v-icon>
+                        </span>
+                        <span class="pl-5">Select one of the side categories to see the category questions</span>
+                      </p>
+                      <p class="title" v-else> 
+                        <span>
+                          <v-icon large>mdi-arrow-up</v-icon>
+                        </span>
+                        <span class="pl-5">Select one of the sub categories to see the category questions</span>
+                      </p>
+                    </v-col> 
+                  </v-row>
              
                 </div>
-              </v-tab-item>
 
+              </v-tab-item>
             </v-tabs>
           </div>
+
           <div class="pl-5 pt-5 pb-5">
             <v-btn title="Save new answered questions" color="primary" :disabled="!addedAnswers.filter(i => i.value && i.answered == false).length != 0" @click="sendFormResponse()" right class="mt-3 ml-3">Save Answers</v-btn>
             <span style="font-size: 16px" class="mb-0">
@@ -595,18 +583,14 @@
             </span>
           </div>
 
-          
-
-
           <div class="pb-3"></div>
         </div>
       </template>
 
-
-
       <!-- MEGA TRENDS -->
       <template v-if="mappingTemplate == 3">
         
+        <!-- Megaform Navigation -->
         <v-row class="ma-0 pa-0">
           <!-- Go back to Mapping Tool -->
           <v-col cols="12" class="ma-0 pa-0">
@@ -672,13 +656,11 @@
                     <v-col cols="auto" class="ma-0 pa-0 pr-5">
                       <v-icon v-if="macroTrend.MacroID === selectedMacroHelperID" style="color:green;" title="Read question description and score help text" size="30" @click="toggleMacroHelperText(macroTrend.MacroID)"> mdi-help-circle </v-icon>
                       <v-icon v-else title="Read question description and score help text" size="30" @click="toggleMacroHelperText(macroTrend.MacroID)"> mdi-help-circle </v-icon>
-
                     </v-col>
                     <v-col cols="4" class="ma-0 pa-0">
                       <v-checkbox v-model="selectedMacroTrends" :label="macroTrend.name" :value="macroTrend" class="ma-0 pa-0"></v-checkbox>
                     </v-col>
                     <v-col cols="4" class="ma-0 pa-0">
-
                       <v-card v-if="macroTrend.MacroID === selectedMacroHelperID">
                         <v-card-title class="title"> {{macroTrend.name}} </v-card-title>
                         <v-card-text>
@@ -687,8 +669,6 @@
                       </v-card>
                     </v-col>
                   </v-row>
-                  
-      
                 </v-col>
               </v-row>
             </v-col>
@@ -720,20 +700,18 @@
           </v-row>
           <v-btn @click="calculateMacroQuestions()" class="ml-6 success mb-15">Submit</v-btn>
 
-
           <v-dialog v-model="pdfResultDisplayDialog"> 
             <v-card v-if="formPdfData" class="pa-5">
               <MappingFormResults :pdfData="formPdfData" />
             </v-card>
           </v-dialog>
 
-
-
         </template>
+
       </template>
+
     </v-card>
   </v-dialog>
-  
 </template>
 
 <script>
@@ -745,7 +723,11 @@ export default {
   },
   data(){
     return {
-
+      // Dialog Status - Open or Closed
+      openMappingToolDialog: false,
+      // Display the PDF Result Dialog (MappingFormResults.vue)
+      pdfResultDisplayDialog: false,
+      // Comment for each section of the Form - Used in the PDF
       commentsOfForm: [
         {
           comment: "",
@@ -793,9 +775,10 @@ export default {
         },
         
       ],
+
       formPdfData: null,
-      pdfResultDisplayDialog: false,
       selectedMacroHelperID: "",
+      // MegaTrends - All text - i18n implemented
       swotText:[
           {
             id:320,
@@ -912,20 +895,20 @@ export default {
               ]
             }
           },
-      ],
-
-      readyToSendTrendsData: "",
-      openMappingToolDialog: false,
-      accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
-      mappingTemplate: 3,
-      formID: 168,
-      todaysDate: "",
-      mappingEmail: "",
-      mappingUsername: "",
-      usersMappingData: [],
-      userForm: [],
-      addedAnswers: [],
-
+        ],
+        
+        readyToSendTrendsData: "",
+        accessKey:window.btoa('bac436b32a36431bb437b9509b6d3495'),
+        mappingTemplate: 3,
+        formID: 168,
+        todaysDate: "",
+        mappingEmail: "",
+        mappingUsername: "",
+        usersMappingData: [],
+        userForm: [],
+        addedAnswers: [],
+        
+        
       // Form
       formSectionTabs: 0,
       selectedQuestionInfo: "",
