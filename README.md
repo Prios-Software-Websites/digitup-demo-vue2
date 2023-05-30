@@ -1,5 +1,8 @@
 # InproFuture
 
+# Note: Er ikke knyttet opp til netlify, pga issue med Github Pro og Netlify.
+
+
 ## Project setup
 ```
 npm install
