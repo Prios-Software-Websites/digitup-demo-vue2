@@ -9,7 +9,7 @@
         <v-card class="mt-15 introImage" flat>
           <v-img src="../assets/images/Homepagesmab.jpg" height="600">
             <p class="introTitle">Welcome to InproFuture</p>
-            <!-- <p class="introDescription">Some short information about the project</p> -->
+            <!-- <p class="introDescription">Some short information about the project  </p> -->
           </v-img>
         </v-card>
       </v-col>
