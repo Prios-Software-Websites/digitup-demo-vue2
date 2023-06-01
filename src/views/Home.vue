@@ -15,7 +15,7 @@
       </v-col>
       
 
-      <!-- 3 Cards in center of cards -->
+      <!-- 3 Cards in center of cards . -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" class="pt-0"></v-col>
       <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pt-0">
         <v-row>
