@@ -42,13 +42,15 @@ Inprofuture project will mprove SMEs innovative and digital transition capacity 
 <!-- Project Details --->
 <h2 align="center">Project Details</h2>
 
-Live page: ######
+Live page: [inprofuture](https://inprofuture.eu/)
 
-Hosted at: #####
+Hosted at: Digital Ocean  - Link needed
 
-Tenant id: <strong>None Connected</strong>
+Tenant id: <strong>108</strong>
 
 Last Updated: *09-06-2023*
+
+Last Updated by: Bjørn Einar S. Rodal
 
 <br>
 <br>
