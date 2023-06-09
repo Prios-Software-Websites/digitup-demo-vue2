@@ -61,7 +61,7 @@ Last Updated: *09-06-2023*
 ### Clone the Project
 
 ```sh
-git clone ########
+git clone https://github.com/Prios-Software-Websites/inprofuture.git
 ```
 
 ### Install all dependensies and set up project
@@ -77,20 +77,13 @@ npm run serve
 
 ### Compile and Minify for Production
 
-Make DO recipe
+Make Digital Ocean recipe
 
 
 <br>
 <br>
 <br>
 
-
-
-
-
-<br>
-<br>
-<br>
 
 <!-- Project Details --->
 <h2 align="center">ChangeLog / Other</h2>
