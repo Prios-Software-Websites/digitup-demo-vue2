@@ -79,7 +79,18 @@ npm run serve
 
 ### Compile and Minify for Production
 
-Make Digital Ocean recipe
+1. ssh into the server, from the terminal.
+2. go into the correct folder. /home/prios/websites/PROJECT-NAME
+3. Do a Git Pull, to get latest changes down.
+4. Run an npm install  (if added any new npm packages)
+5. Build the project, by doing an  npm run build.
+6. Restart the server (if you have changed the config file)
+  - Ignore step 6 and the code below otherwise.
+
+```sh
+sudo systemctl restart nginx
+```
+
 
 
 <br>
