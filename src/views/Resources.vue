@@ -6,26 +6,24 @@
 </template>
 
 <script>
-import ResourcePage from "@/components/Resource/ResourcePage.vue"
-import ResourcePageTwo from "@/components/Resource/ResourcePageV2.vue"
+import ResourcePage from "@/components/Resource/ResourcePage.vue";
+import ResourcePageTwo from "@/components/Resource/ResourcePageV2.vue";
 export default {
-  name: 'Resource Page',
+  name: "Resource Page",
   components: {
     ResourcePage,
-    ResourcePageTwo
+    ResourcePageTwo,
   },
-  data(){
-    return {
-
-    }
+  data() {
+    return {};
   },
-}
+};
 </script>
 
 <style scoped>
 /* General Page */
 .homePageWidth {
-  width: 90vw; 
-  margin:auto auto;
+  width: 90vw;
+  margin: auto auto;
 }
 </style>
