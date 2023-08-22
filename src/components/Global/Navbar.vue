@@ -15,17 +15,17 @@ O
       <v-img
         v-if="$vuetify.breakpoint.mdAndDown"
         class="mt-5 mb-5"
-        src="img/newLogo.jpg"
+        src="img/digitup-logo.jpg"
         max-height="150"
         max-width="150"
         contain
       ></v-img>
       <v-img
         v-else
-        class="mt-5"
-        src="img/newLogo.jpg"
-        max-height="130"
-        max-width="130"
+        class="mt-10"
+        src="img/digitup-logo.jpg"
+        max-height="100px"
+        max-width="100px"
         contain
       ></v-img>
     </a>

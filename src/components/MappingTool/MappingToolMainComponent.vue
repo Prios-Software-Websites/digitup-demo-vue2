@@ -2,7 +2,7 @@
   <v-dialog v-model="mappingDialog" fullscreen>
     <v-card>
       <div class="container">
-        <h1>Mapping Tool</h1>
+        <h1>Assessment Tool</h1>
         <v-btn @click="closeDialog()" class="mb-15">Close</v-btn>
 
         <!-- ==== TEMPLATE 1 - Register User ==== -->

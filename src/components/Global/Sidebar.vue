@@ -7,17 +7,17 @@
         <v-img
           v-if="$vuetify.breakpoint.mdAndDown"
           class="mt-7"
-          src="img/newLogo.jpg"
-          max-height="150"
-          max-width="150"
+          src="img/digitup-logo.jpg"
+          max-height="100px"
+          max-width="100px"
           contain
         ></v-img>
         <v-img
           v-else
           class="mt-7"
-          src="img/newLogo.jpg"
-          max-height="130"
-          max-width="130"
+          src="img/digitup-logo.jpg"
+          max-height="100px"
+          max-width="100px"
           contain
         ></v-img>
       </a>
@@ -35,17 +35,17 @@
         <v-img
           v-if="$vuetify.breakpoint.mdAndDown"
           class="mt-5"
-          src="img/newLogo.jpg"
-          max-height="150"
-          max-width="150"
+          src="img/digitup-logo.jpg"
+          max-height="100px"
+          max-width="100px"
           contain
         ></v-img>
         <v-img
           v-else
           class="mt-5"
-          src="img/newLogo.jpg"
-          max-height="130"
-          max-width="130"
+          src="img/digitup-logo.jpg"
+          max-height="100px"
+          max-width="100px"
           contain
         ></v-img>
       </a>

@@ -3,10 +3,15 @@
     <p class="mt-15"></p>
     <p class="trainingChapterTitle">
       <!-- {{ $t("mappingToolFrontpage.title") }} -->
-      Mapping Tool
+      Assement tool Digitup
     </p>
     <p class="trainingChapterDescription">
       <!-- {{ $t("mappingToolFrontpage.paragraphOne") }} -->
+      The assessment tool has the purpose of assessing the profiles of SMEs
+      managers and self-entrepreneurs’ digital capacity. To conclude the
+      profiles, I used the questions from the preliminary questionnaire below
+      and also added other questions in order to make the assessment tool
+      fulfill its purpose.
     </p>
     <!-- <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
     <p>{{$t("mappingToolFrontpage.paragraphThree")}}</p>
