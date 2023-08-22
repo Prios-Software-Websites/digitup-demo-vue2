@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charest="utf-8" />
+    <title>Reset PDF</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-polar.min.js"></script>
+  </head>
+  <body>
+    <!--Front page container-->
+    <div class="mainDisplayContainer">
+      <div>
+        <p class="containerHeader">Reset PDF</p>
+        <div style="margin-top: 30px; margin-left: 10px">
+          <p>
+            <span style="font-weight: bold">Username:</span>
+            <span>{{this.userName}}</span>
+          </p>
+
+          <p>
+            <span style="font-weight: bold">Email:</span>
+            <span>{{this.userEmail}}</span>
+          </p>
+        </div>
+        <!-- <p>{{this.front_page.name}}</p> -->
+        <p class="subHeader">{{this.front_page.description}}</p>
+      </div>
+    </div>
+    <!--Graph container-->
+    <div class="mainDisplayContainer">
+      <!-- <div class="companyInfoFlexContainer"> -->
+      <div class="divContainer">
+        <p class="containerHeader">Categories</p>
+        {{#each this.categories}}
+        <div>
+          <div
+            class="categoryContainer subHeader"
+            style="--score-color:{{this.color}};--score-value:{{this.score}}%"
+          >
+            {{this.name}} {{this.score}} %
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <!--Graph container 2-->
+    <div class="mainDisplayContainer">
+      <p class="containerHeader">Categories</p>
+      <div id="chartContainer" style="height: 40em; width: 40em"></div>
+    </div>
+    <!-- <div class="mainDisplayContainer">
+      <p class="containerHeader">Category Text questions</p>
+      <div>
+        {{#each this.categories}} {{#if this.show_text_questions}}
+        <div>
+          <p class="swotHeader">{{this.name}}</p>
+          <div class="companyInfoFlexContainer">
+            {{#each this.text_questions}}
+            <div class="companyInfoFlexItem">
+              <p>{{this.question}}:</p>
+              <p>{{this.answer}}</p>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{/if}} {{/each}}
+      </div>
+    </div> -->
+
+    <!-- Category Text Questions -->
+    <div class="mainDisplayContainer">
+      <p class="containerHeader">Category Text questions</p>
+      <div>
+        {{#each this.categoriesAll}}
+
+        <p class="swotHeader">{{this.name}} - {{this.score}}%</p>
+        <p>{{this.scoreTitle}}</p>
+        <p>{{this.scoreDescription}}</p>
+        {{/each}}
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  anychart.onDocumentReady(function () {
+    var chart = anychart.polar();
+    // var data = [
+    //   {x:"1", value:20, fill:'#FF8A65',stroke:"lightgrey"},
+    //   {x:"2", value:30, fill:'#4DB6AC',stroke:"lightgrey"},
+    //   {x:"3", value:40, fill:'#BA68C8',stroke:"lightgrey"},
+    //   {x:"4", value:50, fill:'#7986CB',stroke:"lightgrey"},
+    //   {x:"5", value:60, fill:'#DCE775',stroke:"lightgrey"}
+    // ];
+    var data = {{{createjson this.graph_data}}}
+    var columnSeries = chart.column(data);
+    columnSeries.labels(true);
+    let dataLabels = columnSeries.labels()
+    dataLabels.fontColor("black")
+    dataLabels.fontColor("black")
+    dataLabels.fontSize(16)
+    dataLabels.format("{%value}%");
+
+    chart.xScale('ordinal');
+    chart.yScale().maximum(100);
+    chart.yScale().minimum(0);
+    var axisLabels = chart.xAxis().labels()
+
+    axisLabels.fontSize(18);
+    axisLabels.fontWeight("bold");
+
+    chart.yAxis(false);
+
+    var interactivity = chart.interactivity();
+    interactivity.selectionMode("none");
+    interactivity.hoverMode("none");
+
+    chart.title('Categories');
+
+    chart.container('chartContainer');
+    chart.draw();
+  });
+</script>
+
+<style>
+  body {
+    font-family: "Times New Roman", "Georgia", serif;
+    font-size: 18px;
+  }
+  .mainDisplayContainer {
+    page-break-inside: avoid;
+  }
+  .containerHeader {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .subHeader {
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .companyInfoFlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .companyInfoFlexItem {
+    width: 45%;
+    padding: 5px;
+  }
+  .trendsFlexItem {
+    width: 50%;
+  }
+  .swotHeader {
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+  }
+  .companyInfoFlexItem:nth-child(4n + 1),
+  .companyInfoFlexItem:nth-child(4n + 2) {
+    background-color: #f2f2f2;
+  }
+  .divContainer {
+    width: 40em;
+    padding: 10px;
+  }
+  .categoryContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: linear-gradient(
+      to right,
+      var(--score-color) var(--score-value),
+      #eeeeee 0%
+    );
+  }
+  .swotBorderStyle {
+    height: 100%;
+    padding: 5px;
+    border: 3px solid white;
+  }
+</style>

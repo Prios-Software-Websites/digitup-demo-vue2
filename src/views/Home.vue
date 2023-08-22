@@ -7,7 +7,7 @@
       <v-col cols="12" class="pb-0">
         <v-card class="mt-15 introImage" flat>
           <v-img src="../assets/images/Homepagesmab.jpg" height="600">
-            <p class="introTitle">Welcome to InproFuture.</p>
+            <p class="introTitle">Welcome to Digitup - demo.</p>
             <!-- <p class="introDescription">Some short information about the project  </p> -->
           </v-img>
         </v-card>
@@ -77,7 +77,7 @@
           <v-col cols="12" xl="4" lg="4" md="4" sm="12" xs="12">
             <p class="shortInfoTitle">Some short info</p>
             <p class="shortInfoDescription">
-              Inprofuture project will mprove SMEs innovative and digital
+              Digitup - Demo project will mprove SMEs innovative and digital
               transition capacity by creating structure, methodology and tools
               for improving employees lack of necessary skills to contribute.
             </p>

@@ -1,7 +1,8 @@
-O<template>
+O
+<template>
   <v-app-bar app class="navbarStyling" flat>
     <ContactForm ref="OpenContactForm"></ContactForm>
-    
+
     <!-- <p v-if="$i18n.locale == 'en'">asd</p> -->
     <!-- Logo -->
     <!-- <div class="d-flex align-center">
@@ -9,10 +10,24 @@ O<template>
       <v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100" src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100"/>
     </div> -->
     <!-- <v-img src="img/DIGI_logo.png" height="40" width="260px" contain/> -->
-    <v-spacer></v-spacer>
+    <!-- <v-spacer></v-spacer> -->
     <a href="/">
-      <v-img v-if="$vuetify.breakpoint.mdAndDown" class="mt-5 mb-5" src="img/newLogo.jpg"  max-height="150" max-width="150" contain></v-img>
-      <v-img v-else class="mt-5" src="img/newLogo.jpg"  max-height="130" max-width="130" contain></v-img>
+      <v-img
+        v-if="$vuetify.breakpoint.mdAndDown"
+        class="mt-5 mb-5"
+        src="img/newLogo.jpg"
+        max-height="150"
+        max-width="150"
+        contain
+      ></v-img>
+      <v-img
+        v-else
+        class="mt-5"
+        src="img/newLogo.jpg"
+        max-height="130"
+        max-width="130"
+        contain
+      ></v-img>
     </a>
     <v-spacer></v-spacer>
     <!-- Links -->
@@ -28,14 +43,14 @@ O<template>
       9. Login (Link to followup? OR same as valuable creativity) 
     -->
     <div class="mt-10">
-      <a href="/">Home</a>
+      <!-- <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/partners">Partners</a>
-      <a href="/news">News</a>
+      <a href="/news">News</a> -->
       <!-- <a href="/rss">RSS</a> -->
-      <a href="/mappingtool">Mapping Tool</a>
+      <!-- <a href="/mappingtool">Mapping Tool</a>
       <a href="/handbook">Handbook</a>
-      <a href="/resources" class="mr-2">Resources</a>
+      <a href="/resources" class="mr-2">Resources</a> -->
 
       <!-- <v-btn text to="/">{{ $t('navbar.home') }}</v-btn>
       <v-btn text to="/about">{{ $t('navbar.about') }}</v-btn>
@@ -45,7 +60,11 @@ O<template>
       <!-- <v-btn text to="/digitallearningdesign">Digital Learning Design</v-btn> -->
       <!-- <v-btn text to="/digitalpedagogicalstrategy">Digital Pedagogical Strategy</v-btn> -->
       <!-- <v-btn class="contactButton" small text @click="$refs.OpenContactForm.openContactDialog()">Contact</v-btn> -->
-      <span class="contactButton" @click="$refs.OpenContactForm.openContactDialog()">Contact</span>
+      <!-- <span
+        class="contactButton"
+        @click="$refs.OpenContactForm.openContactDialog()"
+        >Contact</span
+      > -->
       <!-- <v-btn icon @click="$refs.OpenContactForm.openContactDialog()">
         <v-icon>mdi-email-outline</v-icon>
       </v-btn> -->
@@ -53,7 +72,6 @@ O<template>
     <!-- <div class="mt-10">
       <LanguageSelection></LanguageSelection>
     </div> -->
-
 
     <v-spacer></v-spacer>
     <!-- Login -->
@@ -64,36 +82,34 @@ O<template>
 </template>
 
 <script>
-import ContactForm from "@/components/Global/ContactUs.vue"
-import LanguageSelection from "@/components/TestAndDevelopment/SelectLocale.vue"
+import ContactForm from "@/components/Global/ContactUs.vue";
+import LanguageSelection from "@/components/TestAndDevelopment/SelectLocale.vue";
 
 export default {
-  components:{
+  components: {
     ContactForm,
-    LanguageSelection
+    LanguageSelection,
   },
-  data(){
-    return {
-
-    }
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>
-.navbarStyling{
-  height:6em !important; 
-  width: 90vw !important; 
-  margin: auto auto !important; 
-  background-color:#FFFFFF !important; 
-  border-bottom:5px solid #2a4b7f!important;
+.navbarStyling {
+  height: 6em !important;
+  width: 90vw !important;
+  margin: auto auto !important;
+  background-color: #ffffff !important;
+  border-bottom: 5px solid #2a4b7f !important;
 }
 a {
   padding: 14px;
   color: #141428;
   text-decoration: none;
   font-size: 16px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
 }
 a:visited {
@@ -110,7 +126,7 @@ a:hover {
 
 /* Contact Button */
 .contactButton {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: regular;
   color: #141428;
   line-height: 1em;
