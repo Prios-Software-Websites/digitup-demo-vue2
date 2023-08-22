@@ -39,7 +39,7 @@
         </p>
       </v-col> -->
       <!-- Image -->
-      <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
+      <!-- <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <v-img
           v-if="$vuetify.breakpoint.mdAndDown"
           class="mt-5 mb-5"
@@ -56,7 +56,7 @@
           max-width="130"
           contain
         ></v-img>
-      </v-col>
+      </v-col> -->
     </v-row>
   </v-footer>
 </template>

@@ -3,7 +3,7 @@
     <p class="mt-15"></p>
     <p class="trainingChapterTitle">
       <!-- {{ $t("mappingToolFrontpage.title") }} -->
-      Assement tool Digitup
+      Assessment tool Digitup
     </p>
     <p class="trainingChapterDescription">
       <!-- {{ $t("mappingToolFrontpage.paragraphOne") }} -->
