@@ -11,7 +11,8 @@
       managers and self-entrepreneurs’ digital capacity. <br />
       To conclude the profiles, I used the questions from the preliminary
       questionnaire below and also added other questions in order to make the
-      assessment tool fulfill its purpose.
+      assessment tool fulfill its purpose. <br/>
+      Online assessment tool for the measurement of digital skill levels.
     </p>
     <!-- <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
     <p>{{$t("mappingToolFrontpage.paragraphThree")}}</p>
@@ -20,7 +21,7 @@
     <v-btn
       @click="$refs.openMappingDialog.openingMappingForm(215)"
       large
-      dark
+      color="primary"
       class="mt-15"
       :title="this.$t('mappingToolFrontpage.startAssessmentButtonTooltip')"
     >

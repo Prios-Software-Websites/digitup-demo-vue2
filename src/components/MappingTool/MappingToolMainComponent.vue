@@ -2,8 +2,32 @@
   <v-dialog v-model="mappingDialog" fullscreen>
     <v-card>
       <div class="container">
-        <h1>Assessment Tool</h1>
-        <v-btn @click="closeDialog()" class="mb-15">Close</v-btn>
+        <v-row class="ma-0 pa-0 pt-15">
+          <v-col cols="auto"><h1>Assessment Tool</h1></v-col>
+          <v-spacer></v-spacer>
+          <v-col>
+            <v-img
+              v-if="$vuetify.breakpoint.mdAndDown"
+              class="mb-5"
+              src="img/digitup-logo.jpg"
+              max-height="150"
+              max-width="150"
+              contain
+            ></v-img>
+            <v-img
+              v-else
+              class=""
+              src="img/digitup-logo.jpg"
+              max-height="100px"
+              max-width="100px"
+              contain
+            ></v-img>
+          </v-col>
+        </v-row>
+        
+        
+        <v-btn @click="closeDialog()" class="mb-15" color="primary">Close</v-btn>
+        
 
         <!-- ==== TEMPLATE 1 - Register User ==== -->
         <template v-if="mappingTemplate == 1">
@@ -20,6 +44,7 @@
             :disabled="!mappingEmail || !mappingUsername"
             @click="checkIfEmailGotContent()"
             class="primary ml-3 mb-3"
+            color="primary"
             >Take Mapping Tools</v-btn
           >
         </template>
@@ -37,6 +62,7 @@
                 hide-slider
                 style="border-radius: 10px"
                 class="mb-15"
+                active-class="isActive"
               >
                 <!-- By completed Value, we display the progress of each category through colours in the tabs -->
                 <v-tab
@@ -1669,8 +1695,9 @@ export default {
 
 <style scoped>
 .tabStyling {
-  color: #1a7c92;
+  color:#1a7c92;
   border-radius: 5px;
+  border: 1px solid #1a7c92;
   margin-right: 4px;
 }
 
@@ -1699,8 +1726,9 @@ export default {
 }
 
 .isActive {
-  color: brown !important;
+  color: #2a4b7f !important;
   font-weight: bold;
+  background-color: orange !important;
 }
 
 .hotpink {
