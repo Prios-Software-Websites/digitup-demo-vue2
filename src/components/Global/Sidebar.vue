@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContactUs ref="OpenContactForm"></ContactUs>
+    <!-- <ContactUs ref="OpenContactForm"></ContactUs> -->
     <!-- Navbar -->
     <v-app-bar app style="height: 6em; background-color: #ffffff !important">
       <a href="/">
@@ -22,12 +22,12 @@
         ></v-img>
       </a>
       <v-spacer></v-spacer>
-      <v-btn icon @click="toggleNavbar()">
+      <!-- <v-btn icon @click="toggleNavbar()">
         <v-icon>mdi-menu</v-icon>
-      </v-btn>
-      <v-btn icon @click="$refs.OpenContactForm.openContactDialog()">
+      </v-btn> -->
+      <!-- <v-btn icon @click="$refs.OpenContactForm.openContactDialog()">
         <v-icon>mdi-email-outline</v-icon>
-      </v-btn>
+      </v-btn> -->
     </v-app-bar>
     <!-- Navbar -->
     <v-navigation-drawer v-model="navDrawer" app>
@@ -95,8 +95,8 @@ export default {
   },
   data() {
     return {
-      navDrawer: true,
-      expand: true,
+      navDrawer: false,
+      expand: false,
       pageNavigation: [
         // { name: "Home", location: "/", icon: "" },
         // { name: "About", location: "/about", icon: "" },

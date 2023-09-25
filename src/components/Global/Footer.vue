@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="#FFFFFF" elevation="10" class="pb-10">
+  <v-footer color="#FFFFFF" elevation="10" class="pb-10 mt-10">
     <v-row no-gutters>
       <v-col cols="12">
         <v-divider class="dividerStyling"></v-divider>
