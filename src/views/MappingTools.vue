@@ -1,6 +1,6 @@
 <template>
   <div class="homePageWidth">
-    <p class="mt-15"></p>
+    <p class="mt-15 pt-10"></p>
     <p class="trainingChapterTitle">
       <!-- {{ $t("mappingToolFrontpage.title") }} -->
       Assessment tool Digitup

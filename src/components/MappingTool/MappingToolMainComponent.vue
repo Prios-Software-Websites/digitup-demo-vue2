@@ -5,7 +5,7 @@
         <v-row class="ma-0 pa-0 pt-15">
           <v-col cols="auto"><h1>Assessment Tool</h1></v-col>
           <v-spacer></v-spacer>
-          <v-col>
+          <v-col cols="auto" class="mb-0 pb-0">
             <v-img
               v-if="$vuetify.breakpoint.mdAndDown"
               class="mb-5"
@@ -23,10 +23,13 @@
               contain
             ></v-img>
           </v-col>
+          <v-col cols="12" class="mt-0 pt-0">
+
+            <v-btn @click="closeDialog()" class="mb-15" color="primary">Close</v-btn>
+          </v-col>
         </v-row>
         
         
-        <v-btn @click="closeDialog()" class="mb-15" color="primary">Close</v-btn>
         
 
         <!-- ==== TEMPLATE 1 - Register User ==== -->

@@ -16,15 +16,15 @@ O
         v-if="$vuetify.breakpoint.mdAndDown"
         class="mt-5 mb-5"
         src="img/digitup-logo.jpg"
-        max-height="150"
-        max-width="150"
+        max-height="150px"
+        max-width="150px"
         contain
       ></v-img>
       <v-img
         v-else
         class="mt-15"
         src="img/digitup-logo.jpg"
-        max-height="150px"
+        max-height="130px"
         max-width="150px"
         contain
       ></v-img>
@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 .navbarStyling {
-  height: 8em !important;
+  height: 7.5em !important;
   width: 90vw !important;
   margin: auto auto !important;
   background-color: #ffffff !important;
