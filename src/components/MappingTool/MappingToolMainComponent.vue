@@ -18,8 +18,8 @@
               v-else
               class=""
               src="img/digitup-logo.jpg"
-              max-height="100px"
-              max-width="100px"
+              max-height="200px"
+              max-width="200px"
               contain
             ></v-img>
           </v-col>

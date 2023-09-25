@@ -22,10 +22,10 @@ O
       ></v-img>
       <v-img
         v-else
-        class="mt-10"
+        class="mt-15"
         src="img/digitup-logo.jpg"
-        max-height="100px"
-        max-width="100px"
+        max-height="150px"
+        max-width="150px"
         contain
       ></v-img>
     </a>
@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 .navbarStyling {
-  height: 6em !important;
+  height: 8em !important;
   width: 90vw !important;
   margin: auto auto !important;
   background-color: #ffffff !important;
