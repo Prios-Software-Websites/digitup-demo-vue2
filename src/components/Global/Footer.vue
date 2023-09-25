@@ -91,7 +91,7 @@ a:hover {
 }
 
 .dividerStyling {
-  background-color: #47b5b0;
+  background-color: #2a4b7f;
   border-radius: 4px;
   opacity: 1;
   padding: 2px;
