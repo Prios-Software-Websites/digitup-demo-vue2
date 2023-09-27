@@ -1,6 +1,6 @@
 <template>
-  <v-footer color="#FFFFFF" elevation="10" class="pb-10 mt-10">
-    <v-row no-gutters>
+  <v-footer color="#FFFFFF" elevation="10" class="pb-10 mt-15">
+    <v-row no-gutters class="mt-5">
       <v-col cols="12">
         <v-divider class="dividerStyling"></v-divider>
       </v-col>
