@@ -19,7 +19,7 @@
     <p>{{$t("mappingToolFrontpage.paragraphFour")}}</p> -->
 
     <v-btn
-      @click="$refs.openMappingDialog.openingMappingForm(215)"
+      @click="$refs.openMappingDialog.openingMappingForm(229)"
       large
       color="primary"
       class="mt-15"
