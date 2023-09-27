@@ -98,32 +98,26 @@ export default {
   font-family: "Barlow", sans-serif;
   font-weight: bold;
   font-size: 46px;
-  color: #fafafa;
-  opacity: 1;
-  letter-spacing: 0px;
+  color: #fafafa; /* Adjust text color as needed */
   text-align: left;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a soft text shadow */
-  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .trainingChapterDescription {
   font-family: "Lato", sans-serif;
   font-weight: normal;
-  font-size: 14px;
-  color: #fafafa;
-  opacity: 1;
-  letter-spacing: 0px;
+  font-size: 16px;
+  color: #fafafa; /* Adjust text color as needed */
   text-align: left;
-  text-shadow: 4px 2px 4px rgb(0, 0, 0); /* Add a soft text shadow */
-  opacity: 1;
+  text-shadow: 4px 2px 4px rgb(0, 0, 0);
 }
 
 .containeraaaa {
-    background-image: url('/img/background.jpg');
-    background-size: cover;
-    padding-bottom: 90px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    background-color: rgba(0, 0, 0, 0.5); /* Apply opacity to the entire container */
-    opacity: 0.9; /* Adjust the opacity level (0.0 for fully transparent, 1.0 for fully opaque) */
-    height: auto;
-  }
+  background-image: url('/img/background.jpg');
+  background-size: cover;
+  padding-bottom: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  height: auto;
+}
 </style>
