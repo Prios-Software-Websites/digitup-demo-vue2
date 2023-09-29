@@ -21,6 +21,8 @@
             <span>{{this.userName}}</span>
           </p>
 
+          <p>{{this.testing}}</p>
+
           <p>
             <span style="font-weight: bold">Email:</span>
             <span>{{this.userEmail}}</span>
@@ -74,6 +76,12 @@
     <!-- Category Text Questions -->
     <div class="mainDisplayContainer">
       <p class="containerHeader">Recommendations on score improvement</p>
+
+      <div>
+        <!-- <p>Digital Culture</p> -->
+        <p>{{this.digitalCultureTitle}}</p>
+        <p>{{this.digitalCultureDescription}}</p>
+      </div>
       <div>
         {{#each this.categoriesAll}}
 

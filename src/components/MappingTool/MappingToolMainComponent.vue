@@ -667,6 +667,10 @@ export default {
       loadedFormData: [],
       completedValue: "",
       completedSections: [],
+
+      // Various Text
+      digitalCultureImprovementTitle: "",
+      digitalCultureImprovementDescription: "",
     };
   },
 
@@ -1100,6 +1104,41 @@ export default {
       this.generatePdf1(tempArr);
     },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     generatePdf1(tempArr) {
       console.log("Temp Array areee", tempArr);
       // this.pdfProgressDialog = true;
@@ -1110,7 +1149,53 @@ export default {
         userEmail: this.mappingEmail,
         testing: "hallo der generatePdf1",
         categoriesAll: [],
+        digitalCultureTitle: this.digitalCultureImprovementTitle,
+        digitalCultureDescription: this.digitalCultureImprovementDescription,
+
       };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       /* 
         1. Loop through all the Categories.
@@ -1134,31 +1219,42 @@ export default {
         let scoreTitle = "";
         let scoreDescription = "";
 
+        console.log("Hallooooooo!!!!")
+
         // Digital Culture - 570
-        if (idOfCategory == 570) {
+        if (idOfCategory == 604) {
           if (scoreOfCategory <= 32) {
+            console.log("Triggered 1")
             // console.log("Low Score - Digital Culture");
             scoreTitle =
               "Digital novice indicates that theres a significant gap in embracing and integrating digital technologies and practices within your work environment.";
             scoreDescription =
               "Begin with a foundational training to the concept of digital culture, its importance and the benefits it can bring to an organization. Enroll training sessions to familiarize employees with essential digital tools relevant to their roles. Orgamoze seminars where teams can brainstorm and share digital innovation ideas. This can help in fostering a culture where digital innovation is encouraged and appreciated.";
+            // this.digitalCultureImprovementTitle = scoreTitle;
+            // this.digitalCultureImprovementDescription = scoreDescription;
           } else if (scoreOfCategory >= 33 && scoreOfCategory <= 66) {
             // console.log("Medium Score - Digital Culture");
+            console.log("Triggered 2")
             scoreTitle =
               "It indicates that your organization has made strides in establishing a digital culture, there is still room for improvement";
             scoreDescription =
               "Dive deeper into the nuances of digital culture, exploring how it can be further ingrained into the organizations ethos. Offer advanced training sessions on digital tools, ensuring that employees are not just familiar with them, but can leverage them to their full potential. Organize trainings that delve into advanced digital innovation strategies, ensuring that the organization is always at the forefront of digital trends.";
+            // this.digitalCultureImprovementTitle = scoreTitle;
+            // this.digitalCultureImprovementDescription = scoreDescription;
           } else if (scoreOfCategory >= 67) {
+            console.log("Triggered 3")
             // console.log("High Score - Digital Culture");
             scoreTitle =
               "This profile has a high level of understanding of digital transformation, with many digital initiatives implemented successfully";
-            scoreDescription =
+              scoreDescription =
               "There is a strong digital culture, with effective training programs and good investment in digital technologies.";
+            // this.digitalCultureImprovementTitle = scoreTitle;
+            // this.digitalCultureImprovementDescription = scoreDescription;
           }
         }
 
         // Training and Development - 571
-        if (idOfCategory == 571) {
+        if (idOfCategory == 605) {
           if (scoreOfCategory <= 32) {
             scoreTitle =
               "Managers and CEOs with a score under 33% likely have limited exposure to digital training and development programs. This score suggests that there's a significant gap in the digital skills of the workforce.";
@@ -1178,7 +1274,7 @@ export default {
         }
 
         // Investment in Digital Transformation - 572
-        if (idOfCategory == 572) {
+        if (idOfCategory == 606) {
           if (scoreOfCategory <= 32) {
             scoreTitle =
               "Attend introductory trainings or webinars on digital transformation. Consider consulting with a digital transformation expert to get insights tailored to your business.Review case studies of successful digital transformations in similar industries. This will provide a clearer picture of the potential ROI and benefits.";
@@ -1198,7 +1294,7 @@ export default {
         }
 
         // Challenges and Risks - 573
-        if (idOfCategory == 573) {
+        if (idOfCategory == 607) {
           if (scoreOfCategory <= 32) {
             scoreTitle =
               "At this stage, there's a fundamental lack of awareness or understanding of the challenges that come with digital transformation. Initiate a foundational training to educate managers about the common challenges faced during digital transformation, such as resistance to change, budget constraints, and cybersecurity risks. This will help in setting realistic expectations and preparing for potential roadblocks.";
@@ -1218,7 +1314,7 @@ export default {
         }
 
         // Cybersecurity - 574
-        if (idOfCategory == 574) {
+        if (idOfCategory == 608) {
           if (scoreOfCategory <= 32) {
             scoreTitle =
               "Cybersecurity Awareness Training: Begin with a basic cybersecurity awareness training for all employees. This will help them recognize common threats like phishing emails and understand the importance of strong passwords.";
@@ -1240,7 +1336,7 @@ export default {
         }
 
         // Future Plans - 575
-        if (idOfCategory == 575) {
+        if (idOfCategory == 609) {
           if (scoreOfCategory <= 32) {
             console.log("Low Score - Future Plans");
             scoreTitle = "";
@@ -1263,6 +1359,8 @@ export default {
           scoreTitle: scoreTitle,
           scoreDescription: scoreDescription,
         };
+
+        console.log("What do i get!!!", categoryResults)
 
         // Push categoryResult into categoriesAll
         if (tempArr[index].id !== 575) {
