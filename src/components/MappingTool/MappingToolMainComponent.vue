@@ -1147,7 +1147,6 @@ export default {
         graph_data: [],
         userName: this.mappingUsername,
         userEmail: this.mappingEmail,
-        testing: "hallo der generatePdf1",
         categoriesAll: [],
         digitalCultureTitle: this.digitalCultureImprovementTitle,
         digitalCultureDescription: this.digitalCultureImprovementDescription,
@@ -1482,7 +1481,6 @@ export default {
         graph_data: [],
         userName: this.mappingUsername,
         userEmail: this.mappingEmail,
-        testing: "hallo der",
       };
       // Set categories
       tempArr.forEach((category) => {
