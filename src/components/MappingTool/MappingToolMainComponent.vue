@@ -653,7 +653,7 @@ export default {
       userForm: [], // The form data, which is used to display the form and store the data
       addedAnswers: [], // All answered questions of current form
       formSectionTabs: 0, // The current tab of the form
-      selectedQuestionInfo: "", // Store the current question info
+      selectedQuestionInfo: "", // Store the current question info.
 
       /* ==== Take a closer look at these existing data ==== */
       selectedChildCategory: "", // Unsure, but it is in use
