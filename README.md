@@ -15,8 +15,6 @@
 
 ---
 
-<img src="https://prioskompetanse.blob.core.windows.net/followupmedia/uploads/4e4c0693-cda9-4a3f-919a-448ee3290af1.jpg" width="auto" height="auto"/>
-
 <br>
 <br>
 <br>
