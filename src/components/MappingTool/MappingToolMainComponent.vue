@@ -579,21 +579,21 @@
               </v-tabs>
             </div>
 
+            
+            <v-btn color="success" v-if="isFormDone" @click="calculateFormData1">Create results PDF</v-btn>
             <v-btn
+              v-else
               color="primary"
-              :disabled="
-                !addedAnswers.filter((i) => i.value && i.answered == false)
-                  .length != 0
-              "
+              :disabled="!sectionDone"
               @click="sendFormResponse()"
               right
               class="mt-3 ml-3"
-              >Save Answers</v-btn
-            >
+              >{{formSectionTabs == 5 ? 'Submit form' : 'Next section'}}
+            </v-btn>
             <!-- <v-btn @click="calcualtePdfScore()" class="ml-6 mt-3 success">Submit (Crucial)</v-btn> -->
-            <v-btn @click="calculateFormData1()" class="ml-6 mt-3 success"
+            <!-- <v-btn @click="calculateFormData1()" class="ml-6 mt-3 success"
               >Submit</v-btn
-            >
+            > -->
             <div class="pb-3"></div>
           </div>
         </template>
@@ -701,6 +701,12 @@ export default {
         return false;
       }
     },
+    sectionDone(){
+      let getSection = this.userForm.sections[this.formSectionTabs]
+      let getQuestionIds = getSection.questions.map(i => i.id)
+      let getAddedAnswers = this.addedAnswers.filter(i => getQuestionIds.includes(i.question_id))
+      return getAddedAnswers.filter(i => i.value).length == getQuestionIds.length
+    }
   },
 
   methods: {
@@ -936,13 +942,23 @@ export default {
           ];
           newCreateArr.push(newCreateObj);
         });
-      this.$http
+        console.log(newCreateArr)
+      if(newCreateArr.length != 0){
+        this.$http
         .post(
           "https://app.followup.prios.no/api/form_builder/question_responses",
           newCreateArr,
           { headers: { Tempaccess: this.accessKey } }
         )
-        .then(() => {});
+        .then(() => {
+          if(this.formSectionTabs != 5){
+            this.formSectionTabs++
+          }
+        });
+      }
+      else if(this.formSectionTabs != 5){
+        this.formSectionTabs++
+      }
     },
 
     /* ==== Functions when Submitting the answers ==== */
@@ -1103,7 +1119,6 @@ export default {
       console.log("temp Array", tempArr);
       this.generatePdf1(tempArr);
     },
-
 
 
 
