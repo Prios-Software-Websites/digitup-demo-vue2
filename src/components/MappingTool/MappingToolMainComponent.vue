@@ -159,6 +159,58 @@
                                   </div>
                                 </v-card>
                               </v-menu>
+                              <span v-if="!questionToEdit && setQuestionAnswerVariable(question.id).answered">
+                                <v-btn
+                                  @click="findEditQuestionResponse(question)"
+                                  color="success"
+                                  style="transform: translateY(-3px)"
+                                  text
+                                  icon
+                                  small
+                                  class="ml-3"
+                                >
+                                  <v-icon
+                                    title="Edit this question"
+                                    size="30"
+                                  >
+                                    mdi-pencil
+                                  </v-icon>
+                                </v-btn>
+                              </span>
+                              <span  v-else-if="questionToEdit && questionToEdit.question_id == question.id">
+                                <v-btn
+                                  @click="confirmQuestionEdit(true)"
+                                  color="success"
+                                  style="transform: translateY(-3px)"
+                                  text
+                                  icon
+                                  small
+                                  class="ml-3"
+                                >
+                                  <v-icon
+                                    title="Confirm edit"
+                                    size="30"
+                                  >
+                                    mdi-check
+                                  </v-icon>
+                                </v-btn>
+                                <v-btn
+                                  @click="confirmQuestionEdit(false)"
+                                  color="error"
+                                  style="transform: translateY(-3px)"
+                                  text
+                                  icon
+                                  small
+                                  class="ml-3"
+                                >
+                                  <v-icon
+                                    title="Cancel edit"
+                                    size="30"
+                                  >
+                                    mdi-close
+                                  </v-icon>
+                                </v-btn>
+                              </span>
                             </p>
 
                             <!-- ==== Different Types of Questions to Display ==== -->
@@ -177,7 +229,7 @@
                                   :value="item.weight"
                                   :disabled="
                                     setQuestionAnswerVariable(question.id)
-                                      .answered
+                                      .answered && checkEditQuestion(question.id) 
                                   "
                                 ></v-radio>
                               </v-radio-group>
@@ -195,7 +247,7 @@
                                 <v-radio-group
                                   :disabled="
                                     setQuestionAnswerVariable(question.id)
-                                      .answered
+                                      .answered && checkEditQuestion(question.id)  
                                   "
                                   v-model.lazy="
                                     setQuestionAnswerVariable(question.id).value
@@ -212,7 +264,7 @@
                                 <v-radio-group
                                   :disabled="
                                     setQuestionAnswerVariable(question.id)
-                                      .answered
+                                      .answered && checkEditQuestion(question.id)  
                                   "
                                   v-model.lazy="
                                     setQuestionAnswerVariable(question.id).value
@@ -237,7 +289,7 @@
                                 multiple
                                 :disabled="
                                   setQuestionAnswerVariable(question.id)
-                                    .answered
+                                    .answered && checkEditQuestion(question.id) 
                                 "
                                 v-model.lazy="
                                   setQuestionAnswerVariable(question.id).value
@@ -252,7 +304,7 @@
                               <v-text-field
                                 :disabled="
                                   setQuestionAnswerVariable(question.id)
-                                    .answered
+                                    .answered && checkEditQuestion(question.id) 
                                 "
                                 v-model.lazy="
                                   setQuestionAnswerVariable(question.id).value
@@ -626,6 +678,7 @@
 <script>
 import { v4 as uuidv4 } from "uuid";
 import MappingToolResults from "@/components/MappingTool/MappingToolResults.vue";
+import axios from "axios";
 export default {
   components: {
     MappingToolResults,
@@ -654,6 +707,8 @@ export default {
       addedAnswers: [], // All answered questions of current form
       formSectionTabs: 0, // The current tab of the form
       selectedQuestionInfo: "", // Store the current question info.
+      questionResponses: [], // All question_responses for the current user
+      questionToEdit:null, // Saves the addedAnswers value for the current edited question
 
       /* ==== Take a closer look at these existing data ==== */
       selectedChildCategory: "", // Unsure, but it is in use
@@ -868,6 +923,7 @@ export default {
           { headers: { Tempaccess: this.accessKey } }
         )
         .then((response) => {
+          this.questionResponses = response.data
           this.adjustFormData(response.data);
         })
         .catch((error) => {
@@ -942,7 +998,6 @@ export default {
           ];
           newCreateArr.push(newCreateObj);
         });
-        console.log(newCreateArr)
       if(newCreateArr.length != 0){
         this.$http
         .post(
@@ -1119,8 +1174,43 @@ export default {
       console.log("temp Array", tempArr);
       this.generatePdf1(tempArr);
     },
-
-
+    checkEditQuestion(questionId){
+      if(this.questionToEdit && this.questionToEdit.question_id == questionId){
+        return false
+      }
+      else{
+        return true
+      } 
+    },
+    findEditQuestionResponse(question){
+      let findQuestionResponse = this.questionResponses.find(i => i.question_id == question.id)
+      if(!findQuestionResponse){
+        this.$http.get(
+          `https://app.followup.prios.no/api/form_builder/question_responses?&response_id=${this.userForm.response_id}`,
+          { headers: { Tempaccess: this.accessKey } }
+        )
+        .then(response =>{
+          this.questionResponses = response.data
+          findQuestionResponse = this.questionResponses.find(i => i.question_id == question.id)
+        })
+      }
+      this.questionToEdit = this.addedAnswers.find(i => i.question_id == question.id)
+    },
+    confirmQuestionEdit(update){
+      if(update){
+        let findQuestionResponseId = this.questionResponses.find(i => i.question_id == this.questionToEdit.question_id).id
+        this.$http.post(`https://app.followup.prios.no/api/form_builder/question_responses`, {
+          id:findQuestionResponseId,
+          answer:this.questionToEdit.value
+        })
+        .then(() =>{
+          this.questionToEdit = null;
+        })
+      }
+      else{
+        this.questionToEdit = null;
+      }
+    },
 
 
 
