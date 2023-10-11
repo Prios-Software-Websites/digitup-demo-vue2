@@ -6,18 +6,18 @@
       </v-col>
       <!-- Erasmus Logo -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
-        <!-- <v-img src="img/erasmusLogoFooter.jpg" contain max-width="300"></v-img> -->
+        <v-img src="img/erasmusLogoFooter.jpg" contain max-width="300"></v-img>
       </v-col>
       <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
-        <!-- <v-img src="img/erasmusLogoFooter.jpg" contain height="100px" width="250px"></v-img> -->
+        <v-img src="img/erasmusLogoFooter.jpg" contain height="100px" width="250px"></v-img>
       </v-col>
       <v-spacer></v-spacer>
       <!-- EU Logo -->
       <v-col cols="12" xl="2" lg="2" md="2" sm="12" xs="12" v-if="$vuetify.breakpoint.mdAndDown">
-        <v-img src="img/EU_POS.png" contain max-width="150"></v-img>
+        <!-- <v-img src="img/EU_POS.png" contain max-width="150"></v-img> -->
       </v-col>
       <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
-        <v-img src="img/EU_POS.png" contain height="90" class="mt-5"></v-img>
+        <!-- <v-img src="img/EU_POS.png" contain height="90" class="mt-5"></v-img> -->
       </v-col>
       <!-- Text -->
       <!-- <v-col cols="12" xl="8" lg="8" md="8" sm="12" xs="12" class="pl-0 pt-3" v-if="$vuetify.breakpoint.mdAndDown">
