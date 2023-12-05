@@ -2,7 +2,7 @@
   <div class="">
     <v-row>
       <!-- Simulated navbar -->
-      <v-col cols="12" class="navbarStyling"> 
+      <v-col cols="12" class="navbarStyling">
         <v-img
           v-if="$vuetify.breakpoint.mdAndDown"
           class="mb-5 ml-15"
@@ -22,41 +22,39 @@
       </v-col>
       <!-- Content -->
       <v-col cols="12" class="containeraaaa">
-
-        <div class="homePageWidth pb-15 ">
+        <div class="homePageWidth pb-15">
           <p class="mt-15 pt-10"></p>
           <div>
-      
             <p class="trainingChapterTitle">
               <!-- {{ $t("mappingToolFrontpage.title") }} -->
               Assessment tool Digitup
             </p>
             <p class="trainingChapterDescription">
               <!-- {{ $t("mappingToolFrontpage.paragraphOne") }} -->
-              The assessment tool has the purpose of assessing the profiles of SMEs
-              managers and self-entrepreneurs’ digital capacity. <br />
-              To conclude the profiles, I used the questions from the preliminary
-              questionnaire below and also added other questions in order to make the
-              assessment tool fulfill its purpose. <br/>
-              Online assessment tool for the measurement of digital skill levels.
+              Empowering SMEs in the digital era with Digit Up's Online
+              Assessment Tool for Industry 4.0 – A comprehensive solution to
+              define, measure, and assess digital literacy and tech-based
+              competences in SME Managers and self-entrepreneurs. <br />
+              Take the test to uncover opportunities for growth and development.
             </p>
             <!-- <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
             <p>{{$t("mappingToolFrontpage.paragraphThree")}}</p>
             <p>{{$t("mappingToolFrontpage.paragraphFour")}}</p> -->
-        
+
             <v-btn
               @click="$refs.openMappingDialog.openingMappingForm(229)"
               large
               color="primary"
               class="mt-15"
-              :title="this.$t('mappingToolFrontpage.startAssessmentButtonTooltip')"
+              :title="
+                this.$t('mappingToolFrontpage.startAssessmentButtonTooltip')
+              "
             >
               <!-- {{ $t("mappingToolFrontpage.startAssessmentButton") }} -->
               Open Mapping tool
             </v-btn>
           </div>
-    
-      
+
           <!-- <MappingToolsDialog ref="openMappingDialog"></MappingToolsDialog> -->
           <MappingToolMainComponent ref="openMappingDialog" />
         </div>
@@ -84,7 +82,6 @@ export default {
 .homePageWidth {
   width: 90vw;
   margin: auto auto;
-  
 }
 
 .navbarStyling {
@@ -113,7 +110,7 @@ export default {
 }
 
 .containeraaaa {
-  background-image: url('/img/background.jpg');
+  background-image: url("/img/background.jpg");
   background-size: cover;
   padding-bottom: 90px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
