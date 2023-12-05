@@ -32,9 +32,10 @@
             <p class="trainingChapterDescription">
               <!-- {{ $t("mappingToolFrontpage.paragraphOne") }} -->
               Empowering SMEs in the digital era with Digit Up's Online
-              Assessment Tool for Industry 4.0 – A comprehensive solution to
-              define, measure, and assess digital literacy and tech-based
-              competences in SME Managers and self-entrepreneurs. <br />
+              Assessment Tool for Industry 4.0 <br />
+              – A comprehensive solution to define, measure, and assess digital
+              literacy and tech-based competences in SME Managers and
+              self-entrepreneurs. <br />
               Take the test to uncover opportunities for growth and development.
             </p>
             <!-- <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
