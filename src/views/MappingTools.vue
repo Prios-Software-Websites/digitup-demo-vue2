@@ -2,7 +2,7 @@
   <div class="">
     <v-row>
       <!-- Simulated navbar -->
-      <v-col cols="12" class="navbarStyling">
+      <v-col cols="12" class="navbarStyling" style="display: flex">
         <v-img
           v-if="$vuetify.breakpoint.mdAndDown"
           class="mb-5 ml-15"
@@ -19,6 +19,10 @@
           max-width="100px"
           contain
         ></v-img>
+        <v-spacer></v-spacer>
+        <div class="mt-10 mr-10">
+          <LanguageSelection></LanguageSelection>
+        </div>
       </v-col>
       <!-- Content -->
       <v-col cols="12" class="containeraaaa">
@@ -26,21 +30,13 @@
           <p class="mt-15 pt-10"></p>
           <div>
             <p class="trainingChapterTitle">
-              <!-- {{ $t("mappingToolFrontpage.title") }} -->
-              Assessment tool Digitup
+              {{ $t("extraKeys.homeTitle") }}
             </p>
             <p class="trainingChapterDescription">
-              <!-- {{ $t("mappingToolFrontpage.paragraphOne") }} -->
-              Empowering SMEs in the digital era with Digit Up's Online
-              Assessment Tool for Industry 4.0 <br />
-              – A comprehensive solution to define, measure, and assess digital
-              literacy and tech-based competences in SME Managers and
-              self-entrepreneurs. <br />
-              Take the test to uncover opportunities for growth and development.
+              {{ $t("extraKeys.homeDescriptionOne") }}<br />
+              {{ $t("extraKeys.homeDescriptionTwo") }}<br />
+              {{ $t("extraKeys.homeDescriptionThree") }}
             </p>
-            <!-- <p>{{$t("mappingToolFrontpage.paragraphTwo")}}</p>
-            <p>{{$t("mappingToolFrontpage.paragraphThree")}}</p>
-            <p>{{$t("mappingToolFrontpage.paragraphFour")}}</p> -->
 
             <v-btn
               @click="$refs.openMappingDialog.openingMappingForm(229)"
@@ -51,8 +47,7 @@
                 this.$t('mappingToolFrontpage.startAssessmentButtonTooltip')
               "
             >
-              <!-- {{ $t("mappingToolFrontpage.startAssessmentButton") }} -->
-              Open Mapping tool
+              {{ $t("extraKeys.goToMappingToolButton") }}
             </v-btn>
           </div>
 
@@ -67,10 +62,12 @@
 <script>
 import MappingToolsDialog from "@/components/MappingToolv2/MappingToolsDialog.vue";
 import MappingToolMainComponent from "@/components/MappingTool/MappingToolMainComponent.vue";
+import LanguageSelection from "@/components/TestAndDevelopment/SelectLocale.vue";
 export default {
   components: {
     MappingToolsDialog,
     MappingToolMainComponent,
+    LanguageSelection,
   },
   data() {
     return {};
