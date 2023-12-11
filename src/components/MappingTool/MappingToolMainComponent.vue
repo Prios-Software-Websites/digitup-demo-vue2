@@ -1631,7 +1631,7 @@ export default {
         this.pdfProgressDialog = true;
         pdfName = pdfName + ".pdf";
         this.$http
-          .get("/resetProjectPdfTemplate.html")
+          .get("/digitupPdfEnglishTemplate.html")
           .then((getHtmlTemplate) => {
             let pdfData = {
               html: getHtmlTemplate.data,
@@ -1864,27 +1864,29 @@ export default {
 
       console.log(createObj);
 
-      this.$http.get("resetProjectPdfTemplate.html").then((getHtmlTemplate) => {
-        let pdfData = {
-          html: getHtmlTemplate.data,
-          data: this.formPdfData,
-        };
-        this.$http({
-          url: "https://pdfservice.prios.no/api/pdf_service",
-          method: "post",
-          responseType: "blob",
-          data: pdfData,
-        }).then((response) => {
-          this.pdfProgressDialog = false;
-          let pdfName = "resetResultsPDF.pdf";
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", pdfName);
-          link.setAttribute("target", "_blank");
-          link.click();
+      this.$http
+        .get("digitupPdfEnglishTemplate.html")
+        .then((getHtmlTemplate) => {
+          let pdfData = {
+            html: getHtmlTemplate.data,
+            data: this.formPdfData,
+          };
+          this.$http({
+            url: "https://pdfservice.prios.no/api/pdf_service",
+            method: "post",
+            responseType: "blob",
+            data: pdfData,
+          }).then((response) => {
+            this.pdfProgressDialog = false;
+            let pdfName = "resetResultsPDF.pdf";
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", pdfName);
+            link.setAttribute("target", "_blank");
+            link.click();
+          });
         });
-      });
     },
   },
 
