@@ -771,6 +771,8 @@ export default {
       // Various Text
       digitalCultureImprovementTitle: "",
       digitalCultureImprovementDescription: "",
+
+      languageSelected: "",
     };
   },
 
@@ -816,6 +818,11 @@ export default {
   methods: {
     /* ==== CORE FUNCTIONS ==== */
 
+    // Get language from localstorage to define pdf to send out
+    getLanguage() {
+      this.languageSelected = localStorage.getItem("language");
+    },
+
     /* #1. Open Dialog
         Get Data from Parent,
         Get Todays Date,
@@ -827,6 +834,7 @@ export default {
       this.changeTemplate(1);
       this.formID = mappingID;
       this.mappingDialog = true;
+      this.getLanguage();
     },
 
     // #2. Get Todays Date
@@ -1621,44 +1629,239 @@ export default {
     },
 
     createPdf() {
+      console.log("Numero tWO Template PDF");
       let dateToday = new Date().toISOString().substr(0, 10);
       let pdfName = `Digitup Demo -  Mapping form - ${this.mappingUsername} - ${dateToday}`;
-      let pdfNamePrompt = prompt("Change the name of your PDF?", pdfName);
+      // let pdfNamePrompt = prompt("Change the name of your PDF?", pdfName);
+      // Get the promt through i18n
+      let pdfNamePrompt = prompt(
+        this.$t("extraKeys.changeTheNameOfTheFile"),
+        pdfName
+      );
       if (pdfNamePrompt) {
         pdfName = pdfNamePrompt;
       }
       if (pdfNamePrompt !== null) {
         this.pdfProgressDialog = true;
         pdfName = pdfName + ".pdf";
-        this.$http
-          .get("/digitupPdfEnglishTemplate.html")
-          .then((getHtmlTemplate) => {
-            let pdfData = {
-              html: getHtmlTemplate.data,
-              data: this.formPdfData,
-              pdf_format: "a4",
-            };
-            console.log("this data are: ", pdfData.data);
-            //ONLY PDF
-            this.$http({
-              url: "https://pdfservice.prios.no/api/pdf_service",
-              method: "post",
-              responseType: "blob",
-              data: pdfData,
-            }).then((response) => {
-              this.pdfProgressDialog = false;
-              const url = window.URL.createObjectURL(new Blob([response.data]));
-              const link = document.createElement("a");
-              link.href = url;
-              link.setAttribute("download", pdfName);
-              link.setAttribute("target", "_blank");
-              link.click();
+
+        // Based on the Language of the user, we get the template of the PDF Official
+
+        // English
+        if (this.languageSelected == "en") {
+          this.$http
+            .get("/digitupPdfEnglishTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
             });
-          });
+        }
+        // Norwegian
+        if (this.languageSelected == "nb") {
+          this.$http
+            .get("/digitupPdfNorwegianTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
+        // Bulgarian
+        if (this.languageSelected == "bg") {
+          this.$http
+            .get("/digitupPdfBulgarianTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
+        // Czech
+        if (this.languageSelected == "cz") {
+          this.$http
+            .get("/digitupPdfCzechTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
+        // Greek
+        if (this.languageSelected == "el") {
+          this.$http
+            .get("/digitupPdfGreekTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
+        // Spanish
+        if (this.languageSelected == "es") {
+          this.$http
+            .get("/digitupPdfSpanishTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
+        // Italian
+        if (this.languageSelected == "it") {
+          this.$http
+            .get("/digitupPdfItalianTemplate.html")
+            .then((getHtmlTemplate) => {
+              let pdfData = {
+                html: getHtmlTemplate.data,
+                data: this.formPdfData,
+                pdf_format: "a4",
+              };
+              console.log("this data are: ", pdfData.data);
+              //ONLY PDF
+              this.$http({
+                url: "https://pdfservice.prios.no/api/pdf_service",
+                method: "post",
+                responseType: "blob",
+                data: pdfData,
+              }).then((response) => {
+                this.pdfProgressDialog = false;
+                const url = window.URL.createObjectURL(
+                  new Blob([response.data])
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", pdfName);
+                link.setAttribute("target", "_blank");
+                link.click();
+              });
+            });
+        }
       }
     },
 
     sendEmail() {
+      console.log("SENDMAIL, am i triggered?");
       // let mailData = {
       //   to: req.mail_data.to,
       //   from:req.mail_data.from,
@@ -1864,6 +2067,8 @@ export default {
 
       console.log(createObj);
 
+      // Based upon Language - Not the best fix, but it works for now. due to the inability of certain functionalities in the template. - Modify later
+      console.log("Numero One Template PDF");
       this.$http
         .get("digitupPdfEnglishTemplate.html")
         .then((getHtmlTemplate) => {

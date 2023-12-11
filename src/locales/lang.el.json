@@ -371,7 +371,8 @@
     "selectOne": "Επιλέξτε Ένα",
     "confirmEdit": "Επιβεβαίωση επεξεργασίας",
     "cancelEdit": "Ακύρωση επεξεργασίας",
-    "editThisQuestion": "Επεξεργασία αυτής της ερώτησης"
+    "editThisQuestion": "Επεξεργασία αυτής της ερώτησης",
+    "changeTheNameOfTheFile": "Αλλαγή ονόματος αρχείου"
   },
   "pdfScoreText": {
     "reccommendations": "ΣΥΣΤΆΣΕΙΣ",

@@ -371,7 +371,8 @@
     "selectOne": "Vyberte jednu možnost",
     "confirmEdit": "Potvrdit úpravu",
     "cancelEdit": "Zrušit úpravu",
-    "editThisQuestion": "Upravit tuto otázku"
+    "editThisQuestion": "Upravit tuto otázku",
+    "changeTheNameOfTheFile": "Změnit název souboru"
   },
   "pdfScoreText": {
     "reccommendations": "DOPORUČENÍ",

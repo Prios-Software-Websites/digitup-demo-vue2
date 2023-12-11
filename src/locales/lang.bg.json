@@ -371,7 +371,8 @@
     "selectOne": "Select One",
     "confirmEdit": "Confirm edit",
     "cancelEdit": "Cancel edit",
-    "editThisQuestion": "Edit this question"
+    "editThisQuestion": "Edit this question",
+    "changeTheNameOfTheFile": "Промяна на името на файла"
   },
   "pdfScoreText": {
     "reccommendations": "Recommendations",

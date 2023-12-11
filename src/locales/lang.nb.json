@@ -371,7 +371,8 @@
     "selectOne": "Velg én",
     "confirmEdit": "Bekreft redigering",
     "cancelEdit": "Avbryt redigering",
-    "editThisQuestion": "Rediger dette spørsmålet"
+    "editThisQuestion": "Rediger dette spørsmålet",
+    "changeTheNameOfTheFile": "Endre navnet på filen"
   },
   "pdfScoreText": {
     "reccommendations": "Recommendations",

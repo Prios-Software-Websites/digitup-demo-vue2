@@ -371,7 +371,8 @@
     "selectOne": "Seleziona uno",
     "confirmEdit": "Conferma modifica",
     "cancelEdit": "Annulla modifica",
-    "editThisQuestion": "Modifica questa domanda"
+    "editThisQuestion": "Modifica questa domanda",
+    "changeTheNameOfTheFile": "Cambia il nome del file"
   },
   "pdfScoreText": {
     "reccommendations": "Recommendations",
