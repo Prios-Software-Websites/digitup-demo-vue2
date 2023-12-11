@@ -942,7 +942,6 @@ export default {
           { headers: { Tempaccess: this.accessKey } }
         )
         .then((response) => {
-          console.log("Responsen er", response.data);
           this.getFormData(response.data);
         })
         .catch((error) => {
@@ -1227,7 +1226,6 @@ export default {
           }
         });
 
-      console.log("temp Array", tempArr);
       this.generatePdf1(tempArr);
     },
     checkEditQuestion(questionId) {
@@ -1283,7 +1281,6 @@ export default {
     },
 
     generatePdf1(tempArr) {
-      console.log("Temp Array areee", tempArr);
       // this.pdfProgressDialog = true;
       this.formPdfData = {
         categories: [],
@@ -1317,8 +1314,6 @@ export default {
         let scoreTitle = "";
         let scoreDescription = "";
 
-        console.log("Hallooooooo!!!!");
-
         // Digital Culture - 570
         if (idOfCategory == 604) {
           if (scoreOfCategory <= 32) {
@@ -1330,8 +1325,6 @@ export default {
             // this.digitalCultureImprovementTitle = scoreTitle;
             // this.digitalCultureImprovementDescription = scoreDescription;
           } else if (scoreOfCategory >= 33 && scoreOfCategory <= 66) {
-            // console.log("Medium Score - Digital Culture");
-            console.log("Triggered 2");
             scoreTitle = this.$t("pdfScoreText.digitalCultureTitleMedium");
             scoreDescription = this.$t(
               "pdfScoreText.digitalCultureDescriptionMedium"
@@ -1339,8 +1332,6 @@ export default {
             // this.digitalCultureImprovementTitle = scoreTitle;
             // this.digitalCultureImprovementDescription = scoreDescription;
           } else if (scoreOfCategory >= 67) {
-            console.log("Triggered 3");
-            // console.log("High Score - Digital Culture");
             scoreTitle = this.$t("pdfScoreText.digitalCultureTitleHigh");
             scoreDescription = this.$t(
               "pdfScoreText.digitalCultureDescriptionHigh"
@@ -1349,6 +1340,8 @@ export default {
             // this.digitalCultureImprovementDescription = scoreDescription;
           }
         }
+
+        // Below may need an lift, based upon the form itself. (new language = new form = new ID)
 
         // Training and Development - 571
         if (idOfCategory == 605) {
@@ -1428,13 +1421,11 @@ export default {
               "pdfScoreText.cyberSecurityDescriptionLow"
             );
           } else if (scoreOfCategory >= 33 && scoreOfCategory <= 66) {
-            console.log("Medium Score - Cybersecurity");
             scoreTitle = this.$t("pdfScoreText.cyberSecurityTitleMedium");
             scoreDescription = this.$t(
               "pdfScoreText.cyberSecurityDescriptionMedium"
             );
           } else if (scoreOfCategory >= 67) {
-            console.log("High Score - Cybersecurity");
             scoreTitle = this.$t("pdfScoreText.cyberSecurityTitleHigh");
             scoreDescription = this.$t(
               "pdfScoreText.cyberSecurityDescriptionHigh"
@@ -1442,22 +1433,19 @@ export default {
           }
         }
 
-        // Future Plans - 575
+        // Future Plans - 575 - Need some love
         if (idOfCategory == 609) {
           if (scoreOfCategory <= 32) {
-            console.log("Low Score - Future Plans");
             scoreTitle = this.$t("pdfScoreText.futurePlansTitleLow");
             scoreDescription = this.$t(
               "pdfScoreText.futurePlansDescriptionLow"
             );
           } else if (scoreOfCategory >= 33 && scoreOfCategory <= 66) {
-            console.log("Medium Score - Future Plans");
             scoreTitle = this.$t("pdfScoreText.futurePlansTitleMedium");
             scoreDescription = this.$t(
               "pdfScoreText.futurePlansDescriptionMedium"
             );
           } else if (scoreOfCategory >= 67) {
-            console.log("High Score - Future Plans");
             scoreTitle = this.$t("pdfScoreText.futurePlansTitleHigh");
             scoreDescription = this.$t(
               "pdfScoreText.futurePlansDescriptionHigh"
@@ -1473,8 +1461,6 @@ export default {
           scoreDescription: scoreDescription,
         };
 
-        console.log("What do i get!!!", categoryResults);
-
         // Push categoryResult into categoriesAll
         if (tempArr[index].id !== 575) {
           this.formPdfData.categoriesAll.push(categoryResults);
@@ -1483,8 +1469,6 @@ export default {
 
       // Set categories
       tempArr.forEach((category) => {
-        console.log("User Score", category.user_score);
-        console.log("Total Score", category.total_score);
         this.formPdfData.categories.push({
           name: category.name,
           score: Math.round((category.user_score / category.total_score) * 100),
@@ -1510,7 +1494,6 @@ export default {
           stroke: "lightgrey",
         };
       });
-      console.log("COLOOOOR", this.formPdfData);
 
       this.createPdf();
     },
@@ -1521,8 +1504,6 @@ export default {
       let tempArr = [];
 
       // We get all categories, and its questions
-      console.log("this.userForm.sections", this.userForm.sections);
-
       this.userForm.sections.forEach((category) => {
         let newStrengtWeakness = {
           name: category.name,
@@ -1548,7 +1529,6 @@ export default {
           );
           let findHighestQuestionValue = null;
           if (findCategory) {
-            console.log("CHECK THIS OUT!!!", findCategory);
             if (question.type != "q_text") {
               if (
                 JSON.parse(question.options).filter((i) => i.weight).length != 0
@@ -1563,14 +1543,7 @@ export default {
                 findCategory.total_score = findCategory.total_score + 5;
               }
               if (findQuestionResponse && findQuestionResponse.answered) {
-                console.log(
-                  "findCategory.user_score",
-                  findCategory.user_score.split
-                );
-                // console.log("Number(findQuestionResponse.value)", Number(findQuestionResponse.value));
-
                 let numberScore = findQuestionResponse.value.split("-")[0];
-                // console.log("Number Score", numberScore)
 
                 // findCategory.user_score = findCategory.user_score + Number(findQuestionResponse.value);
                 findCategory.user_score = numberScore;
@@ -1583,12 +1556,10 @@ export default {
           }
         });
 
-      console.log("temp Array", tempArr);
       this.generatePdf(tempArr);
     },
 
     generatePdf(tempArr) {
-      console.log("Temp Array areee", tempArr);
       // this.pdfProgressDialog = true;
       this.formPdfData = {
         categories: [],
@@ -1598,8 +1569,6 @@ export default {
       };
       // Set categories
       tempArr.forEach((category) => {
-        console.log("User Score", category.user_score);
-        console.log("Total Score", category.total_score);
         this.formPdfData.categories.push({
           name: category.name,
           score: Math.round((category.user_score / category.total_score) * 100),
@@ -1623,13 +1592,11 @@ export default {
           stroke: "lightgrey",
         };
       });
-      console.log("COLOOOOR", this.formPdfData);
 
       // this.createPdf();
     },
 
     createPdf() {
-      console.log("Numero tWO Template PDF");
       let dateToday = new Date().toISOString().substr(0, 10);
       let pdfName = `Digitup Demo -  Mapping form - ${this.mappingUsername} - ${dateToday}`;
       // let pdfNamePrompt = prompt("Change the name of your PDF?", pdfName);
@@ -1657,7 +1624,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
               //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
@@ -1687,8 +1653,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1717,8 +1681,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1747,8 +1709,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1777,8 +1737,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1807,8 +1765,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1837,8 +1793,6 @@ export default {
                 data: this.formPdfData,
                 pdf_format: "a4",
               };
-              console.log("this data are: ", pdfData.data);
-              //ONLY PDF
               this.$http({
                 url: "https://pdfservice.prios.no/api/pdf_service",
                 method: "post",
@@ -1861,7 +1815,6 @@ export default {
     },
 
     sendEmail() {
-      console.log("SENDMAIL, am i triggered?");
       // let mailData = {
       //   to: req.mail_data.to,
       //   from:req.mail_data.from,
@@ -1964,7 +1917,6 @@ export default {
             findCategory.user_score =
               findCategory.user_score + findCheckBoxScoreValue;
           } else if (findQuestion.type != "q_text") {
-            console.log("Am i triggered?");
             if (
               JSON.parse(findQuestion.options).filter((i) => i.weight).length !=
               0
@@ -1972,10 +1924,6 @@ export default {
               findHighestQuestionValue = JSON.parse(findQuestion.options).map(
                 (i) => i.weight
               );
-
-              console.log("Number One!", findCategory);
-              console.log("Number Two!", findQuestion);
-              console.log("Number Three!", findHighestQuestionValue);
 
               findCategory.total_score =
                 findCategory.total_score +
@@ -1990,7 +1938,6 @@ export default {
 
         // IF FRONT PAGE QUESTIONS
         else if (findQuestion.section_id) {
-          console.log("Am i triggered 2?");
           if (
             findQuestion.type == "q_front_select" ||
             findQuestion.type == "q_front_text"
@@ -2001,7 +1948,6 @@ export default {
               checkbox: false,
             });
           } else if (findQuestion.type == "q_front_checkbox") {
-            console.log(questionAnswer);
             let newQuestionAnswers = [];
             JSON.parse(findQuestion.options).forEach((item) => {
               if (questionAnswer.value.includes(item.label)) {
@@ -2065,10 +2011,7 @@ export default {
       this.formPdfData = createObj;
       this.pdfResultDisplayDialog = true;
 
-      console.log(createObj);
-
       // Based upon Language - Not the best fix, but it works for now. due to the inability of certain functionalities in the template. - Modify later
-      console.log("Numero One Template PDF");
       this.$http
         .get("digitupPdfEnglishTemplate.html")
         .then((getHtmlTemplate) => {

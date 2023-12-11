@@ -37,7 +37,7 @@
               {{ $t("extraKeys.homeDescriptionTwo") }}<br />
               {{ $t("extraKeys.homeDescriptionThree") }}
             </p>
-
+            <!-- Based on language selected, the parameter will change!! -->
             <v-btn
               @click="$refs.openMappingDialog.openingMappingForm(229)"
               large
