@@ -39,7 +39,7 @@
             </p>
             <!-- Based on language selected, the parameter will change!! -->
             <v-btn
-              @click="$refs.openMappingDialog.openingMappingForm(229)"
+              @click="openMappingFormWithLanguageId"
               large
               color="primary"
               class="mt-15"
@@ -51,7 +51,6 @@
             </v-btn>
           </div>
 
-          <!-- <MappingToolsDialog ref="openMappingDialog"></MappingToolsDialog> -->
           <MappingToolMainComponent ref="openMappingDialog" />
         </div>
       </v-col>
@@ -70,7 +69,28 @@ export default {
     LanguageSelection,
   },
   data() {
-    return {};
+    return {
+      // Assessment tools from DB based on IDs
+      assessmentTools: {
+        en: 229,
+        bg: 262,
+        cz: 263,
+        es: 261,
+        nb: 260,
+        it: 259,
+        el: 258,
+      },
+    };
+  },
+  methods: {
+    openMappingFormWithLanguageId() {
+      // Retrieve the language key from localStorage
+      const languageKey = localStorage.getItem("language") || "en";
+      // Get the language ID based on the language key
+      const languageId = this.assessmentTools[languageKey];
+      // Call the openMappingForm method with the language ID
+      this.$refs.openMappingDialog.openingMappingForm(languageId);
+    },
   },
 };
 </script>
