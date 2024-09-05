@@ -1225,7 +1225,7 @@ export default {
               : (findCategory.question_id_list = [question.id]);
           }
         });
-
+      console.log("Numero One");
       this.generatePdf1(tempArr);
     },
     checkEditQuestion(questionId) {
@@ -1281,6 +1281,7 @@ export default {
     },
 
     generatePdf1(tempArr) {
+      console.log("Numero Dos");
       // this.pdfProgressDialog = true;
       this.formPdfData = {
         categories: [],
@@ -1495,6 +1496,7 @@ export default {
         };
       });
 
+      console.log("Numero Tres");
       this.createPdf();
     },
     // NEW SHOULD BE WORKING FUNCTIONS END
@@ -1597,6 +1599,7 @@ export default {
     },
 
     createPdf() {
+      console.log("Numero Four");
       let dateToday = new Date().toISOString().substr(0, 10);
       let pdfName = `Digitup Demo -  Mapping form - ${this.mappingUsername} - ${dateToday}`;
       // let pdfNamePrompt = prompt("Change the name of your PDF?", pdfName);
