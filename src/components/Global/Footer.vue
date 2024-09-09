@@ -14,11 +14,11 @@
         xs="12"
         v-if="$vuetify.breakpoint.mdAndDown"
       >
-        <v-img src="img/erasmusLogoFooter.jpg" contain max-width="300"></v-img>
+        <v-img src="img/newEuLogo.jpg" contain max-width="300"></v-img>
       </v-col>
       <v-col v-else cols="12" xl="2" lg="2" md="2" sm="12" xs="12">
         <v-img
-          src="img/erasmusLogoFooter.jpg"
+          src="img/newEuLogo.jpg"
           contain
           height="100px"
           width="250px"
